@@ -1,0 +1,576 @@
+<Fragment>
+  <Compatibility ParseElementFunctionsInExpressionsLast="True" ParseNonEntityAssociatedObjectForPropertyReference="False" AllowInteractiveEntryOfNonStandardElementNames="False" />
+  <ChangeDescriptions>
+    <ChangeDescription Version="44">Version 2.39: Updated the Conveyor object process logic to specify all of the object's process delays as non-interruptible. Added a 'State Assignments' property category.</ChangeDescription>
+    <ChangeDescription Version="48">Version 2.40: Removed the Conveyor object's 'Close' and 'Open' public processes. For equivalent functionality, use the Assign step and assign the conveyor's DesiredDirection state to the value 'Enum.TrafficDirection.None' to close entry onto the conveyor, or to the value 'Enum.TrafficDirection.Either' to re-open entry onto the conveyor. In the object process logic, the 'Action' property for all Execute steps executing an 'add-on process' is now specified as 'WaitUntilCompleted'. Restructured the failure-related process logic.</ChangeDescription>
+    <ChangeDescription Version="49">Version 2.41: Updated the assignments repeat groups to take state units into account.</ChangeDescription>
+    <ChangeDescription Version="50">Version 3.42: Changes related to setting the 'Token Associated Object Destroyed Action' option for process logic in this object.</ChangeDescription>
+    <ChangeDescription Version="51">Version 3.44: Display name of 'InitialDesiredSpeed' property changed to be 'Initial Desired Speed'.</ChangeDescription>
+    <ChangeDescription Version="52">Version 3.47: Added new 'Appearance' property category.</ChangeDescription>
+    <ChangeDescription Version="53">Version 3.49: Specified the 'OnAssociatedObjectTransferRequested' property of some processes as 'EndProcess'.</ChangeDescription>
+    <ChangeDescription Version="59">Version 3.51: Added new 'Cell Spacing Type', 'Cell Size', and 'Auto Align Cells' properties if the conveyor's 'Entity Alignment' option is specified as 'Cell Location'. The default method used to determine a conveyor's cell spacing is now 'Fixed Cell Size'. If using cell spacing, and an entity collides with a slower moving (not stopped) predecessor entity on the conveyor, then the colliding entity will now disengage and then reengage after one cell interval has passed.</ChangeDescription>
+    <ChangeDescription Version="60">Version 3.52: If the model's 'Disable Randomness' option is being used, the object's 'Reliability Logic' is now automatically disabled to not generate any failure occurrences.</ChangeDescription>
+    <ChangeDescription Version="64">Version 3.54: Usage of 'Run.RandomnessDisabled' function instead of deprecated 'DisableRandomness' function. Conversion to 'OnRunInitialized' standard interface process. Added 'Run Ending' add-on process trigger.</ChangeDescription>
+    <ChangeDescription Version="65">Version 3.57: Minor processing step labeling changes.</ChangeDescription>
+    <ChangeDescription Version="67">Version 4.58: Added new 'Advanced Options' property category.</ChangeDescription>
+    <ChangeDescription Version="70">Version 4.59: Process logic now uses new entity 'NextEntityAheadOnLink' function instead of deprecated 'FrontTraffic.Speed' function</ChangeDescription>
+    <ChangeDescription Version="73">Version 4.61: Added new 'Financials' property category.</ChangeDescription>
+    <ChangeDescription Version="74">Version 4.63: Reordered the position of the 'Financials' property category.</ChangeDescription>
+    <ChangeDescription Version="76">Version 4.65: 'Repairing' add-on process trigger marked as obsolete and is no longer displayed in the Properties window if not previously defined.</ChangeDescription>
+    <ChangeDescription Version="80">Version 4.68: Changed 'TravelerCapacity' integer property to 'InitialTravelerCapacity' expression property. Renamed 'InitializedAddOnProcess' property to 'RunInitializedAddOnProcess'.</ChangeDescription>
+    <ChangeDescription Version="81">Version 4.71: Renamed 'EventName' property to 'FailureEventName'.</ChangeDescription>
+    <ChangeDescription Version="83">Version 4.73: Removed usage of deprecated 'Entity.SlipSpeed' function.</ChangeDescription>
+    <ChangeDescription Version="84">Version 4.76: Updates required due to Suspend &amp; Resume step enhancements.</ChangeDescription>
+    <ChangeDescription Version="85">Version 5.87: Process logic now uses new property 'HasValue' function instead of deprecated 'IsDefined'.</ChangeDescription>
+    <ChangeDescription Version="86">Version 5.88: 'OnCollisionCleared' process - Improvements to conveyor movement rate assignment expression to better avoid null pointer exceptions.</ChangeDescription>
+    <ChangeDescription Version="87">Version 5.91: Added information to indicate which properties to display if the new 'Show Commonly Used Properties Only' option is enabled.</ChangeDescription>
+    <ChangeDescription Version="88">Version 6.103: Some property description updates.</ChangeDescription>
+    <ChangeDescription Version="89">Version 7.130: Added 'Advanced Options -&gt; Obsolete Properties' property category.</ChangeDescription>
+    <ChangeDescription Version="92">Version 8.136: Minor updates of 'OnFailed' &amp; 'OnRepaired' process logic. Simplification of 'OnRunInitialized' process logic.</ChangeDescription>
+    <ChangeDescription Version="93">Version 8.137: Simplification of 'OnFailed' process logic to use fewer Suspend &amp; Resume steps.</ChangeDescription>
+    <ChangeDescription Version="94">Version 8.142: Added 'Repaired' event and failure-related timers now use that event as their reset triggering event.</ChangeDescription>
+    <ChangeDescription Version="95">Version 8.147: Property description string updates.</ChangeDescription>
+    <ChangeDescription Version="96">Version 9.149: Added 'Failed' event &amp; changed scope of 'Repaired' event from private to public.</ChangeDescription>
+    <ChangeDescription Version="97">Version 9.154: Failure-related timers now reset by a 'FailuresTimerReset' event (fired after Repair step in 'FailureOccurrenceLogic') instead of by the 'Repaired' event.</ChangeDescription>
+  </ChangeDescriptions>
+  <ChangeStringReplacements>
+    <ChangeStringReplacement Version="80" RegularExpressionPattern="(^|[^\w_])(?i:InitializedAddOnProcess)([^\w_]|$)" ReplacementString="$1RunInitializedAddOnProcess$2" />
+  </ChangeStringReplacements>
+  <Lists>
+    <StringList Name="ConveyorFailureType">
+      <Items>
+        <Item Value="NoFailures" />
+        <Item Value="CalendarTimeBased" />
+        <Item Value="EventCountBased" />
+      </Items>
+    </StringList>
+  </Lists>
+  <PropertyDefinitions>
+    <Categories>
+      <Category Name="Travel Logic" Description="Travel Logic" />
+      <Category Name="Routing Logic" Description="Routing Logic" />
+      <Category Name="Reliability Logic" Description="Reliability Logic" InitiallyExpanded="False" />
+      <Category Name="State Assignments" Description="Optional State Assignments" InitiallyExpanded="False" />
+      <Category Name="Financials" Description="Financials" InitiallyExpanded="False" />
+      <Category Name="Add-On Process Triggers" Description="Add-On Process Triggers" InitiallyExpanded="False" />
+      <Category Name="Advanced Options" Description="Advanced Options" InitiallyExpanded="False" />
+      <Category Name="Advanced Options/Deprecated Properties" Description="Advanced Options/Deprecated Properties" InitiallyExpanded="False" />
+    </Categories>
+    <BooleanProperty Name="Accumulating" Description="Specifies whether this conveyor is accumulating or non-accumulating. If non-accumulating, then the entire conveyor stops if an entity moving on this conveyor reaches the end and cannot exit.  If accumulating, then entities are allowed to continue moving and accumulate if progress is blocked." Category="Travel Logic" DefaultValue="True" NullString="null" />
+    <ListProperty Name="FailureType" DisplayName="Failure Type" Description="Specifies whether this object has failures that affect the object's availability, and the method used to trigger the failure occurrences." ComplexityLevel="Advanced" Category="Reliability Logic" DefaultValue="No Failures" NullString="null" List="ConveyorFailureType">
+      <Captions>
+        <Caption Value="NoFailures" Display="No Failures" />
+        <Caption Value="CalendarTimeBased" Display="Calendar Time Based" />
+        <Caption Value="EventCountBased" Display="Event Count Based" />
+      </Captions>
+    </ListProperty>
+    <EventProperty Name="FailureEventName" DisplayName="Event Name" Description="The name of the event whose occurrences determine when the next failure occurs." ComplexityLevel="Advanced" Category="Reliability Logic" NullString="null">
+      <Switch Property="FailureType" Value="EventCountBased" />
+    </EventProperty>
+    <ExpressionProperty Name="CountBetweenFailures" DisplayName="Count Between Failures" Description="The event count between failure occurrences." ComplexityLevel="Advanced" Category="Reliability Logic" DefaultValue="Random.Uniform(100,200)" NullString="null">
+      <Switch Property="FailureType" Comparison="GreaterThan" Value="CalendarTimeBased" />
+    </ExpressionProperty>
+    <ExpressionProperty Name="UptimeBetweenFailures" DisplayName="Uptime Between Failures" Description="The uptime between failure occurrences." ComplexityLevel="Advanced" Category="Reliability Logic" DefaultValue="Random.Exponential(100)" NullString="null" UnitType="Time">
+      <Switch Property="FailureType" Value="CalendarTimeBased" />
+    </ExpressionProperty>
+    <ExpressionProperty Name="TimeToRepair" DisplayName="Time To Repair" Description="The time required to repair a failure when one occurs." ComplexityLevel="Advanced" Category="Reliability Logic" DefaultValue="Random.Triangular(0.5,1.0,1.5)" NullString="null" UnitType="Time">
+      <Switch Property="FailureType" Comparison="NotEqual" Value="NoFailures" />
+    </ExpressionProperty>
+    <RepeatingProperty Name="AssignmentsOnEntering" DisplayName="On Entering" Description="Optional state assignments when an entity is entering the object." Category="State Assignments" Required="False" NullString="null">
+      <PropertyDefinitions>
+        <Categories>
+          <Category Name="Basic Logic" Description="State Assignments (Basic Logic)" />
+        </Categories>
+        <StateProperty Name="AssignmentsOnEnteringStateVariableName" DisplayName="State Variable Name" Description="Name of the state variable that will be assigned a new value." Category="Basic Logic" Required="False" NullString="null" IsAssignable="True" />
+        <ExpressionProperty Name="AssignmentsOnEnteringNewValue" DisplayName="New Value" Description="The new value to assign." Category="Basic Logic" DefaultValue="0.0" Required="False" NullString="null" UnitTypeProperty="AssignmentsOnEnteringStateVariableName" />
+        <Overrides />
+      </PropertyDefinitions>
+    </RepeatingProperty>
+    <RepeatingProperty Name="AssignmentsBeforeExiting" DisplayName="Before Exiting" Description="Optional state assignments when an entity is ready to exit the object." ComplexityLevel="Advanced" Category="State Assignments" Required="False" NullString="null">
+      <PropertyDefinitions>
+        <Categories>
+          <Category Name="Basic Logic" Description="State Assignments (Basic Logic)" />
+        </Categories>
+        <StateProperty Name="AssignmentsBeforeExitingStateVariableName" DisplayName="State Variable Name" Description="Name of the state variable that will be assigned a new value." Category="Basic Logic" Required="False" NullString="null" IsAssignable="True" />
+        <ExpressionProperty Name="AssignmentsBeforeExitingNewValue" DisplayName="New Value" Description="The new value to assign." Category="Basic Logic" DefaultValue="0.0" Required="False" NullString="null" UnitTypeProperty="AssignmentsBeforeExitingStateVariableName" />
+        <Overrides />
+      </PropertyDefinitions>
+    </RepeatingProperty>
+    <ElementProperty Name="RunInitializedAddOnProcess" DisplayName="Run Initialized" Description="Occurs when the simulation run is initialized." ComplexityLevel="Advanced" Category="Add-On Process Triggers" Required="False" NullString="null" ValueListFilter="UserExecutableProcessesOnly" Type="Process" />
+    <ElementProperty Name="RunEndingAddOnProcess" DisplayName="Run Ending" Description="Occurs when the simulation run is ending." ComplexityLevel="Advanced" Category="Add-On Process Triggers" Required="False" NullString="null" ValueListFilter="UserExecutableProcessesOnly" Type="Process" />
+    <ElementProperty Name="EnteredAddOnProcess" DisplayName="Entered" Description="Occurs when a entity's leading edge has entered this conveyor." ComplexityLevel="Advanced" Category="Add-On Process Triggers" Required="False" NullString="null" ValueListFilter="UserExecutableProcessesOnly" Type="Process" />
+    <ElementProperty Name="TrailingEdgeEnteredAddOnProcess" DisplayName="Trailing Edge Entered" Description="Occurs when an entity's trailing edge has entered this conveyor." ComplexityLevel="Advanced" Category="Add-On Process Triggers" Required="False" NullString="null" ValueListFilter="UserExecutableProcessesOnly" Type="Process" />
+    <ElementProperty Name="ReachedEndAddOnProcess" DisplayName="Reached End" Description="Occurs when an entity's leading edge has reached the end of this conveyor." ComplexityLevel="Advanced" Category="Add-On Process Triggers" Required="False" NullString="null" ValueListFilter="UserExecutableProcessesOnly" Type="Process" />
+    <ElementProperty Name="ExitedAddOnProcess" DisplayName="Exited" Description="Occurs when an entity has exited this conveyor." ComplexityLevel="Advanced" Category="Add-On Process Triggers" Required="False" NullString="null" ValueListFilter="UserExecutableProcessesOnly" Type="Process" />
+    <ElementProperty Name="FailedAddOnProcess" DisplayName="Failed" Description="Occurs when this object has failed." ComplexityLevel="Advanced" Category="Add-On Process Triggers" Required="False" NullString="null" ValueListFilter="UserExecutableProcessesOnly" Type="Process" />
+    <ElementProperty Name="RepairedAddOnProcess" DisplayName="Repaired" Description="Occurs when a failure is repaired at this object." ComplexityLevel="Advanced" Category="Add-On Process Triggers" Required="False" NullString="null" ValueListFilter="UserExecutableProcessesOnly" Type="Process" />
+    <ExpressionProperty Name="CapitalCost" DisplayName="Capital Cost" Description="The initial one-time setup cost to add this object to the system." ComplexityLevel="Advanced" Category="Financials" DefaultValue="0.0" NullString="null" UnitType="Currency" />
+    <ElementProperty Name="RepairingAddOnProcess" DisplayName="Repairing" Description="Occurs when the repair time for a failure at this object is about to begin.&#xD;&#xA;&#xD;&#xA;NOTE: This property has been deprecated. Use the 'Add-On Process Triggers -&gt; Failed' property instead." ComplexityLevel="Advanced" Category="Advanced Options/Deprecated Properties" Required="False" NullString="null" ValueListFilter="UserExecutableProcessesOnly" Type="Process" />
+    <Overrides>
+      <Override Name="ReportStatistics" DefaultValue="True" />
+      <Override Name="InitialCost" Visible="False" />
+      <Override Name="InitialCostRate" Visible="False" />
+      <Override Name="ResourceIdleCostRate" Visible="False" />
+      <Override Name="ResourceCostPerUse" Visible="False" />
+      <Override Name="ResourceUsageCostRate" Visible="False" />
+      <Override Name="LogResourceUsage" Visible="False" />
+      <Override Name="DisplayCategory" Visible="False" />
+      <Override Name="DisplayColor" Visible="False" />
+      <Override Name="IncludeInPlanResourceConstraints" Visible="False" />
+      <Override Name="CapacityType" Visible="False" />
+      <Override Name="WorkSchedule" Visible="False" />
+      <Override Name="WorkDayExceptions" Visible="False" />
+      <Override Name="WorkPeriodExceptions" Visible="False" />
+      <Override Name="InitialCapacity" Visible="False" />
+      <Override Name="RankingRule" Visible="False" />
+      <Override Name="RankingExpression" Visible="False" />
+      <Override Name="DynamicSelectionRule" Visible="False" />
+      <Override Name="Type" Visible="False" />
+      <Override Name="TrafficDirectionRule" Visible="False" />
+      <Override Name="InitialDesiredDirection" Visible="False" />
+      <Override Name="InitialDesiredSpeed" Description="The initial desired speed of this conveyor.&#xD;&#xA;&#xD;&#xA;NOTE: Refer to the user-assignable ‘DesiredSpeed’ state variable of a conveyor to dynamically change its desired speed during a simulation run." ComplexityLevel="Basic" />
+      <Override Name="EntityAlignment" Description="Determines the minimum spacing of entities being moved on this conveyor. If 'Any Location', then there is no minimum spacing and an entity can align with any random position along the conveyor's length. If 'Cell Location', then the conveyor has a fixed interval spacing of 'cells', and the leading edge of any entity being moved on the conveyor must align with a cell boundary." ComplexityLevel="Basic" />
+      <Override Name="CellSize" ComplexityLevel="Basic" />
+    </Overrides>
+    <PropertyReplacements>
+      <PropertyReplacement Version="79" OldPropertyName="InitializedAddOnProcess" NewPropertyName="RunInitializedAddOnProcess" />
+      <PropertyReplacement Version="81" OldPropertyName="EventName" NewPropertyName="FailureEventName" />
+    </PropertyReplacements>
+  </PropertyDefinitions>
+  <States />
+  <Events>
+    <Event Name="Failed" Description="The Failed event provides notification that this resource has failed." />
+    <Event Name="Repaired" Description="The Repaired event provides notification that a failure at this resource has been repaired." />
+    <Event Name="FailuresTimerReset" Description="The FailuresTimerReset event provides notification to reset the built-in failure stream timer(s) of this resource." Public="False" />
+  </Events>
+  <Elements>
+    <Element Type="Failure" Name="Failure" Scope="Public">
+      <Properties>
+        <Property Name="OnFailedProcess">
+          <Value>OnFailed</Value>
+        </Property>
+        <Property Name="OnRepairedProcess">
+          <Value>OnRepaired</Value>
+        </Property>
+      </Properties>
+    </Element>
+    <Element Type="Timer" Name="CalendarTimeBasedFailures">
+      <Properties>
+        <Property Name="TimeOffset">UptimeBetweenFailures</Property>
+        <Property Name="TimeInterval">UptimeBetweenFailures</Property>
+        <Property Name="MaximumEvents">1</Property>
+        <Property Name="ResetEventName">FailuresTimerReset</Property>
+        <Property Name="InitiallyEnabled">False</Property>
+      </Properties>
+    </Element>
+    <Element Type="Timer" Name="EventCountBasedFailures">
+      <Properties>
+        <Property Name="IntervalType">EventCount</Property>
+        <Property Name="TriggeringEventName">FailureEventName</Property>
+        <Property Name="TriggeringEventCount">CountBetweenFailures</Property>
+        <Property Name="MaximumEvents">1</Property>
+        <Property Name="ResetEventName">FailuresTimerReset</Property>
+        <Property Name="InitiallyEnabled">False</Property>
+      </Properties>
+    </Element>
+    <Element Type="CostCenter" Name="CapitalCosts">
+      <Properties>
+        <Property Name="InitialCost" Units="USD">CapitalCost</Property>
+        <Property Name="InitialCostRate" Units="USD per Hour">0.0</Property>
+        <Property Name="DataSource">[Object]</Property>
+        <Property Name="DataItem">"CapitalCost"</Property>
+      </Properties>
+    </Element>
+  </Elements>
+  <Processes>
+    <Process Name="OnRunInitialized" IsOverride="True" ShowAsUserExecutableProcess="False" InterfaceProcessID="Object.OnRunInitialized" BeginStepID="2">
+      <Properties />
+      <Steps>
+        <Step Type="Assign" Name="ToEnableFailures" ExclusionExpression="FailureType == List.ConveyorFailureType.NoFailures" ID="2">
+          <Properties>
+            <Property Name="Assignments">
+              <Rows>
+                <Properties>
+                  <Property Name="AssignmentsStateVariableName">
+                    <Value>CalendarTimeBasedFailures.Enabled</Value>
+                  </Property>
+                  <Property Name="AssignmentsNewValue">Run.RandomnessDisabled==False</Property>
+                  <Property Name="AssignmentsSkipAssignmentCondition">FailureType!=List.ConveyorFailureType.CalendarTimeBased</Property>
+                </Properties>
+                <Properties>
+                  <Property Name="AssignmentsStateVariableName">
+                    <Value>EventCountBasedFailures.Enabled</Value>
+                  </Property>
+                  <Property Name="AssignmentsNewValue">Run.RandomnessDisabled==False</Property>
+                  <Property Name="AssignmentsSkipAssignmentCondition">FailureType!=List.ConveyorFailureType.EventCountBased</Property>
+                </Properties>
+              </Rows>
+            </Property>
+          </Properties>
+          <Exit Name="Exit" Type="Primary" NextID="3" />
+        </Step>
+        <Step Type="Subscribe" Name="ToFailureEvents" ExclusionExpression="FailureType == List.ConveyorFailureType.NoFailures" ID="3">
+          <Properties>
+            <Property Name="EventName">CalendarTimeBasedFailures.Event</Property>
+            <Property Name="ProcessName">
+              <Value>FailureOccurrenceLogic</Value>
+            </Property>
+            <Property Name="Events">
+              <Rows>
+                <Properties>
+                  <Property Name="EventsEventName">EventCountBasedFailures.Event</Property>
+                  <Property Name="EventsProcessName">
+                    <Value>FailureOccurrenceLogic</Value>
+                  </Property>
+                </Properties>
+              </Rows>
+            </Property>
+          </Properties>
+          <Exit Name="Exit" Type="Primary" NextID="4" />
+        </Step>
+        <Step Type="Execute" Name="RunInitialized_AddOnProcess" ID="4">
+          <Properties>
+            <Property Name="ProcessName">
+              <Value>RunInitializedAddOnProcess</Value>
+            </Property>
+          </Properties>
+        </Step>
+      </Steps>
+    </Process>
+    <Process Name="OnRunEnding" IsOverride="True" ShowAsUserExecutableProcess="False" InterfaceProcessID="Object.OnRunEnding" BeginStepID="2">
+      <Properties />
+      <Steps>
+        <Step Type="Execute" Name="RunEnding_AddOnProcess" ID="2">
+          <Properties>
+            <Property Name="ProcessName">
+              <Value>RunEndingAddOnProcess</Value>
+            </Property>
+          </Properties>
+        </Step>
+      </Steps>
+    </Process>
+    <Process Name="OnEntered" IsOverride="True" ShowAsUserExecutableProcess="False" InterfaceProcessID="Link.OnEntered" BeginStepID="2">
+      <Properties>
+        <Property Name="TokenActionOnAssociatedObjectDestroyed">EndProcess</Property>
+        <Property Name="TokenActionOnAssociatedObjectTransferRequested">EndProcess</Property>
+      </Properties>
+      <Steps>
+        <Step Type="Assign" Name="OnEnteringAssignments" ID="2">
+          <Properties>
+            <Property Name="Assignments">
+              <Value>AssignmentsOnEntering</Value>
+              <Rows>
+                <Properties>
+                  <Property Name="AssignmentsStateVariableName">
+                    <Value>AssignmentsOnEnteringStateVariableName</Value>
+                  </Property>
+                  <Property Name="AssignmentsNewValue">AssignmentsOnEnteringNewValue</Property>
+                </Properties>
+              </Rows>
+            </Property>
+          </Properties>
+          <Exit Name="Exit" Type="Primary" NextID="3" />
+        </Step>
+        <Step Type="Decide" Name="IfNoEnteredAddOnProcess" ExclusionExpression="Math.If(!EnteredAddOnProcess.HasValue, 1, 2)" ID="3">
+          <Properties>
+            <Property Name="DecideType">ConditionBased</Property>
+            <Property Name="ConditionOrProbability">!EnteredAddOnProcess.HasValue</Property>
+          </Properties>
+          <Exit Name="True" Type="Primary" NextID="9" />
+          <Exit Name="False" Type="Alternate" NextID="5" />
+        </Step>
+        <Step Type="Execute" Name="Entered_AddOnProcess" ID="4">
+          <Properties>
+            <Property Name="ProcessName">
+              <Value>EnteredAddOnProcess</Value>
+            </Property>
+          </Properties>
+          <Exit Name="Exit" Type="Primary" NextID="8" />
+        </Step>
+        <Step Type="Assign" Name="DisableOnCollisionCleared" ID="5">
+          <Properties>
+            <Property Name="StateVariableName">
+              <Value>OnCollisionCleared.Enabled</Value>
+            </Property>
+            <Property Name="NewValue">False</Property>
+          </Properties>
+          <Exit Name="Exit" Type="Primary" NextID="6" />
+        </Step>
+        <Step Type="Suspend" Name="TravelerMovement" ID="6">
+          <Properties>
+            <Property Name="SuspendType">ObjectMovement</Property>
+          </Properties>
+          <Exit Name="Exit" Type="Primary" NextID="7" />
+        </Step>
+        <Step Type="Assign" Name="EnableOnCollisionCleared" ID="7">
+          <Properties>
+            <Property Name="StateVariableName">
+              <Value>OnCollisionCleared.Enabled</Value>
+            </Property>
+            <Property Name="NewValue">True</Property>
+          </Properties>
+          <Exit Name="Exit" Type="Primary" NextID="4" />
+        </Step>
+        <Step Type="Resume" Name="TravelerMovement" ID="8">
+          <Properties>
+            <Property Name="ResumeType">ObjectMovement</Property>
+          </Properties>
+          <Exit Name="Exit" Type="Primary" NextID="9" />
+        </Step>
+        <Step Type="Engage" Name="WithLinkPosition" ID="9">
+          <Properties />
+        </Step>
+      </Steps>
+    </Process>
+    <Process Name="OnExited" IsOverride="True" ShowAsUserExecutableProcess="False" InterfaceProcessID="Link.OnExited" BeginStepID="2">
+      <Properties />
+      <Steps>
+        <Step Type="Execute" Name="Exited_AddOnProcess" ID="2">
+          <Properties>
+            <Property Name="ProcessName">
+              <Value>ExitedAddOnProcess</Value>
+            </Property>
+          </Properties>
+        </Step>
+      </Steps>
+    </Process>
+    <Process Name="OnReachedEnd" IsOverride="True" ShowAsUserExecutableProcess="False" InterfaceProcessID="Link.OnReachedEnd" BeginStepID="2">
+      <Properties>
+        <Property Name="TokenActionOnAssociatedObjectDestroyed">EndProcess</Property>
+        <Property Name="TokenActionOnAssociatedObjectTransferRequested">EndProcess</Property>
+      </Properties>
+      <Steps>
+        <Step Type="Decide" Name="IfAccumulating" ExclusionExpression="Math.If(Accumulating, 1, 2)" ID="2">
+          <Properties>
+            <Property Name="DecideType">ConditionBased</Property>
+            <Property Name="ConditionOrProbability">Accumulating</Property>
+          </Properties>
+          <Exit Name="True" Type="Primary" NextID="3" />
+          <Exit Name="False" Type="Alternate" NextID="6" />
+        </Step>
+        <Step Type="Disengage" Name="FromLinkPosition" ID="3">
+          <Properties />
+          <Exit Name="Exit" Type="Primary" NextID="6" />
+        </Step>
+        <Step Type="Assign" Name="BeforeExitingAssignments" ID="4">
+          <Properties>
+            <Property Name="Assignments">
+              <Value>AssignmentsBeforeExiting</Value>
+              <Rows>
+                <Properties>
+                  <Property Name="AssignmentsStateVariableName">
+                    <Value>AssignmentsBeforeExitingStateVariableName</Value>
+                  </Property>
+                  <Property Name="AssignmentsNewValue">AssignmentsBeforeExitingNewValue</Property>
+                </Properties>
+              </Rows>
+            </Property>
+          </Properties>
+          <Exit Name="Exit" Type="Primary" NextID="5" />
+        </Step>
+        <Step Type="Transfer" Name="FromConveyor" ID="5">
+          <Properties>
+            <Property Name="FromType">EndOfLink</Property>
+          </Properties>
+        </Step>
+        <Step Type="Execute" Name="ReachedEnd_AddOnProcess" ID="6">
+          <Properties>
+            <Property Name="ProcessName">
+              <Value>ReachedEndAddOnProcess</Value>
+            </Property>
+          </Properties>
+          <Exit Name="Exit" Type="Primary" NextID="4" />
+        </Step>
+      </Steps>
+    </Process>
+    <Process Name="OnCollided" IsOverride="True" ShowAsUserExecutableProcess="False" InterfaceProcessID="Link.OnCollided" BeginStepID="2">
+      <Properties />
+      <Steps>
+        <Step Type="Decide" Name="IfAccumulating" ExclusionExpression="Math.If(Accumulating, 1, 2)" ID="2">
+          <Properties>
+            <Property Name="DecideType">ConditionBased</Property>
+            <Property Name="ConditionOrProbability">Accumulating</Property>
+          </Properties>
+          <Exit Name="True" Type="Primary" NextID="4" />
+          <Exit Name="False" Type="Alternate" NextID="3" />
+        </Step>
+        <Step Type="Assign" Name="ConveyorMovementRate" ID="3">
+          <Properties>
+            <Property Name="StateVariableName">
+              <Value>Movement.Rate</Value>
+            </Property>
+            <Property Name="NewValue">Math.If(Entity.NextEntityAheadOnLink != Nothing, Entity.NextEntityAheadOnLink.Movement.Rate, Entity.DesiredSpeed)</Property>
+          </Properties>
+        </Step>
+        <Step Type="Decide" Name="IfEntityAlignmentIsCellLocation" ExclusionExpression="Math.If(EntityAlignment == Enum.EntityAlignment.CellLocation, 1, 2)" ID="4">
+          <Properties>
+            <Property Name="DecideType">ConditionBased</Property>
+            <Property Name="ConditionOrProbability">EntityAlignment==Enum.EntityAlignment.CellLocation</Property>
+          </Properties>
+          <Exit Name="True" Type="Primary" NextID="6" />
+          <Exit Name="False" Type="Alternate" NextID="5" />
+        </Step>
+        <Step Type="Disengage" Name="FromLinkPosition" ID="5">
+          <Properties>
+            <Property Name="EntityMovementRate">Math.If(Entity.NextEntityAheadOnLink != Nothing, Math.Min(Movement.Rate, Entity.NextEntityAheadOnLink.Movement.Rate), Movement.Rate)</Property>
+          </Properties>
+        </Step>
+        <Step Type="Disengage" Name="FromLinkPosition" ID="6">
+          <Properties>
+            <Property Name="EntityMovementRate">0.0</Property>
+          </Properties>
+          <Exit Name="Exit" Type="Primary" NextID="7" />
+        </Step>
+        <Step Type="Decide" Name="IfShouldReengage" ID="7">
+          <Properties>
+            <Property Name="DecideType">ConditionBased</Property>
+            <Property Name="ConditionOrProbability">Math.If(Entity.NextEntityAheadOnLink != Nothing, Entity.NextEntityAheadOnLink.Movement.Rate, Entity.DesiredSpeed) &gt; 0</Property>
+          </Properties>
+          <Exit Name="True" Type="Primary" NextID="8" />
+        </Step>
+        <Step Type="Engage" Name="WithLinkPosition" ID="8">
+          <Properties>
+            <Property Name="MinimumCellsBeforeEngaging">1</Property>
+          </Properties>
+        </Step>
+      </Steps>
+    </Process>
+    <Process Name="OnCollisionCleared" IsOverride="True" ShowAsUserExecutableProcess="False" InterfaceProcessID="Link.OnCollisionCleared" BeginStepID="3">
+      <Properties />
+      <Steps>
+        <Step Type="Engage" Name="WithLinkPosition" ID="2">
+          <Properties />
+        </Step>
+        <Step Type="Decide" Name="IfAccumulating" ExclusionExpression="Math.If(Accumulating, 1, 2)" ID="3">
+          <Properties>
+            <Property Name="DecideType">ConditionBased</Property>
+            <Property Name="ConditionOrProbability">Accumulating</Property>
+          </Properties>
+          <Exit Name="True" Type="Primary" NextID="2" />
+          <Exit Name="False" Type="Alternate" NextID="4" />
+        </Step>
+        <Step Type="Assign" Name="ConveyorMovementRate" ID="4">
+          <Properties>
+            <Property Name="StateVariableName">
+              <Value>Movement.Rate</Value>
+            </Property>
+            <Property Name="NewValue">Math.Min(Math.If((Entity.NextEntityAheadOnLink!=Nothing)&amp;&amp;(Entity.NetworkDistanceTo.NextEntityAheadOnLink==0.0), Entity.NextEntityAheadOnLink.Movement.Rate, Entity.DesiredSpeed), DesiredSpeed)</Property>
+          </Properties>
+        </Step>
+      </Steps>
+    </Process>
+    <Process Name="OnTrailingEdgeEntered" IsOverride="True" ShowAsUserExecutableProcess="False" InterfaceProcessID="Link.OnTrailingEdgeEntered" BeginStepID="2">
+      <Properties>
+        <Property Name="TokenActionOnAssociatedObjectDestroyed">EndProcess</Property>
+      </Properties>
+      <Steps>
+        <Step Type="EndTransfer" Name="OntoConveyor" ID="2">
+          <Properties />
+          <Exit Name="Exit" Type="Primary" NextID="3" />
+        </Step>
+        <Step Type="Execute" Name="TrailingEdgeEntered_AddOnProcess" ID="3">
+          <Properties>
+            <Property Name="ProcessName">
+              <Value>TrailingEdgeEnteredAddOnProcess</Value>
+            </Property>
+          </Properties>
+        </Step>
+      </Steps>
+    </Process>
+    <Process Name="FailureOccurrenceLogic" BeginStepID="2">
+      <Properties />
+      <Steps>
+        <Step Type="Fail" Name="Conveyor" ID="2">
+          <Properties>
+            <Property Name="FailureName">
+              <Value>Failure</Value>
+            </Property>
+            <Property Name="TokenWaitAction">WaitUntilOnFailedProcessCompleted</Property>
+          </Properties>
+          <Exit Name="Exit" Type="Primary" NextID="3" />
+        </Step>
+        <Step Type="Delay" Name="TimeToRepair" ID="3">
+          <Properties>
+            <Property Name="DelayTime">TimeToRepair</Property>
+          </Properties>
+          <Exit Name="Exit" Type="Primary" NextID="4" />
+        </Step>
+        <Step Type="Repair" Name="Conveyor" ID="4">
+          <Properties>
+            <Property Name="FailureName">
+              <Value>Failure</Value>
+            </Property>
+          </Properties>
+          <Exit Name="Exit" Type="Primary" NextID="5" />
+        </Step>
+        <Step Type="Fire" Name="FailuresTimerResetEvent" ID="5">
+          <Properties>
+            <Property Name="EventName">FailuresTimerReset</Property>
+          </Properties>
+        </Step>
+      </Steps>
+    </Process>
+    <Process Name="OnFailed" BeginStepID="2">
+      <Properties />
+      <Steps>
+        <Step Type="Suspend" Name="Processing" ID="2">
+          <Properties>
+            <Property Name="SuspendType">ObjectMovement</Property>
+            <Property Name="ObjectType">ParentObject</Property>
+          </Properties>
+          <Exit Name="Exit" Type="Primary" NextID="3" />
+        </Step>
+        <Step Type="Fire" Name="FailedEvent" ID="3">
+          <Properties>
+            <Property Name="EventName">Failed</Property>
+          </Properties>
+          <Exit Name="Exit" Type="Primary" NextID="4" />
+        </Step>
+        <Step Type="Execute" Name="Failed_AddOnProcess" ID="4">
+          <Properties>
+            <Property Name="ProcessName">
+              <Value>FailedAddOnProcess</Value>
+            </Property>
+          </Properties>
+          <Exit Name="Exit" Type="Primary" NextID="5" />
+        </Step>
+        <Step Type="Execute" Name="Repairing_AddOnProcess" ID="5">
+          <Properties>
+            <Property Name="ProcessName">
+              <Value>RepairingAddOnProcess</Value>
+            </Property>
+          </Properties>
+        </Step>
+      </Steps>
+    </Process>
+    <Process Name="OnRepaired" BeginStepID="2">
+      <Properties />
+      <Steps>
+        <Step Type="Resume" Name="Processing" ID="2">
+          <Properties>
+            <Property Name="ResumeType">ObjectMovement</Property>
+            <Property Name="ObjectType">ParentObject</Property>
+          </Properties>
+          <Exit Name="Exit" Type="Primary" NextID="3" />
+        </Step>
+        <Step Type="Fire" Name="RepairedEvent" ID="3">
+          <Properties>
+            <Property Name="EventName">Repaired</Property>
+          </Properties>
+          <Exit Name="Exit" Type="Primary" NextID="4" />
+        </Step>
+        <Step Type="Execute" Name="Repaired_AddOnProcess" ID="4">
+          <Properties>
+            <Property Name="ProcessName">
+              <Value>RepairedAddOnProcess</Value>
+            </Property>
+          </Properties>
+        </Step>
+      </Steps>
+    </Process>
+  </Processes>
+  <Graphics>
+    <AnimationSetup MinimumNumberOfFramesToDisplayIdleAnimation="10" />
+  </Graphics>
+</Fragment>
+<!-- e5lEcw/26IrtN0FlaWuPbnB8O0RCtj5rP1Objxn9Lv9QAT8fJGtIKH3skZOwM+znswlOwmy1CzRKl0XwPFWaXg== -->
