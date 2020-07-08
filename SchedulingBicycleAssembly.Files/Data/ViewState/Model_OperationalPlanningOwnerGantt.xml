@@ -5,6 +5,22 @@
       <Column Name="Entity" Width="173" />
       <Column Name="#" Width="50" />
     </Columns>
+    <Rows>
+      <Row FullName="|Order_SG_1" />
+      <Row FullName="|Order_SG_1|Tasks" />
+      <Row FullName="|Order_GFHB_1" />
+      <Row FullName="|Order_GFHB_1|Tasks" />
+      <Row FullName="|Order_GFFRM_1" />
+      <Row FullName="|Order_GFFRM_1|Tasks" />
+      <Row FullName="|Order_FRM_2" />
+      <Row FullName="|Order_FRM_2|Tasks" />
+      <Row FullName="|Order_HB_2" />
+      <Row FullName="|Order_HB_2|Tasks" />
+      <Row FullName="|Order_FRM_1" />
+      <Row FullName="|Order_FRM_1|Tasks" />
+      <Row FullName="|Order_HB_1" />
+      <Row FullName="|Order_HB_1|Tasks" />
+    </Rows>
     <RowVisibility ConstraintRows="False" SummaryRows="False" Targets="False" TaskResourceUsageRows="False" TaskConstraintRows="False" />
   </Gantt>
 </OperationalPlanningOwnerGantt>

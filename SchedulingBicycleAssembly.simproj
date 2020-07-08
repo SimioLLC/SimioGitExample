@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ProductVersion="12.208.20863.0" FileVersion="216" WriteToMultipleFiles="True" Id="a9a11b7c-c8ee-4fa2-97ad-3d374de461e4" xmlns="http://www.simio.com/projects/v1">
-  <DocumentInfo LicenseInfo="14:1" UserName="" Organization="Simio" SerialNumber="6948" SaveDate="2020-07-08T19:38:52" Sig="XeHzobB4VQ3Yzyw5NgrsV4z7BvfTXcAtmKaol61BvO0A17s0rKFiWBV8A2AzXRVV4Psslcz0uSeaBLxd1ScjGA==" />
+  <DocumentInfo LicenseInfo="14:1" UserName="" Organization="Simio" SerialNumber="6948" SaveDate="2020-07-08T19:50:39" Sig="QXa4cZPR4q7LT0Rno5VLmIH0bXKmU5cq59Jy9lsDlFwH7WS2oeU+rql47pEQIzs/HNA1HdvZV051hhjXrWROWw==" />
   <Models>
     <Model Definition="ModelEntity" Runnable="False">
       <TargetSettings HighRiskThreshold="50" MediumRiskThreshold="80" HighRiskColor="ff0000" MediumRiskColor="ffff00" LowRiskColor="90ee90" />
@@ -52,18 +52,12 @@
           </Property>
         </Properties>
       </RunnableInstance>
-      <ResourceStateLog_v2>
-        <FileRef Name="Results\Model\ResourceState.log" />
-      </ResourceStateLog_v2>
-      <ResourceCapacityLog_v2>
-        <FileRef Name="Results\Model\ResourceCapacity.log" />
-      </ResourceCapacityLog_v2>
+      <InteractiveStatistics ResultSetId="eef43a42-57df-43bb-8d98-e5f0e1a8e329" ResultSetTimeStampUtc="2020-07-08T19:48:36.0390504Z">
+        <FileRef Name="Results\Model\Interactive_Results.stats" />
+      </InteractiveStatistics>
       <ResourceUsageLog_v2>
         <FileRef Name="Results\Model\ResourceUsage.log" />
       </ResourceUsageLog_v2>
-      <ConstraintLog_v2>
-        <FileRef Name="Results\Model\Constraint.log" />
-      </ConstraintLog_v2>
       <TransporterUsageLog_v2>
         <FileRef Name="Results\Model\TransporterUsage.log" />
       </TransporterUsageLog_v2>
@@ -76,9 +70,9 @@
       <TaskLog_v2>
         <FileRef Name="Results\Model\Task.log" />
       </TaskLog_v2>
-      <TaskStateLog_v2>
-        <FileRef Name="Results\Model\TaskState.log" />
-      </TaskStateLog_v2>
+      <ResourceInfoLog_v2>
+        <FileRef Name="Results\Model\ResourceInfo.log" />
+      </ResourceInfoLog_v2>
       <DashboardReports SelectedDashboard="Materials">
         <DashboardReport Name="Order Details" Data="Data\Dashboards\Model_OrderDetails.xml" />
         <DashboardReport Name="Materials" Data="Data\Dashboards\Model_Materials.xml" />
@@ -90,7 +84,7 @@
       </TableReports>
       <ViewInfo ActiveModel="True" ActiveView="Facility">
         <Facility FollowDistanceRatio="1">
-          <Camera Orientation="Perspective" Location="25.8182002348223 18.9489865265077 17.484668661481" Direction="-0.577350269189626 -0.577350269189626 -0.577350269189626" Zoom="66.980831460917244" />
+          <Camera Orientation="Perspective" Location="14.1901682319798 3.18475616551015 15.1165896725544" Direction="-0.577350269189626 -0.577350269189626 -0.577350269189626" Zoom="66.980831460917244" />
           <ObjectDisplay LineArrows="False" SnapToGrid="True" Background="1e90ff" />
           <Libraries Width="122">
             <Library Name="Standard Library" Size="572" Expanded="True" />
@@ -345,7 +339,7 @@
       <EntityDefinition Name="ModelEntity" Id="595bfa43-fc05-4b1c-b867-d5f7ed0b9638" Revision="6" Author="Simio Employee" Description="The default entity definition for your project." CheckBaseForAdvancedProperties="True">
         <FileRef Name="Models\ModelEntity\595bfa43-fc05-4b1c-b867-d5f7ed0b9638.xml" />
       </EntityDefinition>
-      <FixedDefinition Name="Model" Id="b457820f-d0c8-47e4-a497-ef40fdb26f1e" Revision="146" Author="Simio Employee" Version="202">
+      <FixedDefinition Name="Model" Id="b457820f-d0c8-47e4-a497-ef40fdb26f1e" Revision="147" Author="Simio Employee" Version="202">
         <FileRef Name="Models\Model\b457820f-d0c8-47e4-a497-ef40fdb26f1e.xml" />
       </FixedDefinition>
     </Definitions>
@@ -356,7 +350,7 @@
       </DefinitionRef>
       <DefinitionRef Name="Model">
         <Id>b457820f-d0c8-47e4-a497-ef40fdb26f1e</Id>
-        <Revision>146</Revision>
+        <Revision>147</Revision>
       </DefinitionRef>
       <DefinitionRef Name="AssemblyLineServer">
         <Id>5b53f988-7833-40bc-b1c5-e56d54a2a1f4</Id>
@@ -2786,4 +2780,4 @@
     </Materials>
   </CommonItems>
 </Project>
-<!-- kONWS+oZujVZ0cmjhKPIqYD+/lCzesDjroOpactiaZ34Bue2f5JDXsWdquoAtFtaCeVVEgCI68XwWEnAEKDXBw== -->
+<!-- DMT8Qx/O+MfV0FD8ghlrqMGM3+oszdnk8gXCt0YB6um9ENscgTEGOwyTAerrKt4UMyjksjrkcbpZi7aOgStJBA== -->
