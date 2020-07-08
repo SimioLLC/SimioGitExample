@@ -20,6 +20,8 @@
       <Row FullName="|Order_FRM_1|Tasks" />
       <Row FullName="|Order_HB_1" />
       <Row FullName="|Order_HB_1|Tasks" />
+      <Row FullName="|Order_F_1" />
+      <Row FullName="|Order_F_1|Tasks" />
     </Rows>
     <RowVisibility ConstraintRows="False" SummaryRows="False" Targets="False" TaskResourceUsageRows="False" TaskConstraintRows="False" />
   </Gantt>

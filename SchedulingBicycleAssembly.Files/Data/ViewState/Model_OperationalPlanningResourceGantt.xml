@@ -103,6 +103,8 @@
       <Row FullName="|Shipping and Receiving" Expanded="True" />
       <Row FullName="|Shipping and Receiving|ReceivingVehicle" />
       <Row FullName="|Shipping and Receiving|ReceivingVehicle|Population Members" />
+      <Row FullName="|Shipping and Receiving|ReceivingVehicle|Population Members|ReceivingVehicle[1]" />
+      <Row FullName="|Shipping and Receiving|ReceivingVehicle|Population Members|ReceivingVehicle[1]|Riders" />
       <Row FullName="|Shipping and Receiving|ReceivingVehicle|Riders" />
       <Row FullName="|Shipping and Receiving|ReceivingVehicle|Tasks" />
       <Row FullName="|Shipping and Receiving|StockVehicle" />
