@@ -83,6 +83,7 @@
     <ChangeDescription Version="245">Version 11.199: Fixes to 'Switch Resources If Possible' off shift rule for secondary resources.</ChangeDescription>
     <ChangeDescription Version="246">Version 11.203: Added 'Seize Constraint Logic' property.</ChangeDescription>
     <ChangeDescription Version="248">Version 11.204: PerformProcessingTask process logic - Added ProcessingTaskToken.ExpectedSetupTime state assignment to get an expected setup time. Secondary Resource Requirements -&gt; Renamed 'SelectionExpression' properties to 'SelectionValueExpression'.</ChangeDescription>
+    <ChangeDescription Version="250">Version 12.207: Renamed secondary resource-related properties 'ObjectType', 'ObjectName', 'ObjectListName', 'NumberOfObjects', &amp; 'UnitsPerObject' to 'ResourceType', 'ResourceName', 'ResourceListName', 'NumberOfResources',.&amp; 'UnitsPerResource' respectively.</ChangeDescription>
   </ChangeDescriptions>
   <ChangeStringReplacements>
     <ChangeStringReplacement Version="122" RegularExpressionPattern="(^|[^\w_])(?i:InitializedAddOnProcess)([^\w_]|$)" ReplacementString="$1RunInitializedAddOnProcess$2" />
@@ -302,20 +303,20 @@
             <Caption Value="AllImmediatePredecessorsCancelled" Display="All Immediate Predecessors Cancelled" />
           </Captions>
         </EnumProperty>
-        <EnumProperty Name="TaskResourceRequirementsObjectType" DisplayName="Object Type" Description="The method for specifying the resource object(s) to seize." Category="Resource Requirements" DefaultValue="Specific" NullString="null" EnumType="ObjectSeizeType">
+        <EnumProperty Name="TaskResourceRequirementsResourceType" DisplayName="Resource Type" Description="The method for specifying the resource object(s) to seize." Category="Resource Requirements" DefaultValue="Specific" NullString="null" EnumType="ObjectSeizeType">
           <Captions>
             <Caption Value="FromList" Display="Select From List" />
             <Caption Value="ParentObject" Visible="False" />
           </Captions>
         </EnumProperty>
-        <ObjectInstanceProperty Name="TaskResourceRequirementsObjectName" DisplayName="Object Name" Description="The name of the resource object to seize." Category="Resource Requirements" Required="False" NullString="null" FilterMode="Resources" LocationType="Cartesian">
-          <Switch Property="TaskResourceRequirementsObjectType" Value="Specific" />
+        <ObjectInstanceProperty Name="TaskResourceRequirementsResourceName" DisplayName="Resource Name" Description="The name of the resource object to seize." Category="Resource Requirements" Required="False" NullString="null" FilterMode="Resources" LocationType="Cartesian">
+          <Switch Property="TaskResourceRequirementsResourceType" Value="Specific" />
         </ObjectInstanceProperty>
-        <ListNameProperty Name="TaskResourceRequirementsObjectListName" DisplayName="Object List name" Description="The name of the object list from which to select the resource object(s) to seize." Category="Resource Requirements" Required="False" NullString="null" ListType="Object">
-          <Switch Property="TaskResourceRequirementsObjectType" Value="FromList" />
+        <ListNameProperty Name="TaskResourceRequirementsResourceListName" DisplayName="Resource List name" Description="The name of the object list from which to select the resource object(s) to seize." Category="Resource Requirements" Required="False" NullString="null" ListType="Object">
+          <Switch Property="TaskResourceRequirementsResourceType" Value="FromList" />
         </ListNameProperty>
         <EnumProperty Name="TaskResourceRequirementsSelectionGoal" DisplayName="Selection Goal" Description="The rule used to select a resource object from multiple candidates." Category="Resource Requirements" DefaultValue="Preferred Order" NullString="null" EnumType="SeizeSelectionGoal">
-          <Switch Property="TaskResourceRequirementsObjectType" Comparison="NotEqual" Value="ParentObject" />
+          <Switch Property="TaskResourceRequirementsResourceType" Comparison="NotEqual" Value="ParentObject" />
           <Captions>
             <Caption Value="SmallestDistance" Display="Smallest Distance" />
             <Caption Value="LargestDistance" Display="Largest Distance" />
@@ -342,10 +343,10 @@
             <Caption Value="SwitchResourcesIfPossible" Display="Switch Resources If Possible" />
           </Captions>
         </ListProperty>
-        <ExpressionProperty Name="TaskResourceRequirementsNumberOfObjects" DisplayName="Number Of Objects" Description="The number of individual resource objects to seize capacity units of." Category="Resource Requirements/Required Quantity &amp; Constraints" DefaultValue="1" NullString="null">
-          <Switch Property="TaskResourceRequirementsObjectType" Comparison="NotEqual" Value="ParentObject" />
+        <ExpressionProperty Name="TaskResourceRequirementsNumberOfResources" DisplayName="Number Of Resources" Description="The number of individual resource objects to seize capacity units of." Category="Resource Requirements/Required Quantity &amp; Constraints" DefaultValue="1" NullString="null">
+          <Switch Property="TaskResourceRequirementsResourceType" Comparison="NotEqual" Value="ParentObject" />
         </ExpressionProperty>
-        <ExpressionProperty Name="TaskResourceRequirementsUnitsPerObject" DisplayName="Units Per Object" Description="The number of capacity units to seize per resource object." Category="Resource Requirements/Required Quantity &amp; Constraints" DefaultValue="1" NullString="null" />
+        <ExpressionProperty Name="TaskResourceRequirementsUnitsPerResource" DisplayName="Units Per Resource" Description="The number of capacity units to seize per resource object." Category="Resource Requirements/Required Quantity &amp; Constraints" DefaultValue="1" NullString="null" />
         <ExpressionProperty Name="TaskResourceRequirementsSelectionCondition" DisplayName="Selection Condition" Description="Optional condition evaluated for each candidate resource that must be true for the resource to be selected.&#xD;&#xA;&#xD;&#xA;In the expression, use the syntax Candidate.[ObjectClass].[Attribute] to reference an attribute of the candidate resource objects (e.g., Candidate.Object.Capacity)." Category="Resource Requirements/Required Quantity &amp; Constraints" Required="False" NullString="null" SupportForeign="True" />
         <ExpressionProperty Name="TaskResourceRequirementsResourceEfficiency" DisplayName="Resource Efficiency" Description="Optional value that can alter the rate at which the task is performed using the seized resource(s), expressed as a fraction. The actual task duration is the planned task duration divided by the efficiency. Hence, an efficiency value greater than 1 shortens the time and a value less than 1 lengthens the time.&#xD;&#xA;&#xD;&#xA;In the expression, use the syntax Candidate.[ObjectClass].[Attribute] to reference an attribute of the candidate resource objects (e.g., Candidate.Object.Capacity).&#xD;&#xA;&#xD;&#xA;Set this property to blank to declare the resource efficiency as undefined." Category="Resource Requirements/Required Quantity &amp; Constraints" DefaultValue="1.0" Required="False" NullString="null" SupportForeign="True" />
         <BooleanProperty Name="TaskResourceRequirementsMustSimultaneouslySeize" DisplayName="Must Simultaneously Seize" Description="If multiple resources are required for the task, indicates whether all of the resources must be available before any can be seized.&#xD;&#xA;&#xD;&#xA;NOTE: This property setting may vary from task to task but not from resource requirement to resource requirement for the same task. Thus, if using a table driven approach to define task sequence data, the value of this property may only be specified as a constant or by referencing a column in the table that defines each individual processing task." Category="Resource Requirements/Required Quantity &amp; Constraints" DefaultValue="False" NullString="null" />
@@ -402,6 +403,11 @@
         <Overrides />
         <PropertyReplacements>
           <PropertyReplacement Version="248" OldPropertyName="TaskResourceRequirementsSelectionExpression" NewPropertyName="TaskResourceRequirementsSelectionValueExpression" />
+          <PropertyReplacement Version="250" OldPropertyName="TaskResourceRequirementsObjectType" NewPropertyName="TaskResourceRequirementsResourceType" />
+          <PropertyReplacement Version="250" OldPropertyName="TaskResourceRequirementsObjectName" NewPropertyName="TaskResourceRequirementsResourceName" />
+          <PropertyReplacement Version="250" OldPropertyName="TaskResourceRequirementsObjectListName" NewPropertyName="TaskResourceRequirementsResourceListName" />
+          <PropertyReplacement Version="250" OldPropertyName="TaskResourceRequirementsNumberOfObjects" NewPropertyName="TaskResourceRequirementsNumberOfResources" />
+          <PropertyReplacement Version="250" OldPropertyName="TaskResourceRequirementsUnitsPerObject" NewPropertyName="TaskResourceRequirementsUnitsPerResource" />
         </PropertyReplacements>
         <PropertyDefaultValueChanges>
           <PropertyDefaultValueChange Version="193" PropertyName="TaskResourceRequirementsOffShiftRule" OldDefaultValue="Finish Work Already Started" />
@@ -723,20 +729,20 @@
           <Category Name="Required Quantity &amp; Constraints" Description="Required Quantity &amp; Constraints" InitiallyExpanded="False" />
           <Category Name="Advanced Options" Description="Advanced Options" InitiallyExpanded="False" />
         </Categories>
-        <EnumProperty Name="SecondaryResourcesForProcessingObjectType" DisplayName="Object Type" Description="The method for specifying the resource object(s) to seize." Category="Resource Information" DefaultValue="Specific" NullString="null" EnumType="ObjectSeizeType">
+        <EnumProperty Name="SecondaryResourcesForProcessingResourceType" DisplayName="Resource Type" Description="The method for specifying the resource object(s) to seize." Category="Resource Information" DefaultValue="Specific" NullString="null" EnumType="ObjectSeizeType">
           <Captions>
             <Caption Value="FromList" Display="Select From List" />
             <Caption Value="ParentObject" Visible="False" />
           </Captions>
         </EnumProperty>
-        <ObjectInstanceProperty Name="SecondaryResourcesForProcessingObjectName" DisplayName="Object Name" Description="The name of the resource object to seize." Category="Resource Information" Required="False" NullString="null" FilterMode="Resources" LocationType="Cartesian">
-          <Switch Property="SecondaryResourcesForProcessingObjectType" Value="Specific" />
+        <ObjectInstanceProperty Name="SecondaryResourcesForProcessingResourceName" DisplayName="Resource Name" Description="The name of the resource object to seize." Category="Resource Information" Required="False" NullString="null" FilterMode="Resources" LocationType="Cartesian">
+          <Switch Property="SecondaryResourcesForProcessingResourceType" Value="Specific" />
         </ObjectInstanceProperty>
-        <ListNameProperty Name="SecondaryResourcesForProcessingObjectListName" DisplayName="Object List Name" Description="The name of the object list from which to select the resource object(s) to seize." Category="Resource Information" Required="False" NullString="null" ListType="Object">
-          <Switch Property="SecondaryResourcesForProcessingObjectType" Value="FromList" />
+        <ListNameProperty Name="SecondaryResourcesForProcessingResourceListName" DisplayName="Resource List Name" Description="The name of the object list from which to select the resource object(s) to seize." Category="Resource Information" Required="False" NullString="null" ListType="Object">
+          <Switch Property="SecondaryResourcesForProcessingResourceType" Value="FromList" />
         </ListNameProperty>
         <EnumProperty Name="SecondaryResourcesForProcessingSelectionGoal" DisplayName="Selection Goal" Description="The rule used to select a resource object from multiple candidates." Category="Resource Information" DefaultValue="Preferred Order" NullString="null" EnumType="SeizeSelectionGoal">
-          <Switch Property="SecondaryResourcesForProcessingObjectType" Comparison="NotEqual" Value="ParentObject" />
+          <Switch Property="SecondaryResourcesForProcessingResourceType" Comparison="NotEqual" Value="ParentObject" />
           <Captions>
             <Caption Value="SmallestDistance" Display="Smallest Distance" />
             <Caption Value="LargestDistance" Display="Largest Distance" />
@@ -756,8 +762,8 @@
         <NodeProperty Name="SecondaryResourcesForProcessingDestinationNode" DisplayName="Destination Node" Description="The name of the destination node that the seized resource(s) will be requested to move to." Category="Resource Information" Required="False" Parent="SecondaryResourcesForProcessingRequestMove" NullString="null" ValidObjectType="Node" LocationType="Cartesian">
           <Switch Property="SecondaryResourcesForProcessingRequestMove" Value="ToNode" />
         </NodeProperty>
-        <ExpressionProperty Name="SecondaryResourcesForProcessingNumberOfObjects" DisplayName="Number Of Objects" Description="The number of individual resource objects to seize capacity units of." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null" />
-        <ExpressionProperty Name="SecondaryResourcesForProcessingUnitsPerObject" DisplayName="Units Per Object" Description="The number of capacity units to seize per resource object." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null" />
+        <ExpressionProperty Name="SecondaryResourcesForProcessingNumberOfResources" DisplayName="Number Of Resources" Description="The number of individual resource objects to seize capacity units of." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null" />
+        <ExpressionProperty Name="SecondaryResourcesForProcessingUnitsPerResource" DisplayName="Units Per Resource" Description="The number of capacity units to seize per resource object." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null" />
         <ExpressionProperty Name="SecondaryResourcesForProcessingSelectionCondition" DisplayName="Selection Condition" Description="Optional condition evaluated for each candidate resource that must be true for the resource to be selected.&#xD;&#xA;&#xD;&#xA;In the expression, use the syntax Candidate.[ObjectClass].[Attribute] to reference an attribute of the candidate resource objects (e.g., Candidate.Object.Capacity)." Category="Required Quantity &amp; Constraints" Required="False" NullString="null" SupportForeign="True" />
         <ExpressionProperty Name="SecondaryResourcesForProcessingResourceEfficiency" DisplayName="Resource Efficiency" Description="Optional value that can alter the rate at which work is performed using the seized resource(s), expressed as a fraction. The actual work duration is the planned work duration divided by the efficiency. Hence, an efficiency value greater than 1 shortens the time and a value less than 1 lengthens the time.&#xD;&#xA;&#xD;&#xA;In the expression, use the syntax Candidate.[ObjectClass].[Attribute] to reference an attribute of the candidate resource objects (e.g., Candidate.Object.Capacity).&#xD;&#xA;&#xD;&#xA;Set this property to blank to declare the resource efficiency as undefined." Category="Required Quantity &amp; Constraints" DefaultValue="1.0" Required="False" NullString="null" SupportForeign="True" />
         <ExpressionProperty Name="SecondaryResourcesForProcessingKeepReservedCondition" DisplayName="Keep Reserved If" Description="Once an entity has completed processing and released the resource requirements, an optional condition indicating whether to keep the released resource capacity reserved for possible later reuse by the same entity. Other entities will be unable to use a reserved resource unless the reservation is cancelled.&#xD;&#xA;&#xD;&#xA;In the expression, use the syntax Candidate.[ObjectClass].[Attribute] to reference an attribute of the candidate resource object being released (e.g., Candidate.Object.Capacity).&#xD;&#xA;&#xD;&#xA;Note that when an entity is attempting to select a resource from a group of candidates (e.g., from a list or from a population of some resource type), by default a preference will be given to select a resource that has already been reserved by that entity irrespective of the specified selection goal.&#xD;&#xA;&#xD;&#xA;Leaving this property blank (no condition) is equivalent to entering False." Category="Advanced Options" Required="False" NullString="null" SupportForeign="True" />
@@ -766,24 +772,29 @@
         <Overrides />
         <PropertyReplacements>
           <PropertyReplacement Version="248" OldPropertyName="SecondaryResourcesForProcessingSelectionExpression" NewPropertyName="SecondaryResourcesForProcessingSelectionValueExpression" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourcesForProcessingObjectType" NewPropertyName="SecondaryResourcesForProcessingResourceType" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourcesForProcessingObjectName" NewPropertyName="SecondaryResourcesForProcessingResourceName" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourcesForProcessingObjectListName" NewPropertyName="SecondaryResourcesForProcessingResourceListName" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourcesForProcessingNumberOfObjects" NewPropertyName="SecondaryResourcesForProcessingNumberOfResources" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourcesForProcessingUnitsPerObject" NewPropertyName="SecondaryResourcesForProcessingUnitsPerResource" />
         </PropertyReplacements>
       </PropertyDefinitions>
     </RepeatingProperty>
-    <EnumProperty Name="SecondaryResourceForProcessingObjectType" DisplayName="Object Type" Description="The method for specifying the resource object(s) to seize." Category="Secondary Resources/For Processing" DefaultValue="Specific" NullString="null" EnumType="ObjectSeizeType">
+    <EnumProperty Name="SecondaryResourceForProcessingResourceType" DisplayName="Resource Type" Description="The method for specifying the resource object(s) to seize." Category="Secondary Resources/For Processing" DefaultValue="Specific" NullString="null" EnumType="ObjectSeizeType">
       <Switch Property="SecondaryResourcesForProcessingIsRepeatGroup" Value="False" />
       <Captions>
         <Caption Value="FromList" Display="Select From List" />
         <Caption Value="ParentObject" Visible="False" />
       </Captions>
     </EnumProperty>
-    <ObjectInstanceProperty Name="SecondaryResourceForProcessingObjectName" DisplayName="Object Name" Description="The name of the resource object to seize." Category="Secondary Resources/For Processing" Required="False" NullString="null" FilterMode="Resources" LocationType="Cartesian">
-      <Switch Property="SecondaryResourceForProcessingObjectType" Value="Specific" />
+    <ObjectInstanceProperty Name="SecondaryResourceForProcessingResourceName" DisplayName="Resource Name" Description="The name of the resource object to seize." Category="Secondary Resources/For Processing" Required="False" NullString="null" FilterMode="Resources" LocationType="Cartesian">
+      <Switch Property="SecondaryResourceForProcessingResourceType" Value="Specific" />
     </ObjectInstanceProperty>
-    <ListNameProperty Name="SecondaryResourceForProcessingObjectListName" DisplayName="Object List Name" Description="The name of the object list from which to select the resource object(s) to seize." Category="Secondary Resources/For Processing" Required="False" NullString="null" ListType="Object">
-      <Switch Property="SecondaryResourceForProcessingObjectType" Value="FromList" />
+    <ListNameProperty Name="SecondaryResourceForProcessingResourceListName" DisplayName="Resource List Name" Description="The name of the object list from which to select the resource object(s) to seize." Category="Secondary Resources/For Processing" Required="False" NullString="null" ListType="Object">
+      <Switch Property="SecondaryResourceForProcessingResourceType" Value="FromList" />
     </ListNameProperty>
     <EnumProperty Name="SecondaryResourceForProcessingSelectionGoal" DisplayName="Selection Goal" Description="The rule used to select a resource object from multiple candidates." Category="Secondary Resources/For Processing" DefaultValue="Preferred Order" NullString="null" EnumType="SeizeSelectionGoal">
-      <Switch Property="SecondaryResourceForProcessingObjectType" Comparison="NotEqual" Value="ParentObject" />
+      <Switch Property="SecondaryResourceForProcessingResourceType" Comparison="NotEqual" Value="ParentObject" />
       <Captions>
         <Caption Value="SmallestDistance" Display="Smallest Distance" />
         <Caption Value="LargestDistance" Display="Largest Distance" />
@@ -811,10 +822,10 @@
         <Caption Value="SwitchResourcesIfPossible" Display="Switch Resources If Possible" />
       </Captions>
     </ListProperty>
-    <ExpressionProperty Name="SecondaryResourceForProcessingNumberOfObjects" DisplayName="Number Of Objects" Description="The number of individual resource objects to seize capacity units of." Category="Secondary Resources/For Processing/Required Quantity &amp; Constraints" DefaultValue="1" NullString="null">
+    <ExpressionProperty Name="SecondaryResourceForProcessingNumberOfResources" DisplayName="Number Of Resources" Description="The number of individual resource objects to seize capacity units of." Category="Secondary Resources/For Processing/Required Quantity &amp; Constraints" DefaultValue="1" NullString="null">
       <Switch Property="SecondaryResourcesForProcessingIsRepeatGroup" Value="False" />
     </ExpressionProperty>
-    <ExpressionProperty Name="SecondaryResourceForProcessingUnitsPerObject" DisplayName="Units Per Object" Description="The number of capacity units to seize per resource object." Category="Secondary Resources/For Processing/Required Quantity &amp; Constraints" DefaultValue="1" NullString="null">
+    <ExpressionProperty Name="SecondaryResourceForProcessingUnitsPerResource" DisplayName="Units Per Resource" Description="The number of capacity units to seize per resource object." Category="Secondary Resources/For Processing/Required Quantity &amp; Constraints" DefaultValue="1" NullString="null">
       <Switch Property="SecondaryResourcesForProcessingIsRepeatGroup" Value="False" />
     </ExpressionProperty>
     <ExpressionProperty Name="SecondaryResourceForProcessingSelectionCondition" DisplayName="Selection Condition" Description="Optional condition evaluated for each candidate resource that must be true for the resource to be selected.&#xD;&#xA;&#xD;&#xA;In the expression, use the syntax Candidate.[ObjectClass].[Attribute] to reference an attribute of the candidate resource objects (e.g., Candidate.Object.Capacity)." Category="Secondary Resources/For Processing/Required Quantity &amp; Constraints" Required="False" NullString="null" SupportForeign="True">
@@ -842,20 +853,20 @@
           <Category Name="Required Quantity &amp; Constraints" Description="Required Quantity &amp; Constraints" InitiallyExpanded="False" />
           <Category Name="Advanced Options" Description="Advanced Options" InitiallyExpanded="False" />
         </Categories>
-        <EnumProperty Name="SecondaryResourceSeizesOnEnteringObjectType" DisplayName="Object Type" Description="The method for specifying the resource object(s) to seize." Category="Resource Information" DefaultValue="Specific" NullString="null" EnumType="ObjectSeizeType">
+        <EnumProperty Name="SecondaryResourceSeizesOnEnteringResourceType" DisplayName="Resource Type" Description="The method for specifying the resource object(s) to seize." Category="Resource Information" DefaultValue="Specific" NullString="null" EnumType="ObjectSeizeType">
           <Captions>
             <Caption Value="FromList" Display="Select From List" />
             <Caption Value="ParentObject" Visible="False" />
           </Captions>
         </EnumProperty>
-        <ObjectInstanceProperty Name="SecondaryResourceSeizesOnEnteringObjectName" DisplayName="Object Name" Description="The name of the resource object to seize." Category="Resource Information" Required="False" NullString="null" FilterMode="Resources" LocationType="Cartesian">
-          <Switch Property="SecondaryResourceSeizesOnEnteringObjectType" Value="Specific" />
+        <ObjectInstanceProperty Name="SecondaryResourceSeizesOnEnteringResourceName" DisplayName="Resource Name" Description="The name of the resource object to seize." Category="Resource Information" Required="False" NullString="null" FilterMode="Resources" LocationType="Cartesian">
+          <Switch Property="SecondaryResourceSeizesOnEnteringResourceType" Value="Specific" />
         </ObjectInstanceProperty>
-        <ListNameProperty Name="SecondaryResourceSeizesOnEnteringObjectListName" DisplayName="Object List Name" Description="The name of the object list from which to select the resource object(s) to seize." Category="Resource Information" Required="False" NullString="null" ListType="Object">
-          <Switch Property="SecondaryResourceSeizesOnEnteringObjectType" Value="FromList" />
+        <ListNameProperty Name="SecondaryResourceSeizesOnEnteringResourceListName" DisplayName="Resource List Name" Description="The name of the object list from which to select the resource object(s) to seize." Category="Resource Information" Required="False" NullString="null" ListType="Object">
+          <Switch Property="SecondaryResourceSeizesOnEnteringResourceType" Value="FromList" />
         </ListNameProperty>
         <EnumProperty Name="SecondaryResourceSeizesOnEnteringSelectionGoal" DisplayName="Selection Goal" Description="The rule used to select a resource object from multiple candidates." Category="Resource Information" DefaultValue="Preferred Order" Required="False" NullString="null" EnumType="SeizeSelectionGoal">
-          <Switch Property="SecondaryResourceSeizesOnEnteringObjectType" Comparison="NotEqual" Value="ParentObject" />
+          <Switch Property="SecondaryResourceSeizesOnEnteringResourceType" Comparison="NotEqual" Value="ParentObject" />
           <Captions>
             <Caption Value="SmallestDistance" Display="Smallest Distance" />
             <Caption Value="LargestDistance" Display="Largest Distance" />
@@ -878,8 +889,8 @@
         <ExpressionProperty Name="SecondaryResourceSeizesOnEnteringMovePriority" DisplayName="Move Priority" Description="The priority of the move request if a resource is selecting from multiple candidates." Category="Resource Information" DefaultValue="Entity.Priority" Required="False" Deprecated="True" Parent="SecondaryResourceSeizesOnEnteringRequestMove" NullString="null">
           <Switch Property="SecondaryResourceSeizesOnEnteringRequestMove" Comparison="NotEqual" Value="None" />
         </ExpressionProperty>
-        <ExpressionProperty Name="SecondaryResourceSeizesOnEnteringNumberOfObjects" DisplayName="Number Of Objects" Description="The number of individual resource objects to seize capacity units of." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null" />
-        <ExpressionProperty Name="SecondaryResourceSeizesOnEnteringUnitsPerObject" DisplayName="Units Per Object" Description="The number of capacity units to seize per resource object." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null" />
+        <ExpressionProperty Name="SecondaryResourceSeizesOnEnteringNumberOfResources" DisplayName="Number Of Resources" Description="The number of individual resource objects to seize capacity units of." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null" />
+        <ExpressionProperty Name="SecondaryResourceSeizesOnEnteringUnitsPerResource" DisplayName="Units Per Resource" Description="The number of capacity units to seize per resource object." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null" />
         <ExpressionProperty Name="SecondaryResourceSeizesOnEnteringSelectionCondition" DisplayName="Selection Condition" Description="Optional condition evaluated for each candidate resource that must be true for the resource to be selected.&#xD;&#xA;&#xD;&#xA;In the expression, use the syntax Candidate.[ObjectClass].[Attribute] to reference an attribute of the candidate resource objects (e.g., Candidate.Object.Capacity)." Category="Required Quantity &amp; Constraints" Required="False" NullString="null" SupportForeign="True" />
         <ExpressionProperty Name="SecondaryResourceSeizesOnEnteringResourceEfficiency" DisplayName="Resource Efficiency" Description="Optional value that can alter the rate at which work is performed using the seized resource(s), expressed as a fraction. The actual work duration is the planned work duration divided by the efficiency. Hence, an efficiency value greater than 1 shortens the time and a value less than 1 lengthens the time.&#xD;&#xA;&#xD;&#xA;In the expression, use the syntax Candidate.[ObjectClass].[Attribute] to reference an attribute of the candidate resource objects (e.g., Candidate.Object.Capacity).&#xD;&#xA;&#xD;&#xA;Set this property to blank to declare the resource efficiency as undefined." Category="Required Quantity &amp; Constraints" Required="False" NullString="null" SupportForeign="True" />
         <ElementProperty Name="SecondaryResourceSeizesOnEnteringOnSeizedProcess" DisplayName="On Seized Process" Description="Optional process to be executed when a resource is seized." Category="Advanced Options" Required="False" NullString="null" ValueListFilter="UserExecutableProcessesOnly" Type="Process" />
@@ -890,6 +901,11 @@
           <PropertyReplacement Version="202" OldPropertyName="SecondaryResourceSeizesOnEnteringNodeName" NewPropertyName="SecondaryResourceSeizesOnEnteringDestinationNode" />
           <PropertyReplacement Version="202" OldPropertyName="SecondaryResourceSeizesOnEnteringVisitPriority" NewPropertyName="SecondaryResourceSeizesOnEnteringMovePriority" />
           <PropertyReplacement Version="248" OldPropertyName="SecondaryResourceSeizesOnEnteringSelectionExpression" NewPropertyName="SecondaryResourceSeizesOnEnteringSelectionValueExpression" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceSeizesOnEnteringObjectType" NewPropertyName="SecondaryResourceSeizesOnEnteringResourceType" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceSeizesOnEnteringObjectName" NewPropertyName="SecondaryResourceSeizesOnEnteringResourceName" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceSeizesOnEnteringObjectListName" NewPropertyName="SecondaryResourceSeizesOnEnteringResourceListName" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceSeizesOnEnteringNumberOfObjects" NewPropertyName="SecondaryResourceSeizesOnEnteringNumberOfResources" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceSeizesOnEnteringUnitsPerObject" NewPropertyName="SecondaryResourceSeizesOnEnteringUnitsPerResource" />
         </PropertyReplacements>
       </PropertyDefinitions>
     </RepeatingProperty>
@@ -902,20 +918,20 @@
           <Category Name="Required Quantity &amp; Constraints" Description="Required Quantity &amp; Constraints" InitiallyExpanded="False" />
           <Category Name="Advanced Options" Description="Advanced Options" InitiallyExpanded="False" />
         </Categories>
-        <EnumProperty Name="SecondaryResourceSeizesBeforeProcessingObjectType" DisplayName="Object Type" Description="The method for specifying the resource object(s) to seize." Category="Resource Information" DefaultValue="Specific" NullString="null" EnumType="ObjectSeizeType">
+        <EnumProperty Name="SecondaryResourceSeizesBeforeProcessingResourceType" DisplayName="Resource Type" Description="The method for specifying the resource object(s) to seize." Category="Resource Information" DefaultValue="Specific" NullString="null" EnumType="ObjectSeizeType">
           <Captions>
             <Caption Value="FromList" Display="Select From List" />
             <Caption Value="ParentObject" Visible="False" />
           </Captions>
         </EnumProperty>
-        <ObjectInstanceProperty Name="SecondaryResourceSeizesBeforeProcessingObjectName" DisplayName="Object Name" Description="The name of the resource object to seize." Category="Resource Information" Required="False" NullString="null" FilterMode="Resources" LocationType="Cartesian">
-          <Switch Property="SecondaryResourceSeizesBeforeProcessingObjectType" Value="Specific" />
+        <ObjectInstanceProperty Name="SecondaryResourceSeizesBeforeProcessingResourceName" DisplayName="Resource Name" Description="The name of the resource object to seize." Category="Resource Information" Required="False" NullString="null" FilterMode="Resources" LocationType="Cartesian">
+          <Switch Property="SecondaryResourceSeizesBeforeProcessingResourceType" Value="Specific" />
         </ObjectInstanceProperty>
-        <ListNameProperty Name="SecondaryResourceSeizesBeforeProcessingObjectListName" DisplayName="Object List Name" Description="The name of the object list from which to select the resource object(s) to seize." Category="Resource Information" Required="False" NullString="null" ListType="Object">
-          <Switch Property="SecondaryResourceSeizesBeforeProcessingObjectType" Value="FromList" />
+        <ListNameProperty Name="SecondaryResourceSeizesBeforeProcessingResourceListName" DisplayName="Resource List Name" Description="The name of the object list from which to select the resource object(s) to seize." Category="Resource Information" Required="False" NullString="null" ListType="Object">
+          <Switch Property="SecondaryResourceSeizesBeforeProcessingResourceType" Value="FromList" />
         </ListNameProperty>
         <EnumProperty Name="SecondaryResourceSeizesBeforeProcessingSelectionGoal" DisplayName="Selection Goal" Description="The rule used to select a resource object from multiple candidates." Category="Resource Information" DefaultValue="Preferred Order" Required="False" NullString="null" EnumType="SeizeSelectionGoal">
-          <Switch Property="SecondaryResourceSeizesBeforeProcessingObjectType" Comparison="NotEqual" Value="ParentObject" />
+          <Switch Property="SecondaryResourceSeizesBeforeProcessingResourceType" Comparison="NotEqual" Value="ParentObject" />
           <Captions>
             <Caption Value="SmallestDistance" Display="Smallest Distance" />
             <Caption Value="LargestDistance" Display="Largest Distance" />
@@ -938,8 +954,8 @@
         <ExpressionProperty Name="SecondaryResourceSeizesBeforeProcessingMovePriority" DisplayName="Move Priority" Description="The priority of the move request if a resource is selecting from multiple candidates." Category="Resource Information" DefaultValue="Entity.Priority" Required="False" Deprecated="True" Parent="SecondaryResourceSeizesBeforeProcessingRequestMove" NullString="null">
           <Switch Property="SecondaryResourceSeizesBeforeProcessingRequestMove" Comparison="NotEqual" Value="None" />
         </ExpressionProperty>
-        <ExpressionProperty Name="SecondaryResourceSeizesBeforeProcessingNumberOfObjects" DisplayName="Number Of Objects" Description="The number of individual resource objects to seize capacity units of." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null" />
-        <ExpressionProperty Name="SecondaryResourceSeizesBeforeProcessingUnitsPerObject" DisplayName="Units Per Object" Description="The number of capacity units to seize per resource object." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null" />
+        <ExpressionProperty Name="SecondaryResourceSeizesBeforeProcessingNumberOfResources" DisplayName="Number Of Resources" Description="The number of individual resource objects to seize capacity units of." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null" />
+        <ExpressionProperty Name="SecondaryResourceSeizesBeforeProcessingUnitsPerResource" DisplayName="Units Per Resource" Description="The number of capacity units to seize per resource object." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null" />
         <ExpressionProperty Name="SecondaryResourceSeizesBeforeProcessingSelectionCondition" DisplayName="Selection Condition" Description="Optional condition evaluated for each candidate resource that must be true for the resource to be selected.&#xD;&#xA;&#xD;&#xA;In the expression, use the syntax Candidate.[ObjectClass].[Attribute] to reference an attribute of the candidate resource objects (e.g., Candidate.Object.Capacity)." Category="Required Quantity &amp; Constraints" Required="False" NullString="null" SupportForeign="True" />
         <ExpressionProperty Name="SecondaryResourceSeizesBeforeProcessingResourceEfficiency" DisplayName="Resource Efficiency" Description="Optional value that can alter the rate at which work is performed using the seized resource(s), expressed as a fraction. The actual work duration is the planned work duration divided by the efficiency. Hence, an efficiency value greater than 1 shortens the time and a value less than 1 lengthens the time.&#xD;&#xA;&#xD;&#xA;In the expression, use the syntax Candidate.[ObjectClass].[Attribute] to reference an attribute of the candidate resource objects (e.g., Candidate.Object.Capacity).&#xD;&#xA;&#xD;&#xA;Set this property to blank to declare the resource efficiency as undefined." Category="Required Quantity &amp; Constraints" Required="False" NullString="null" SupportForeign="True" />
         <ElementProperty Name="SecondaryResourceSeizesBeforeProcessingOnSeizedProcess" DisplayName="On Seized Process" Description="Optional process to be executed when a resource is seized." Category="Advanced Options" Required="False" NullString="null" ValueListFilter="UserExecutableProcessesOnly" Type="Process" />
@@ -950,32 +966,37 @@
           <PropertyReplacement Version="202" OldPropertyName="SecondaryResourceSeizesBeforeProcessingNodeName" NewPropertyName="SecondaryResourceSeizesBeforeProcessingDestinationNode" />
           <PropertyReplacement Version="202" OldPropertyName="SecondaryResourceSeizesBeforeProcessingVisitPriority" NewPropertyName="SecondaryResourceSeizesBeforeProcessingMovePriority" />
           <PropertyReplacement Version="248" OldPropertyName="SecondaryResourceSeizesBeforeProcessingSelectionExpression" NewPropertyName="SecondaryResourceSeizesBeforeProcessingSelectionValueExpression" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceSeizesBeforeProcessingObjectType" NewPropertyName="SecondaryResourceSeizesBeforeProcessingResourceType" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceSeizesBeforeProcessingObjectName" NewPropertyName="SecondaryResourceSeizesBeforeProcessingResourceName" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceSeizesBeforeProcessingObjectListName" NewPropertyName="SecondaryResourceSeizesBeforeProcessingResourceListName" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceSeizesBeforeProcessingNumberOfObjects" NewPropertyName="SecondaryResourceSeizesBeforeProcessingNumberOfResources" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceSeizesBeforeProcessingUnitsPerObject" NewPropertyName="SecondaryResourceSeizesBeforeProcessingUnitsPerResource" />
         </PropertyReplacements>
       </PropertyDefinitions>
     </RepeatingProperty>
     <BooleanProperty Name="SecondaryResourceSeizesBeforeProcessingMustSimultaneouslySeize" DisplayName="Must Simultaneously Seize" Description="If multiple resources are required, indicates whether all of the resources must be available before any can be seized." Category="Secondary Resources/Other Resource Seizes" DefaultValue="False" Parent="SecondaryResourceSeizesBeforeProcessing" NullString="null" />
     <BooleanProperty Name="SecondaryResourceSeizesBeforeProcessingImmediatelyTrySeize" DisplayName="Immediately Try Seize" Description="Indicates whether to immediately try seizing the resource requirements before the execution of any other simulation logic in the system and, if successful, skipping the resource allocation queues.&#xD;&#xA;&#xD;&#xA;Setting this property to False will just insert the seize request into the resource allocation queues. An evaluation of those queues will then be scheduled on the simulation’s current event calendar as a late priority event." Category="Secondary Resources/Other Resource Seizes" DefaultValue="True" Parent="SecondaryResourceSeizesBeforeProcessing" NullString="null" />
-    <RepeatingProperty Name="SecondaryResourceSeizesAfterProcessing" DisplayName="After Processing" Description="Resource seizes when an entity has completed its processing and is about to attempt its exit from the object's processing station." Category="Secondary Resources/Other Resource Seizes" Required="False" NullString="null">
+    <RepeatingProperty Name="SecondaryResourceSeizesAfterProcessing" DisplayName="After Processing" Description="Resource List Name" Category="Secondary Resources/Other Resource Seizes" Required="False" NullString="null">
       <PropertyDefinitions>
         <Categories>
           <Category Name="Resource Information" Description="Resource Information" />
           <Category Name="Required Quantity &amp; Constraints" Description="Required Quantity &amp; Constraints" InitiallyExpanded="False" />
           <Category Name="Advanced Options" Description="Advanced Options" InitiallyExpanded="False" />
         </Categories>
-        <EnumProperty Name="SecondaryResourceSeizesAfterProcessingObjectType" DisplayName="Object Type" Description="The method for specifying the resource object(s) to seize." Category="Resource Information" DefaultValue="Specific" NullString="null" EnumType="ObjectSeizeType">
+        <EnumProperty Name="SecondaryResourceSeizesAfterProcessingResourceType" DisplayName="Resource Type" Description="The method for specifying the resource object(s) to seize." Category="Resource Information" DefaultValue="Specific" NullString="null" EnumType="ObjectSeizeType">
           <Captions>
             <Caption Value="FromList" Display="Select From List" />
             <Caption Value="ParentObject" Visible="False" />
           </Captions>
         </EnumProperty>
-        <ObjectInstanceProperty Name="SecondaryResourceSeizesAfterProcessingObjectName" DisplayName="Object Name" Description="The name of the resource object to seize." Category="Resource Information" Required="False" NullString="null" FilterMode="Resources" LocationType="Cartesian">
-          <Switch Property="SecondaryResourceSeizesAfterProcessingObjectType" Value="Specific" />
+        <ObjectInstanceProperty Name="SecondaryResourceSeizesAfterProcessingResourceName" DisplayName="Resource Name" Description="The name of the resource object to seize." Category="Resource Information" Required="False" NullString="null" FilterMode="Resources" LocationType="Cartesian">
+          <Switch Property="SecondaryResourceSeizesAfterProcessingResourceType" Value="Specific" />
         </ObjectInstanceProperty>
-        <ListNameProperty Name="SecondaryResourceSeizesAfterProcessingObjectListName" DisplayName="Object List Name" Description="The name of the object list from which to select the resource object(s) to seize." Category="Resource Information" Required="False" NullString="null" ListType="Object">
-          <Switch Property="SecondaryResourceSeizesAfterProcessingObjectType" Value="FromList" />
+        <ListNameProperty Name="SecondaryResourceSeizesAfterProcessingResourceListName" DisplayName="Resource List Name" Description="The name of the object list from which to select the resource object(s) to seize." Category="Resource Information" Required="False" NullString="null" ListType="Object">
+          <Switch Property="SecondaryResourceSeizesAfterProcessingResourceType" Value="FromList" />
         </ListNameProperty>
         <EnumProperty Name="SecondaryResourceSeizesAfterProcessingSelectionGoal" DisplayName="Selection Goal" Description="The rule used to select a resource object from multiple candidates." Category="Resource Information" DefaultValue="Preferred Order" Required="False" NullString="null" EnumType="SeizeSelectionGoal">
-          <Switch Property="SecondaryResourceSeizesAfterProcessingObjectType" Comparison="NotEqual" Value="ParentObject" />
+          <Switch Property="SecondaryResourceSeizesAfterProcessingResourceType" Comparison="NotEqual" Value="ParentObject" />
           <Captions>
             <Caption Value="SmallestDistance" Display="Smallest Distance" />
             <Caption Value="LargestDistance" Display="Largest Distance" />
@@ -998,8 +1019,8 @@
         <ExpressionProperty Name="SecondaryResourceSeizesAfterProcessingMovePriority" DisplayName="Move Priority" Description="The priority of the move request if a resource is selecting from multiple candidates." Category="Resource Information" DefaultValue="Entity.Priority" Required="False" Deprecated="True" Parent="SecondaryResourceSeizesAfterProcessingRequestMove" NullString="null">
           <Switch Property="SecondaryResourceSeizesAfterProcessingRequestMove" Comparison="NotEqual" Value="None" />
         </ExpressionProperty>
-        <ExpressionProperty Name="SecondaryResourceSeizesAfterProcessingNumberOfObjects" DisplayName="Number Of Objects" Description="The number of individual resource objects to seize capacity units of." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null" />
-        <ExpressionProperty Name="SecondaryResourceSeizesAfterProcessingUnitsPerObject" DisplayName="Units Per Object" Description="The number of capacity units to seize per resource object." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null" />
+        <ExpressionProperty Name="SecondaryResourceSeizesAfterProcessingNumberOfResources" DisplayName="Number Of Resources" Description="The number of individual resource objects to seize capacity units of." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null" />
+        <ExpressionProperty Name="SecondaryResourceSeizesAfterProcessingUnitsPerResource" DisplayName="Units Per Resource" Description="The number of capacity units to seize per resource object." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null" />
         <ExpressionProperty Name="SecondaryResourceSeizesAfterProcessingSelectionCondition" DisplayName="Selection Condition" Description="Optional condition evaluated for each candidate resource that must be true for the resource to be selected.&#xD;&#xA;&#xD;&#xA;In the expression, use the syntax Candidate.[ObjectClass].[Attribute] to reference an attribute of the candidate resource objects (e.g., Candidate.Object.Capacity)." Category="Required Quantity &amp; Constraints" Required="False" NullString="null" SupportForeign="True" />
         <ExpressionProperty Name="SecondaryResourceSeizesAfterProcessingResourceEfficiency" DisplayName="Resource Efficiency" Description="Optional value that can alter the rate at which work is performed using the seized resource(s), expressed as a fraction. The actual work duration is the planned work duration divided by the efficiency. Hence, an efficiency value greater than 1 shortens the time and a value less than 1 lengthens the time.&#xD;&#xA;&#xD;&#xA;In the expression, use the syntax Candidate.[ObjectClass].[Attribute] to reference an attribute of the candidate resource objects (e.g., Candidate.Object.Capacity).&#xD;&#xA;&#xD;&#xA;Set this property to blank to declare the resource efficiency as undefined." Category="Required Quantity &amp; Constraints" Required="False" NullString="null" SupportForeign="True" />
         <ElementProperty Name="SecondaryResourceSeizesAfterProcessingOnSeizedProcess" DisplayName="On Seized Process" Description="Optional process to be executed when a resource is seized." Category="Advanced Options" Required="False" NullString="null" ValueListFilter="UserExecutableProcessesOnly" Type="Process" />
@@ -1010,6 +1031,11 @@
           <PropertyReplacement Version="202" OldPropertyName="SecondaryResourceSeizesAfterProcessingNodeName" NewPropertyName="SecondaryResourceSeizesAfterProcessingDestinationNode" />
           <PropertyReplacement Version="202" OldPropertyName="SecondaryResourceSeizesAfterProcessingVisitPriority" NewPropertyName="SecondaryResourceSeizesAfterProcessingMovePriority" />
           <PropertyReplacement Version="248" OldPropertyName="SecondaryResourceSeizesAfterProcessingSelectionExpression" NewPropertyName="SecondaryResourceSeizesAfterProcessingSelectionValueExpression" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceSeizesAfterProcessingObjectType" NewPropertyName="SecondaryResourceSeizesAfterProcessingResourceType" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceSeizesAfterProcessingObjectName" NewPropertyName="SecondaryResourceSeizesAfterProcessingResourceName" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceSeizesAfterProcessingObjectListName" NewPropertyName="SecondaryResourceSeizesAfterProcessingResourceListName" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceSeizesAfterProcessingNumberOfObjects" NewPropertyName="SecondaryResourceSeizesAfterProcessingNumberOfResources" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceSeizesAfterProcessingUnitsPerObject" NewPropertyName="SecondaryResourceSeizesAfterProcessingUnitsPerResource" />
         </PropertyReplacements>
       </PropertyDefinitions>
     </RepeatingProperty>
@@ -1022,34 +1048,34 @@
           <Category Name="Required Quantity &amp; Constraints" Description="Required Quantity &amp; Constraints" InitiallyExpanded="False" />
           <Category Name="Advanced Options" Description="Advanced Options" InitiallyExpanded="False" />
         </Categories>
-        <EnumProperty Name="SecondaryResourceReleasesOnEnteringObjectType" DisplayName="Object Type" Description="The method for specifying the resource object(s) to release." Category="Resource Information" DefaultValue="Specific" NullString="null" EnumType="ObjectSeizeType">
+        <EnumProperty Name="SecondaryResourceReleasesOnEnteringResourceType" DisplayName="Resource Type" Description="The method for specifying the resource object(s) to release." Category="Resource Information" DefaultValue="Specific" NullString="null" EnumType="ObjectSeizeType">
           <Captions>
             <Caption Value="FromList" Display="Select From List" />
             <Caption Value="ParentObject" Visible="False" />
           </Captions>
         </EnumProperty>
-        <ObjectInstanceProperty Name="SecondaryResourceReleasesOnEnteringObjectName" DisplayName="Object Name" Description="The name of the resource object to release." Category="Resource Information" Required="False" NullString="null" FilterMode="Resources" LocationType="Cartesian">
-          <Switch Property="SecondaryResourceReleasesOnEnteringObjectType" Value="Specific" />
+        <ObjectInstanceProperty Name="SecondaryResourceReleasesOnEnteringResourceName" DisplayName="Resource Name" Description="The name of the resource object to release." Category="Resource Information" Required="False" NullString="null" FilterMode="Resources" LocationType="Cartesian">
+          <Switch Property="SecondaryResourceReleasesOnEnteringResourceType" Value="Specific" />
         </ObjectInstanceProperty>
-        <ListNameProperty Name="SecondaryResourceReleasesOnEnteringObjectListName" DisplayName="Object List Name" Description="The name of the object list from which to select the resource object(s) to release." Category="Resource Information" Required="False" NullString="null" ListType="Object">
-          <Switch Property="SecondaryResourceReleasesOnEnteringObjectType" Value="FromList" />
+        <ListNameProperty Name="SecondaryResourceReleasesOnEnteringResourceListName" DisplayName="Resource List Name" Description="The name of the object list from which to select the resource object(s) to release." Category="Resource Information" Required="False" NullString="null" ListType="Object">
+          <Switch Property="SecondaryResourceReleasesOnEnteringResourceType" Value="FromList" />
         </ListNameProperty>
-        <EnumProperty Name="SecondaryResourceReleasesOnEnteringReleaseQuantityType" DisplayName="Quantity Type" Description="Indicates the type of resource quantity to release.&#xD;&#xA;&#xD;&#xA;Specific – Is the exact quantities entered in the Number Of Objects and Units Per Object properties.&#xD;&#xA;&#xD;&#xA;All – Is all currently seized resources of the specified resource type." Category="Required Quantity &amp; Constraints" DefaultValue="Specific" NullString="null" EnumType="ReleaseQuantityType" />
-        <ExpressionProperty Name="SecondaryResourceReleasesOnEnteringNumberOfObjects" DisplayName="Number Of Objects" Description="The number of individual resource objects to release capacity units of." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null">
-          <Switch Property="SecondaryResourceReleasesOnEnteringReleaseQuantityType" Value="Specific" />
+        <EnumProperty Name="SecondaryResourceReleasesOnEnteringQuantityType" DisplayName="Quantity Type" Description="Indicates the type of resource quantity to release.&#xD;&#xA;&#xD;&#xA;Specific – Is the exact quantities entered in the Number Of Objects and Units Per Object properties.&#xD;&#xA;&#xD;&#xA;All – Is all currently seized resources of the specified resource type." Category="Required Quantity &amp; Constraints" DefaultValue="Specific" NullString="null" EnumType="ReleaseQuantityType" />
+        <ExpressionProperty Name="SecondaryResourceReleasesOnEnteringNumberOfResources" DisplayName="Number Of Resources" Description="The number of individual resource objects to release capacity units of." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null">
+          <Switch Property="SecondaryResourceReleasesOnEnteringQuantityType" Value="Specific" />
         </ExpressionProperty>
-        <ExpressionProperty Name="SecondaryResourceReleasesOnEnteringUnitsPerObject" DisplayName="Units Per Object" Description="The number of capacity units to release per resource object." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null">
-          <Switch Property="SecondaryResourceReleasesOnEnteringReleaseQuantityType" Value="Specific" />
+        <ExpressionProperty Name="SecondaryResourceReleasesOnEnteringUnitsPerResource" DisplayName="Units Per Resource" Description="The number of capacity units to release per resource object." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null">
+          <Switch Property="SecondaryResourceReleasesOnEnteringQuantityType" Value="Specific" />
         </ExpressionProperty>
         <EnumProperty Name="SecondaryResourceReleasesOnEnteringReleaseOrder" DisplayName="Release Order" Description="The order in which to release the resources that have been seized by the entity." Category="Required Quantity &amp; Constraints" DefaultValue="First Seized First" NullString="null" EnumType="ObjectReleaseOrder">
-          <Switch Property="SecondaryResourceReleasesOnEnteringObjectType" Comparison="NotEqual" Value="ParentObject" />
+          <Switch Property="SecondaryResourceReleasesOnEnteringResourceType" Comparison="NotEqual" Value="ParentObject" />
           <Captions>
             <Caption Value="FirstSeizedFirst" Display="First Seized First" />
             <Caption Value="LastSeizedFirst" Display="Last Seized First" />
           </Captions>
         </EnumProperty>
         <ExpressionProperty Name="SecondaryResourceReleasesOnEnteringSelectionCondition" DisplayName="Selection Condition" Description="Optional condition evaluated for each seized resource that must be true for the resource to be selected.&#xD;&#xA;&#xD;&#xA;In the expression, use the syntax Candidate.[ObjectClass].[Attribute] to reference an attribute of the candidate resource objects (e.g., Candidate.Object.Capacity)." Category="Required Quantity &amp; Constraints" Required="False" NullString="null" SupportForeign="True">
-          <Switch Property="SecondaryResourceReleasesOnEnteringObjectType" Comparison="NotEqual" Value="ParentObject" />
+          <Switch Property="SecondaryResourceReleasesOnEnteringResourceType" Comparison="NotEqual" Value="ParentObject" />
         </ExpressionProperty>
         <ExpressionProperty Name="SecondaryResourceReleasesOnEnteringKeepReservedCondition" DisplayName="Keep Reserved If" Description="Optional condition indicating whether to keep the released resource capacity reserved for possible later reuse by the same entity. Other entities will be unable to use a reserved resource unless the reservation is cancelled.&#xD;&#xA;&#xD;&#xA;In the expression, use the syntax Candidate.[ObjectClass].[Attribute] to reference an attribute of the candidate resource object(s) being released (e.g., Candidate.Object.Capacity).&#xD;&#xA;&#xD;&#xA;Note that when an entity is attempting to select a resource from a group of candidates (e.g., from a list or from a population of some resource type), by default a preference will be given to select a resource that has already been reserved by that owner irrespective of the specified selection goal.&#xD;&#xA;&#xD;&#xA;Leaving this property blank (no condition) is equivalent to entering False." Category="Advanced Options" Required="False" NullString="null" SupportForeign="True" />
         <ExpressionProperty Name="SecondaryResourceReleasesOnEnteringReservationTimeout" DisplayName="Reservation Timeout" Description="If the keep reserved condition is true, then an optional wait time before automatically cancelling the reservation.&#xD;&#xA;&#xD;&#xA;In the expression, use the syntax Candidate.[ObjectClass].[Attribute] to reference an attribute of the resource object(s) being released (e.g., Candidate.Object.Capacity)." Category="Advanced Options" Required="False" NullString="null" UnitType="Time" SupportForeign="True" />
@@ -1058,6 +1084,12 @@
         <Overrides />
         <PropertyReplacements>
           <PropertyReplacement Version="241" OldPropertyName="SecondaryResourceReleasesOnEnteringReleaseCondition" NewPropertyName="SecondaryResourceReleasesOnEnteringSelectionCondition" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceReleasesOnEnteringObjectType" NewPropertyName="SecondaryResourceReleasesOnEnteringResourceType" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceReleasesOnEnteringObjectName" NewPropertyName="SecondaryResourceReleasesOnEnteringResourceName" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceReleasesOnEnteringObjectListName" NewPropertyName="SecondaryResourceReleasesOnEnteringResourceListName" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceReleasesOnEnteringReleaseQuantityType" NewPropertyName="SecondaryResourceReleasesOnEnteringQuantityType" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceReleasesOnEnteringNumberOfObjects" NewPropertyName="SecondaryResourceReleasesOnEnteringNumberOfResources" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceReleasesOnEnteringUnitsPerObject" NewPropertyName="SecondaryResourceReleasesOnEnteringUnitsPerResource" />
         </PropertyReplacements>
       </PropertyDefinitions>
     </RepeatingProperty>
@@ -1069,34 +1101,34 @@
           <Category Name="Required Quantity &amp; Constraints" Description="Required Quantity &amp; Constraints" InitiallyExpanded="False" />
           <Category Name="Advanced Options" Description="Advanced Options" InitiallyExpanded="False" />
         </Categories>
-        <EnumProperty Name="SecondaryResourceReleasesBeforeProcessingObjectType" DisplayName="Object Type" Description="The method for specifying the resource object(s) to release." Category="Resource Information" DefaultValue="Specific" NullString="null" EnumType="ObjectSeizeType">
+        <EnumProperty Name="SecondaryResourceReleasesBeforeProcessingResourceType" DisplayName="Resource Type" Description="The method for specifying the resource object(s) to release." Category="Resource Information" DefaultValue="Specific" NullString="null" EnumType="ObjectSeizeType">
           <Captions>
             <Caption Value="FromList" Display="Select From List" />
             <Caption Value="ParentObject" Visible="False" />
           </Captions>
         </EnumProperty>
-        <ObjectInstanceProperty Name="SecondaryResourceReleasesBeforeProcessingObjectName" DisplayName="Object Name" Description="The name of the resource object to release." Category="Resource Information" Required="False" NullString="null" FilterMode="Resources" LocationType="Cartesian">
-          <Switch Property="SecondaryResourceReleasesBeforeProcessingObjectType" Value="Specific" />
+        <ObjectInstanceProperty Name="SecondaryResourceReleasesBeforeProcessingResourceName" DisplayName="Resource Name" Description="The name of the resource object to release." Category="Resource Information" Required="False" NullString="null" FilterMode="Resources" LocationType="Cartesian">
+          <Switch Property="SecondaryResourceReleasesBeforeProcessingResourceType" Value="Specific" />
         </ObjectInstanceProperty>
-        <ListNameProperty Name="SecondaryResourceReleasesBeforeProcessingObjectListName" DisplayName="Object List Name" Description="The name of the object list from which to select the resource object(s) to release." Category="Resource Information" Required="False" NullString="null" ListType="Object">
-          <Switch Property="SecondaryResourceReleasesBeforeProcessingObjectType" Value="FromList" />
+        <ListNameProperty Name="SecondaryResourceReleasesBeforeProcessingResourceListName" DisplayName="Resource List Name" Description="The name of the object list from which to select the resource object(s) to release." Category="Resource Information" Required="False" NullString="null" ListType="Object">
+          <Switch Property="SecondaryResourceReleasesBeforeProcessingResourceType" Value="FromList" />
         </ListNameProperty>
-        <EnumProperty Name="SecondaryResourceReleasesBeforeProcessingReleaseQuantityType" DisplayName="Quantity Type" Description="Indicates the type of resource quantity to release.&#xD;&#xA;&#xD;&#xA;Specific – Is the exact quantities entered in the Number Of Objects and Units Per Object properties.&#xD;&#xA;&#xD;&#xA;All – Is all currently seized resources of the specified resource type." Category="Required Quantity &amp; Constraints" DefaultValue="Specific" NullString="null" EnumType="ReleaseQuantityType" />
-        <ExpressionProperty Name="SecondaryResourceReleasesBeforeProcessingNumberOfObjects" DisplayName="Number Of Objects" Description="The number of individual resource objects to release capacity units of." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null">
-          <Switch Property="SecondaryResourceReleasesBeforeProcessingReleaseQuantityType" Value="Specific" />
+        <EnumProperty Name="SecondaryResourceReleasesBeforeProcessingQuantityType" DisplayName="Quantity Type" Description="Indicates the type of resource quantity to release.&#xD;&#xA;&#xD;&#xA;Specific – Is the exact quantities entered in the Number Of Objects and Units Per Object properties.&#xD;&#xA;&#xD;&#xA;All – Is all currently seized resources of the specified resource type." Category="Required Quantity &amp; Constraints" DefaultValue="Specific" NullString="null" EnumType="ReleaseQuantityType" />
+        <ExpressionProperty Name="SecondaryResourceReleasesBeforeProcessingNumberOfResources" DisplayName="Number Of Resources" Description="The number of individual resource objects to release capacity units of." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null">
+          <Switch Property="SecondaryResourceReleasesBeforeProcessingQuantityType" Value="Specific" />
         </ExpressionProperty>
-        <ExpressionProperty Name="SecondaryResourceReleasesBeforeProcessingUnitsPerObject" DisplayName="Units Per Object" Description="The number of capacity units to release per resource object." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null">
-          <Switch Property="SecondaryResourceReleasesBeforeProcessingReleaseQuantityType" Value="Specific" />
+        <ExpressionProperty Name="SecondaryResourceReleasesBeforeProcessingUnitsPerResource" DisplayName="Units Per Resource" Description="The number of capacity units to release per resource object." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null">
+          <Switch Property="SecondaryResourceReleasesBeforeProcessingQuantityType" Value="Specific" />
         </ExpressionProperty>
         <EnumProperty Name="SecondaryResourceReleasesBeforeProcessingReleaseOrder" DisplayName="Release Order" Description="The order in which to release the resources that have been seized by the entity." Category="Required Quantity &amp; Constraints" DefaultValue="First Seized First" NullString="null" EnumType="ObjectReleaseOrder">
-          <Switch Property="SecondaryResourceReleasesBeforeProcessingObjectType" Comparison="NotEqual" Value="ParentObject" />
+          <Switch Property="SecondaryResourceReleasesBeforeProcessingResourceType" Comparison="NotEqual" Value="ParentObject" />
           <Captions>
             <Caption Value="FirstSeizedFirst" Display="First Seized First" />
             <Caption Value="LastSeizedFirst" Display="Last Seized First" />
           </Captions>
         </EnumProperty>
         <ExpressionProperty Name="SecondaryResourceReleasesBeforeProcessingSelectionCondition" DisplayName="Selection Condition" Description="Optional condition evaluated for each seized resource that must be true for the resource to be selected.&#xD;&#xA;&#xD;&#xA;In the expression, use the syntax Candidate.[ObjectClass].[Attribute] to reference an attribute of the candidate resource objects (e.g., Candidate.Object.Capacity)." Category="Required Quantity &amp; Constraints" Required="False" NullString="null" SupportForeign="True">
-          <Switch Property="SecondaryResourceReleasesBeforeProcessingObjectType" Comparison="NotEqual" Value="ParentObject" />
+          <Switch Property="SecondaryResourceReleasesBeforeProcessingResourceType" Comparison="NotEqual" Value="ParentObject" />
         </ExpressionProperty>
         <ExpressionProperty Name="SecondaryResourceReleasesBeforeProcessingKeepReservedCondition" DisplayName="Keep Reserved If" Description="Optional condition indicating whether to keep the released resource capacity reserved for possible later reuse by the same entity. Other entities will be unable to use a reserved resource unless the reservation is cancelled.&#xD;&#xA;&#xD;&#xA;In the expression, use the syntax Candidate.[ObjectClass].[Attribute] to reference an attribute of the candidate resource object(s) being released (e.g., Candidate.Object.Capacity).&#xD;&#xA;&#xD;&#xA;Note that when an entity is attempting to select a resource from a group of candidates (e.g., from a list or from a population of some resource type), by default a preference will be given to select a resource that has already been reserved by that owner irrespective of the specified selection goal.&#xD;&#xA;&#xD;&#xA;Leaving this property blank (no condition) is equivalent to entering False." Category="Advanced Options" Required="False" NullString="null" SupportForeign="True" />
         <ExpressionProperty Name="SecondaryResourceReleasesBeforeProcessingReservationTimeout" DisplayName="Reservation Timeout" Description="If the keep reserved condition is true, then an optional wait time before automatically cancelling the reservation.&#xD;&#xA;&#xD;&#xA;In the expression, use the syntax Candidate.[ObjectClass].[Attribute] to reference an attribute of the resource object(s) being released (e.g., Candidate.Object.Capacity)." Category="Advanced Options" Required="False" NullString="null" UnitType="Time" SupportForeign="True" />
@@ -1105,6 +1137,12 @@
         <Overrides />
         <PropertyReplacements>
           <PropertyReplacement Version="241" OldPropertyName="SecondaryResourceReleasesBeforeProcessingReleaseCondition" NewPropertyName="SecondaryResourceReleasesBeforeProcessingSelectionCondition" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceReleasesBeforeProcessingObjectType" NewPropertyName="SecondaryResourceReleasesBeforeProcessingResourceType" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceReleasesBeforeProcessingObjectName" NewPropertyName="SecondaryResourceReleasesBeforeProcessingResourceName" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceReleasesBeforeProcessingObjectListName" NewPropertyName="SecondaryResourceReleasesBeforeProcessingResourceListName" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceReleasesBeforeProcessingReleaseQuantityType" NewPropertyName="SecondaryResourceReleasesBeforeProcessingQuantityType" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceReleasesBeforeProcessingNumberOfObjects" NewPropertyName="SecondaryResourceReleasesBeforeProcessingNumberOfResources" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceReleasesBeforeProcessingUnitsPerObject" NewPropertyName="SecondaryResourceReleasesBeforeProcessingUnitsPerResource" />
         </PropertyReplacements>
       </PropertyDefinitions>
     </RepeatingProperty>
@@ -1116,34 +1154,34 @@
           <Category Name="Required Quantity &amp; Constraints" Description="Required Quantity &amp; Constraints" InitiallyExpanded="False" />
           <Category Name="Advanced Options" Description="Advanced Options" InitiallyExpanded="False" />
         </Categories>
-        <EnumProperty Name="SecondaryResourceReleasesAfterProcessingObjectType" DisplayName="Object Type" Description="The method for specifying the resource object(s) to release." Category="Resource Information" DefaultValue="Specific" NullString="null" EnumType="ObjectSeizeType">
+        <EnumProperty Name="SecondaryResourceReleasesAfterProcessingResourceType" DisplayName="Resource Type" Description="The method for specifying the resource object(s) to release." Category="Resource Information" DefaultValue="Specific" NullString="null" EnumType="ObjectSeizeType">
           <Captions>
             <Caption Value="FromList" Display="Select From List" />
             <Caption Value="ParentObject" Visible="False" />
           </Captions>
         </EnumProperty>
-        <ObjectInstanceProperty Name="SecondaryResourceReleasesAfterProcessingObjectName" DisplayName="Object Name" Description="The name of the resource object to release." Category="Resource Information" Required="False" NullString="null" FilterMode="Resources" LocationType="Cartesian">
-          <Switch Property="SecondaryResourceReleasesAfterProcessingObjectType" Value="Specific" />
+        <ObjectInstanceProperty Name="SecondaryResourceReleasesAfterProcessingResourceName" DisplayName="Resource Name" Description="The name of the resource object to release." Category="Resource Information" Required="False" NullString="null" FilterMode="Resources" LocationType="Cartesian">
+          <Switch Property="SecondaryResourceReleasesAfterProcessingResourceType" Value="Specific" />
         </ObjectInstanceProperty>
-        <ListNameProperty Name="SecondaryResourceReleasesAfterProcessingObjectListName" DisplayName="Object List Name" Description="The name of the object list from which to select the resource object(s) to release." Category="Resource Information" Required="False" NullString="null" ListType="Object">
-          <Switch Property="SecondaryResourceReleasesAfterProcessingObjectType" Value="FromList" />
+        <ListNameProperty Name="SecondaryResourceReleasesAfterProcessingResourceListName" DisplayName="Resource List Name" Description="The name of the object list from which to select the resource object(s) to release." Category="Resource Information" Required="False" NullString="null" ListType="Object">
+          <Switch Property="SecondaryResourceReleasesAfterProcessingResourceType" Value="FromList" />
         </ListNameProperty>
-        <EnumProperty Name="SecondaryResourceReleasesAfterProcessingReleaseQuantityType" DisplayName="Quantity Type" Description="Indicates the type of resource quantity to release.&#xD;&#xA;&#xD;&#xA;Specific – Is the exact quantities entered in the Number Of Objects and Units Per Object properties.&#xD;&#xA;&#xD;&#xA;All – Is all currently seized resources of the specified resource type." Category="Required Quantity &amp; Constraints" DefaultValue="Specific" NullString="null" EnumType="ReleaseQuantityType" />
-        <ExpressionProperty Name="SecondaryResourceReleasesAfterProcessingNumberOfObjects" DisplayName="Number Of Objects" Description="The number of individual resource objects to release capacity units of." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null">
-          <Switch Property="SecondaryResourceReleasesAfterProcessingReleaseQuantityType" Value="Specific" />
+        <EnumProperty Name="SecondaryResourceReleasesAfterProcessingQuantityType" DisplayName="Quantity Type" Description="Indicates the type of resource quantity to release.&#xD;&#xA;&#xD;&#xA;Specific – Is the exact quantities entered in the Number Of Objects and Units Per Object properties.&#xD;&#xA;&#xD;&#xA;All – Is all currently seized resources of the specified resource type." Category="Required Quantity &amp; Constraints" DefaultValue="Specific" NullString="null" EnumType="ReleaseQuantityType" />
+        <ExpressionProperty Name="SecondaryResourceReleasesAfterProcessingNumberOfResources" DisplayName="Number Of Resources" Description="The number of individual resource objects to release capacity units of." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null">
+          <Switch Property="SecondaryResourceReleasesAfterProcessingQuantityType" Value="Specific" />
         </ExpressionProperty>
-        <ExpressionProperty Name="SecondaryResourceReleasesAfterProcessingUnitsPerObject" DisplayName="Units Per Object" Description="The number of capacity units to release per resource object." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null">
-          <Switch Property="SecondaryResourceReleasesAfterProcessingReleaseQuantityType" Value="Specific" />
+        <ExpressionProperty Name="SecondaryResourceReleasesAfterProcessingUnitsPerResource" DisplayName="Units Per Resource" Description="The number of capacity units to release per resource object." Category="Required Quantity &amp; Constraints" DefaultValue="1" NullString="null">
+          <Switch Property="SecondaryResourceReleasesAfterProcessingQuantityType" Value="Specific" />
         </ExpressionProperty>
         <EnumProperty Name="SecondaryResourceReleasesAfterProcessingReleaseOrder" DisplayName="Release Order" Description="The order in which to release the resources that have been seized by the entity." Category="Required Quantity &amp; Constraints" DefaultValue="First Seized First" NullString="null" EnumType="ObjectReleaseOrder">
-          <Switch Property="SecondaryResourceReleasesAfterProcessingObjectType" Comparison="NotEqual" Value="ParentObject" />
+          <Switch Property="SecondaryResourceReleasesAfterProcessingResourceType" Comparison="NotEqual" Value="ParentObject" />
           <Captions>
             <Caption Value="FirstSeizedFirst" Display="First Seized First" />
             <Caption Value="LastSeizedFirst" Display="Last Seized First" />
           </Captions>
         </EnumProperty>
         <ExpressionProperty Name="SecondaryResourceReleasesAfterProcessingSelectionCondition" DisplayName="Selection Condition" Description="Optional condition evaluated for each seized resource that must be true for the resource to be selected.&#xD;&#xA;&#xD;&#xA;In the expression, use the syntax Candidate.[ObjectClass].[Attribute] to reference an attribute of the candidate resource objects (e.g., Candidate.Object.Capacity)." Category="Required Quantity &amp; Constraints" Required="False" NullString="null" SupportForeign="True">
-          <Switch Property="SecondaryResourceReleasesAfterProcessingObjectType" Comparison="NotEqual" Value="ParentObject" />
+          <Switch Property="SecondaryResourceReleasesAfterProcessingResourceType" Comparison="NotEqual" Value="ParentObject" />
         </ExpressionProperty>
         <ExpressionProperty Name="SecondaryResourceReleasesAfterProcessingKeepReservedCondition" DisplayName="Keep Reserved If" Description="Optional condition indicating whether to keep the released resource capacity reserved for possible later reuse by the same entity. Other entities will be unable to use a reserved resource unless the reservation is cancelled.&#xD;&#xA;&#xD;&#xA;In the expression, use the syntax Candidate.[ObjectClass].[Attribute] to reference an attribute of the candidate resource object(s) being released (e.g., Candidate.Object.Capacity).&#xD;&#xA;&#xD;&#xA;Note that when an entity is attempting to select a resource from a group of candidates (e.g., from a list or from a population of some resource type), by default a preference will be given to select a resource that has already been reserved by that owner irrespective of the specified selection goal.&#xD;&#xA;&#xD;&#xA;Leaving this property blank (no condition) is equivalent to entering False." Category="Advanced Options" Required="False" NullString="null" SupportForeign="True" />
         <ExpressionProperty Name="SecondaryResourceReleasesAfterProcessingReservationTimeout" DisplayName="Reservation Timeout" Description="If the keep reserved condition is true, then an optional wait time before automatically cancelling the reservation.&#xD;&#xA;&#xD;&#xA;In the expression, use the syntax Candidate.[ObjectClass].[Attribute] to reference an attribute of the resource object(s) being released (e.g., Candidate.Object.Capacity)." Category="Advanced Options" Required="False" NullString="null" UnitType="Time" SupportForeign="True" />
@@ -1152,6 +1190,12 @@
         <Overrides />
         <PropertyReplacements>
           <PropertyReplacement Version="241" OldPropertyName="SecondaryResourceReleasesAfterProcessingReleaseCondition" NewPropertyName="SecondaryResourceReleasesAfterProcessingSelectionCondition" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceReleasesAfterProcessingObjectType" NewPropertyName="SecondaryResourceReleasesAfterProcessingResourceType" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceReleasesAfterProcessingObjectName" NewPropertyName="SecondaryResourceReleasesAfterProcessingResourceName" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceReleasesAfterProcessingObjectListName" NewPropertyName="SecondaryResourceReleasesAfterProcessingResourceListName" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceReleasesAfterProcessingReleaseQuantityType" NewPropertyName="SecondaryResourceReleasesAfterProcessingQuantityType" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceReleasesAfterProcessingNumberOfObjects" NewPropertyName="SecondaryResourceReleasesAfterProcessingNumberOfResources" />
+          <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceReleasesAfterProcessingUnitsPerObject" NewPropertyName="SecondaryResourceReleasesAfterProcessingUnitsPerResource" />
         </PropertyReplacements>
       </PropertyDefinitions>
     </RepeatingProperty>
@@ -1211,6 +1255,11 @@
       <PropertyReplacement Version="230" OldPropertyName="SecondaryResourceForProcessingImmediatelyTryAllocateWhenReleased" NewPropertyName="SecondaryResourcesForProcessingImmediatelyTryAllocateWhenReleased" />
       <PropertyReplacement Version="236" OldPropertyName="SecondaryResourceForProcessingOffShiftRule" NewPropertyName="SecondaryResourcesForProcessingOffShiftRule" />
       <PropertyReplacement Version="248" OldPropertyName="SecondaryResourceForProcessingSelectionExpression" NewPropertyName="SecondaryResourceForProcessingSelectionValueExpression" />
+      <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceForProcessingObjectType" NewPropertyName="SecondaryResourceForProcessingResourceType" />
+      <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceForProcessingObjectName" NewPropertyName="SecondaryResourceForProcessingResourceName" />
+      <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceForProcessingObjectListName" NewPropertyName="SecondaryResourceForProcessingResourceListName" />
+      <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceForProcessingNumberOfObjects" NewPropertyName="SecondaryResourceForProcessingNumberOfResources" />
+      <PropertyReplacement Version="250" OldPropertyName="SecondaryResourceForProcessingUnitsPerObject" NewPropertyName="SecondaryResourceForProcessingUnitsPerResource" />
     </PropertyReplacements>
     <PropertyDefaultValueChanges>
       <PropertyDefaultValueChange Version="193" PropertyName="SecondaryResourcesForProcessingOffShiftRule" OldDefaultValue="Finish Work Already Started" />
@@ -1824,11 +1873,11 @@
               <Value>SecondaryResourceSeizesOnEntering</Value>
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">SecondaryResourceSeizesOnEnteringObjectType</Property>
-                  <Property Name="ObjectName">SecondaryResourceSeizesOnEnteringObjectName</Property>
-                  <Property Name="ObjectListName">SecondaryResourceSeizesOnEnteringObjectListName</Property>
-                  <Property Name="NumberOfObjects">SecondaryResourceSeizesOnEnteringNumberOfObjects</Property>
-                  <Property Name="UnitsPerObject">SecondaryResourceSeizesOnEnteringUnitsPerObject</Property>
+                  <Property Name="ResourceType">SecondaryResourceSeizesOnEnteringResourceType</Property>
+                  <Property Name="ResourceName">SecondaryResourceSeizesOnEnteringResourceName</Property>
+                  <Property Name="ResourceListName">SecondaryResourceSeizesOnEnteringResourceListName</Property>
+                  <Property Name="NumberOfResources">SecondaryResourceSeizesOnEnteringNumberOfResources</Property>
+                  <Property Name="UnitsPerResource">SecondaryResourceSeizesOnEnteringUnitsPerResource</Property>
                   <Property Name="SelectionGoal">SecondaryResourceSeizesOnEnteringSelectionGoal</Property>
                   <Property Name="SelectionValueExpression">SecondaryResourceSeizesOnEnteringSelectionValueExpression</Property>
                   <Property Name="SelectionCondition">SecondaryResourceSeizesOnEnteringSelectionCondition</Property>
@@ -1854,12 +1903,12 @@
               <Value>SecondaryResourceReleasesOnEntering</Value>
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">SecondaryResourceReleasesOnEnteringObjectType</Property>
-                  <Property Name="ObjectName">SecondaryResourceReleasesOnEnteringObjectName</Property>
-                  <Property Name="ObjectListName">SecondaryResourceReleasesOnEnteringObjectListName</Property>
-                  <Property Name="QuantityType">SecondaryResourceReleasesOnEnteringReleaseQuantityType</Property>
-                  <Property Name="NumberOfObjects">SecondaryResourceReleasesOnEnteringNumberOfObjects</Property>
-                  <Property Name="UnitsPerObject">SecondaryResourceReleasesOnEnteringUnitsPerObject</Property>
+                  <Property Name="ResourceType">SecondaryResourceReleasesOnEnteringResourceType</Property>
+                  <Property Name="ResourceName">SecondaryResourceReleasesOnEnteringResourceName</Property>
+                  <Property Name="ResourceListName">SecondaryResourceReleasesOnEnteringResourceListName</Property>
+                  <Property Name="QuantityType">SecondaryResourceReleasesOnEnteringQuantityType</Property>
+                  <Property Name="NumberOfResources">SecondaryResourceReleasesOnEnteringNumberOfResources</Property>
+                  <Property Name="UnitsPerResource">SecondaryResourceReleasesOnEnteringUnitsPerResource</Property>
                   <Property Name="ReleaseOrder">SecondaryResourceReleasesOnEnteringReleaseOrder</Property>
                   <Property Name="SelectionCondition">SecondaryResourceReleasesOnEnteringSelectionCondition</Property>
                   <Property Name="KeepReservedCondition">SecondaryResourceReleasesOnEnteringKeepReservedCondition</Property>
@@ -1898,7 +1947,7 @@
             <Property Name="ResourceSeizes">
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">ParentObject</Property>
+                  <Property Name="ResourceType">ParentObject</Property>
                   <Property Name="SelectionGoal"></Property>
                   <Property Name="SelectionValueExpression"></Property>
                   <Property Name="PerUseCostAccrualMethod">AtNextStation</Property>
@@ -1924,11 +1973,11 @@
             <Property Name="ResourceSeizes">
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">SecondaryResourceForProcessingObjectType</Property>
-                  <Property Name="ObjectName">SecondaryResourceForProcessingObjectName</Property>
-                  <Property Name="ObjectListName">SecondaryResourceForProcessingObjectListName</Property>
-                  <Property Name="NumberOfObjects">SecondaryResourceForProcessingNumberOfObjects</Property>
-                  <Property Name="UnitsPerObject">SecondaryResourceForProcessingUnitsPerObject</Property>
+                  <Property Name="ResourceType">SecondaryResourceForProcessingResourceType</Property>
+                  <Property Name="ResourceName">SecondaryResourceForProcessingResourceName</Property>
+                  <Property Name="ResourceListName">SecondaryResourceForProcessingResourceListName</Property>
+                  <Property Name="NumberOfResources">SecondaryResourceForProcessingNumberOfResources</Property>
+                  <Property Name="UnitsPerResource">SecondaryResourceForProcessingUnitsPerResource</Property>
                   <Property Name="SelectionGoal">SecondaryResourceForProcessingSelectionGoal</Property>
                   <Property Name="SelectionValueExpression">SecondaryResourceForProcessingSelectionValueExpression</Property>
                   <Property Name="SelectionCondition">SecondaryResourceForProcessingSelectionCondition</Property>
@@ -1954,11 +2003,11 @@
               <Value>SecondaryResourcesForProcessing</Value>
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">SecondaryResourcesForProcessingObjectType</Property>
-                  <Property Name="ObjectName">SecondaryResourcesForProcessingObjectName</Property>
-                  <Property Name="ObjectListName">SecondaryResourcesForProcessingObjectListName</Property>
-                  <Property Name="NumberOfObjects">SecondaryResourcesForProcessingNumberOfObjects</Property>
-                  <Property Name="UnitsPerObject">SecondaryResourcesForProcessingUnitsPerObject</Property>
+                  <Property Name="ResourceType">SecondaryResourcesForProcessingResourceType</Property>
+                  <Property Name="ResourceName">SecondaryResourcesForProcessingResourceName</Property>
+                  <Property Name="ResourceListName">SecondaryResourcesForProcessingResourceListName</Property>
+                  <Property Name="NumberOfResources">SecondaryResourcesForProcessingNumberOfResources</Property>
+                  <Property Name="UnitsPerResource">SecondaryResourcesForProcessingUnitsPerResource</Property>
                   <Property Name="SelectionGoal">SecondaryResourcesForProcessingSelectionGoal</Property>
                   <Property Name="SelectionValueExpression">SecondaryResourcesForProcessingSelectionValueExpression</Property>
                   <Property Name="SelectionCondition">SecondaryResourcesForProcessingSelectionCondition</Property>
@@ -1984,11 +2033,11 @@
               <Value>SecondaryResourceSeizesBeforeProcessing</Value>
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">SecondaryResourceSeizesBeforeProcessingObjectType</Property>
-                  <Property Name="ObjectName">SecondaryResourceSeizesBeforeProcessingObjectName</Property>
-                  <Property Name="ObjectListName">SecondaryResourceSeizesBeforeProcessingObjectListName</Property>
-                  <Property Name="NumberOfObjects">SecondaryResourceSeizesBeforeProcessingNumberOfObjects</Property>
-                  <Property Name="UnitsPerObject">SecondaryResourceSeizesBeforeProcessingUnitsPerObject</Property>
+                  <Property Name="ResourceType">SecondaryResourceSeizesBeforeProcessingResourceType</Property>
+                  <Property Name="ResourceName">SecondaryResourceSeizesBeforeProcessingResourceName</Property>
+                  <Property Name="ResourceListName">SecondaryResourceSeizesBeforeProcessingResourceListName</Property>
+                  <Property Name="NumberOfResources">SecondaryResourceSeizesBeforeProcessingNumberOfResources</Property>
+                  <Property Name="UnitsPerResource">SecondaryResourceSeizesBeforeProcessingUnitsPerResource</Property>
                   <Property Name="SelectionGoal">SecondaryResourceSeizesBeforeProcessingSelectionGoal</Property>
                   <Property Name="SelectionValueExpression">SecondaryResourceSeizesBeforeProcessingSelectionValueExpression</Property>
                   <Property Name="SelectionCondition">SecondaryResourceSeizesBeforeProcessingSelectionCondition</Property>
@@ -2015,12 +2064,12 @@
               <Value>SecondaryResourceReleasesBeforeProcessing</Value>
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">SecondaryResourceReleasesBeforeProcessingObjectType</Property>
-                  <Property Name="ObjectName">SecondaryResourceReleasesBeforeProcessingObjectName</Property>
-                  <Property Name="ObjectListName">SecondaryResourceReleasesBeforeProcessingObjectListName</Property>
-                  <Property Name="QuantityType">SecondaryResourceReleasesBeforeProcessingReleaseQuantityType</Property>
-                  <Property Name="NumberOfObjects">SecondaryResourceReleasesBeforeProcessingNumberOfObjects</Property>
-                  <Property Name="UnitsPerObject">SecondaryResourceReleasesBeforeProcessingUnitsPerObject</Property>
+                  <Property Name="ResourceType">SecondaryResourceReleasesBeforeProcessingResourceType</Property>
+                  <Property Name="ResourceName">SecondaryResourceReleasesBeforeProcessingResourceName</Property>
+                  <Property Name="ResourceListName">SecondaryResourceReleasesBeforeProcessingResourceListName</Property>
+                  <Property Name="QuantityType">SecondaryResourceReleasesBeforeProcessingQuantityType</Property>
+                  <Property Name="NumberOfResources">SecondaryResourceReleasesBeforeProcessingNumberOfResources</Property>
+                  <Property Name="UnitsPerResource">SecondaryResourceReleasesBeforeProcessingUnitsPerResource</Property>
                   <Property Name="ReleaseOrder">SecondaryResourceReleasesBeforeProcessingReleaseOrder</Property>
                   <Property Name="SelectionCondition">SecondaryResourceReleasesBeforeProcessingSelectionCondition</Property>
                   <Property Name="KeepReservedCondition">SecondaryResourceReleasesBeforeProcessingKeepReservedCondition</Property>
@@ -2168,11 +2217,11 @@
               <Value>SecondaryResourceSeizesOnEntering</Value>
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">SecondaryResourceSeizesOnEnteringObjectType</Property>
-                  <Property Name="ObjectName">SecondaryResourceSeizesOnEnteringObjectName</Property>
-                  <Property Name="ObjectListName">SecondaryResourceSeizesOnEnteringObjectListName</Property>
-                  <Property Name="NumberOfObjects">SecondaryResourceSeizesOnEnteringNumberOfObjects</Property>
-                  <Property Name="UnitsPerObject">SecondaryResourceSeizesOnEnteringUnitsPerObject</Property>
+                  <Property Name="ResourceType">SecondaryResourceSeizesOnEnteringResourceType</Property>
+                  <Property Name="ResourceName">SecondaryResourceSeizesOnEnteringResourceName</Property>
+                  <Property Name="ResourceListName">SecondaryResourceSeizesOnEnteringResourceListName</Property>
+                  <Property Name="NumberOfResources">SecondaryResourceSeizesOnEnteringNumberOfResources</Property>
+                  <Property Name="UnitsPerResource">SecondaryResourceSeizesOnEnteringUnitsPerResource</Property>
                   <Property Name="SelectionGoal">SecondaryResourceSeizesOnEnteringSelectionGoal</Property>
                   <Property Name="SelectionValueExpression">SecondaryResourceSeizesOnEnteringSelectionValueExpression</Property>
                   <Property Name="SelectionCondition">SecondaryResourceSeizesOnEnteringSelectionCondition</Property>
@@ -2198,12 +2247,12 @@
               <Value>SecondaryResourceReleasesOnEntering</Value>
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">SecondaryResourceReleasesOnEnteringObjectType</Property>
-                  <Property Name="ObjectName">SecondaryResourceReleasesOnEnteringObjectName</Property>
-                  <Property Name="ObjectListName">SecondaryResourceReleasesOnEnteringObjectListName</Property>
-                  <Property Name="QuantityType">SecondaryResourceReleasesOnEnteringReleaseQuantityType</Property>
-                  <Property Name="NumberOfObjects">SecondaryResourceReleasesOnEnteringNumberOfObjects</Property>
-                  <Property Name="UnitsPerObject">SecondaryResourceReleasesOnEnteringUnitsPerObject</Property>
+                  <Property Name="ResourceType">SecondaryResourceReleasesOnEnteringResourceType</Property>
+                  <Property Name="ResourceName">SecondaryResourceReleasesOnEnteringResourceName</Property>
+                  <Property Name="ResourceListName">SecondaryResourceReleasesOnEnteringResourceListName</Property>
+                  <Property Name="QuantityType">SecondaryResourceReleasesOnEnteringQuantityType</Property>
+                  <Property Name="NumberOfResources">SecondaryResourceReleasesOnEnteringNumberOfResources</Property>
+                  <Property Name="UnitsPerResource">SecondaryResourceReleasesOnEnteringUnitsPerResource</Property>
                   <Property Name="ReleaseOrder">SecondaryResourceReleasesOnEnteringReleaseOrder</Property>
                   <Property Name="SelectionCondition">SecondaryResourceReleasesOnEnteringSelectionCondition</Property>
                   <Property Name="KeepReservedCondition">SecondaryResourceReleasesOnEnteringKeepReservedCondition</Property>
@@ -2239,7 +2288,7 @@
             <Property Name="ResourceSeizes">
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">ParentObject</Property>
+                  <Property Name="ResourceType">ParentObject</Property>
                 </Properties>
               </Rows>
             </Property>
@@ -2357,11 +2406,11 @@
             <Property Name="ResourceSeizes">
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">SecondaryResourceForProcessingObjectType</Property>
-                  <Property Name="ObjectName">SecondaryResourceForProcessingObjectName</Property>
-                  <Property Name="ObjectListName">SecondaryResourceForProcessingObjectListName</Property>
-                  <Property Name="NumberOfObjects">SecondaryResourceForProcessingNumberOfObjects</Property>
-                  <Property Name="UnitsPerObject">SecondaryResourceForProcessingUnitsPerObject</Property>
+                  <Property Name="ResourceType">SecondaryResourceForProcessingResourceType</Property>
+                  <Property Name="ResourceName">SecondaryResourceForProcessingResourceName</Property>
+                  <Property Name="ResourceListName">SecondaryResourceForProcessingResourceListName</Property>
+                  <Property Name="NumberOfResources">SecondaryResourceForProcessingNumberOfResources</Property>
+                  <Property Name="UnitsPerResource">SecondaryResourceForProcessingUnitsPerResource</Property>
                   <Property Name="SelectionGoal">SecondaryResourceForProcessingSelectionGoal</Property>
                   <Property Name="SelectionValueExpression">SecondaryResourceForProcessingSelectionValueExpression</Property>
                   <Property Name="SelectionCondition">SecondaryResourceForProcessingSelectionCondition</Property>
@@ -2386,11 +2435,11 @@
               <Value>SecondaryResourcesForProcessing</Value>
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">SecondaryResourcesForProcessingObjectType</Property>
-                  <Property Name="ObjectName">SecondaryResourcesForProcessingObjectName</Property>
-                  <Property Name="ObjectListName">SecondaryResourcesForProcessingObjectListName</Property>
-                  <Property Name="NumberOfObjects">SecondaryResourcesForProcessingNumberOfObjects</Property>
-                  <Property Name="UnitsPerObject">SecondaryResourcesForProcessingUnitsPerObject</Property>
+                  <Property Name="ResourceType">SecondaryResourcesForProcessingResourceType</Property>
+                  <Property Name="ResourceName">SecondaryResourcesForProcessingResourceName</Property>
+                  <Property Name="ResourceListName">SecondaryResourcesForProcessingResourceListName</Property>
+                  <Property Name="NumberOfResources">SecondaryResourcesForProcessingNumberOfResources</Property>
+                  <Property Name="UnitsPerResource">SecondaryResourcesForProcessingUnitsPerResource</Property>
                   <Property Name="SelectionGoal">SecondaryResourcesForProcessingSelectionGoal</Property>
                   <Property Name="SelectionValueExpression">SecondaryResourcesForProcessingSelectionValueExpression</Property>
                   <Property Name="SelectionCondition">SecondaryResourcesForProcessingSelectionCondition</Property>
@@ -2415,11 +2464,11 @@
               <Value>SecondaryResourceSeizesBeforeProcessing</Value>
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">SecondaryResourceSeizesBeforeProcessingObjectType</Property>
-                  <Property Name="ObjectName">SecondaryResourceSeizesBeforeProcessingObjectName</Property>
-                  <Property Name="ObjectListName">SecondaryResourceSeizesBeforeProcessingObjectListName</Property>
-                  <Property Name="NumberOfObjects">SecondaryResourceSeizesBeforeProcessingNumberOfObjects</Property>
-                  <Property Name="UnitsPerObject">SecondaryResourceSeizesBeforeProcessingUnitsPerObject</Property>
+                  <Property Name="ResourceType">SecondaryResourceSeizesBeforeProcessingResourceType</Property>
+                  <Property Name="ResourceName">SecondaryResourceSeizesBeforeProcessingResourceName</Property>
+                  <Property Name="ResourceListName">SecondaryResourceSeizesBeforeProcessingResourceListName</Property>
+                  <Property Name="NumberOfResources">SecondaryResourceSeizesBeforeProcessingNumberOfResources</Property>
+                  <Property Name="UnitsPerResource">SecondaryResourceSeizesBeforeProcessingUnitsPerResource</Property>
                   <Property Name="SelectionGoal">SecondaryResourceSeizesBeforeProcessingSelectionGoal</Property>
                   <Property Name="SelectionValueExpression">SecondaryResourceSeizesBeforeProcessingSelectionValueExpression</Property>
                   <Property Name="SelectionCondition">SecondaryResourceSeizesBeforeProcessingSelectionCondition</Property>
@@ -2445,12 +2494,12 @@
               <Value>SecondaryResourceReleasesBeforeProcessing</Value>
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">SecondaryResourceReleasesBeforeProcessingObjectType</Property>
-                  <Property Name="ObjectName">SecondaryResourceReleasesBeforeProcessingObjectName</Property>
-                  <Property Name="ObjectListName">SecondaryResourceReleasesBeforeProcessingObjectListName</Property>
-                  <Property Name="QuantityType">SecondaryResourceReleasesBeforeProcessingReleaseQuantityType</Property>
-                  <Property Name="NumberOfObjects">SecondaryResourceReleasesBeforeProcessingNumberOfObjects</Property>
-                  <Property Name="UnitsPerObject">SecondaryResourceReleasesBeforeProcessingUnitsPerObject</Property>
+                  <Property Name="ResourceType">SecondaryResourceReleasesBeforeProcessingResourceType</Property>
+                  <Property Name="ResourceName">SecondaryResourceReleasesBeforeProcessingResourceName</Property>
+                  <Property Name="ResourceListName">SecondaryResourceReleasesBeforeProcessingResourceListName</Property>
+                  <Property Name="QuantityType">SecondaryResourceReleasesBeforeProcessingQuantityType</Property>
+                  <Property Name="NumberOfResources">SecondaryResourceReleasesBeforeProcessingNumberOfResources</Property>
+                  <Property Name="UnitsPerResource">SecondaryResourceReleasesBeforeProcessingUnitsPerResource</Property>
                   <Property Name="ReleaseOrder">SecondaryResourceReleasesBeforeProcessingReleaseOrder</Property>
                   <Property Name="SelectionCondition">SecondaryResourceReleasesBeforeProcessingSelectionCondition</Property>
                   <Property Name="KeepReservedCondition">SecondaryResourceReleasesBeforeProcessingKeepReservedCondition</Property>
@@ -2488,11 +2537,11 @@
               <Value>SecondaryResourceSeizesAfterProcessing</Value>
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">SecondaryResourceSeizesAfterProcessingObjectType</Property>
-                  <Property Name="ObjectName">SecondaryResourceSeizesAfterProcessingObjectName</Property>
-                  <Property Name="ObjectListName">SecondaryResourceSeizesAfterProcessingObjectListName</Property>
-                  <Property Name="NumberOfObjects">SecondaryResourceSeizesAfterProcessingNumberOfObjects</Property>
-                  <Property Name="UnitsPerObject">SecondaryResourceSeizesAfterProcessingUnitsPerObject</Property>
+                  <Property Name="ResourceType">SecondaryResourceSeizesAfterProcessingResourceType</Property>
+                  <Property Name="ResourceName">SecondaryResourceSeizesAfterProcessingResourceName</Property>
+                  <Property Name="ResourceListName">SecondaryResourceSeizesAfterProcessingResourceListName</Property>
+                  <Property Name="NumberOfResources">SecondaryResourceSeizesAfterProcessingNumberOfResources</Property>
+                  <Property Name="UnitsPerResource">SecondaryResourceSeizesAfterProcessingUnitsPerResource</Property>
                   <Property Name="SelectionGoal">SecondaryResourceSeizesAfterProcessingSelectionGoal</Property>
                   <Property Name="SelectionValueExpression">SecondaryResourceSeizesAfterProcessingSelectionValueExpression</Property>
                   <Property Name="SelectionCondition">SecondaryResourceSeizesAfterProcessingSelectionCondition</Property>
@@ -2517,9 +2566,9 @@
             <Property Name="ResourceReleases">
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">SecondaryResourceForProcessingObjectType</Property>
-                  <Property Name="ObjectName">SecondaryResourceForProcessingObjectName</Property>
-                  <Property Name="ObjectListName">SecondaryResourceForProcessingObjectListName</Property>
+                  <Property Name="ResourceType">SecondaryResourceForProcessingResourceType</Property>
+                  <Property Name="ResourceName">SecondaryResourceForProcessingResourceName</Property>
+                  <Property Name="ResourceListName">SecondaryResourceForProcessingResourceListName</Property>
                   <Property Name="QuantityType">All</Property>
                   <Property Name="KeepReservedCondition">SecondaryResourceForProcessingKeepReservedCondition</Property>
                   <Property Name="ReservationTimeout">SecondaryResourceForProcessingReservationTimeout</Property>
@@ -2538,9 +2587,9 @@
               <Value>SecondaryResourcesForProcessing</Value>
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">SecondaryResourcesForProcessingObjectType</Property>
-                  <Property Name="ObjectName">SecondaryResourcesForProcessingObjectName</Property>
-                  <Property Name="ObjectListName">SecondaryResourcesForProcessingObjectListName</Property>
+                  <Property Name="ResourceType">SecondaryResourcesForProcessingResourceType</Property>
+                  <Property Name="ResourceName">SecondaryResourcesForProcessingResourceName</Property>
+                  <Property Name="ResourceListName">SecondaryResourcesForProcessingResourceListName</Property>
                   <Property Name="QuantityType">All</Property>
                   <Property Name="KeepReservedCondition">SecondaryResourcesForProcessingKeepReservedCondition</Property>
                   <Property Name="ReservationTimeout">SecondaryResourcesForProcessingReservationTimeout</Property>
@@ -2559,12 +2608,12 @@
               <Value>SecondaryResourceReleasesAfterProcessing</Value>
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">SecondaryResourceReleasesAfterProcessingObjectType</Property>
-                  <Property Name="ObjectName">SecondaryResourceReleasesAfterProcessingObjectName</Property>
-                  <Property Name="ObjectListName">SecondaryResourceReleasesAfterProcessingObjectListName</Property>
-                  <Property Name="QuantityType">SecondaryResourceReleasesAfterProcessingReleaseQuantityType</Property>
-                  <Property Name="NumberOfObjects">SecondaryResourceReleasesAfterProcessingNumberOfObjects</Property>
-                  <Property Name="UnitsPerObject">SecondaryResourceReleasesAfterProcessingUnitsPerObject</Property>
+                  <Property Name="ResourceType">SecondaryResourceReleasesAfterProcessingResourceType</Property>
+                  <Property Name="ResourceName">SecondaryResourceReleasesAfterProcessingResourceName</Property>
+                  <Property Name="ResourceListName">SecondaryResourceReleasesAfterProcessingResourceListName</Property>
+                  <Property Name="QuantityType">SecondaryResourceReleasesAfterProcessingQuantityType</Property>
+                  <Property Name="NumberOfResources">SecondaryResourceReleasesAfterProcessingNumberOfResources</Property>
+                  <Property Name="UnitsPerResource">SecondaryResourceReleasesAfterProcessingUnitsPerResource</Property>
                   <Property Name="ReleaseOrder">SecondaryResourceReleasesAfterProcessingReleaseOrder</Property>
                   <Property Name="SelectionCondition">SecondaryResourceReleasesAfterProcessingSelectionCondition</Property>
                   <Property Name="KeepReservedCondition">SecondaryResourceReleasesAfterProcessingKeepReservedCondition</Property>
@@ -2770,7 +2819,7 @@
             <Property Name="ResourceReleases">
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">ParentObject</Property>
+                  <Property Name="ResourceType">ParentObject</Property>
                   <Property Name="QuantityType">All</Property>
                 </Properties>
               </Rows>
@@ -3045,7 +3094,7 @@
             <Property Name="ResourceReleases">
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">ParentObject</Property>
+                  <Property Name="ResourceType">ParentObject</Property>
                   <Property Name="QuantityType">All</Property>
                 </Properties>
               </Rows>
@@ -3259,7 +3308,7 @@
                     <Value>ProcessingTaskToken.ExpectedSetupTime</Value>
                   </Property>
                   <Property Name="AssignmentsNewValue">ProcessingTasks.TaskChangeoverLogicName.ExpectedSetupTime(ParentObject, Entity)</Property>
-                  <Property Name="AssignmentsSkipAssignmentCondition">(ProcessingTasks.TaskProcessType!=Enum.TaskProcessType.SequenceDependentSetup)||(ProcessingTasks.TaskChangeoverLogicName.HasValue==False)||((Math.If(ProcessingTaskResourcesReferencedTableName.HasValue, ProcessingTaskResourcesReferencedTableName.AvailableRowCount&gt;0, ProcessingTasks.TaskResourceRequirementsObjectName.HasValue||ProcessingTasks.TaskResourceRequirementsObjectListName.HasValue)==False)&amp;&amp;(Math.If(ProcessingTaskMaterialsReferencedTableName.HasValue, ProcessingTaskMaterialsReferencedTableName.AvailableRowCount&gt;0, (ProcessingTasks.TaskMaterialRequirementsActionType==Enum.MaterialActionType.Consume)&amp;&amp;ProcessingTasks.TaskMaterialRequirementsMaterialName.HasValue)==False))</Property>
+                  <Property Name="AssignmentsSkipAssignmentCondition">(ProcessingTasks.TaskProcessType!=Enum.TaskProcessType.SequenceDependentSetup)||(ProcessingTasks.TaskChangeoverLogicName.HasValue==False)||((Math.If(ProcessingTaskResourcesReferencedTableName.HasValue, ProcessingTaskResourcesReferencedTableName.AvailableRowCount&gt;0, ProcessingTasks.TaskResourceRequirementsResourceName.HasValue||ProcessingTasks.TaskResourceRequirementsResourceListName.HasValue)==False)&amp;&amp;(Math.If(ProcessingTaskMaterialsReferencedTableName.HasValue, ProcessingTaskMaterialsReferencedTableName.AvailableRowCount&gt;0, (ProcessingTasks.TaskMaterialRequirementsActionType==Enum.MaterialActionType.Consume)&amp;&amp;ProcessingTasks.TaskMaterialRequirementsMaterialName.HasValue)==False))</Property>
                 </Properties>
               </Rows>
             </Property>
@@ -3297,11 +3346,11 @@
               <Value>ProcessingTaskResourcesReferencedTableName</Value>
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">ProcessingTasks.TaskResourceRequirementsObjectType</Property>
-                  <Property Name="ObjectName">ProcessingTasks.TaskResourceRequirementsObjectName</Property>
-                  <Property Name="ObjectListName">ProcessingTasks.TaskResourceRequirementsObjectListName</Property>
-                  <Property Name="NumberOfObjects">ProcessingTasks.TaskResourceRequirementsNumberOfObjects</Property>
-                  <Property Name="UnitsPerObject">ProcessingTasks.TaskResourceRequirementsUnitsPerObject</Property>
+                  <Property Name="ResourceType">ProcessingTasks.TaskResourceRequirementsResourceType</Property>
+                  <Property Name="ResourceName">ProcessingTasks.TaskResourceRequirementsResourceName</Property>
+                  <Property Name="ResourceListName">ProcessingTasks.TaskResourceRequirementsResourceListName</Property>
+                  <Property Name="NumberOfResources">ProcessingTasks.TaskResourceRequirementsNumberOfResources</Property>
+                  <Property Name="UnitsPerResource">ProcessingTasks.TaskResourceRequirementsUnitsPerResource</Property>
                   <Property Name="SelectionGoal">ProcessingTasks.TaskResourceRequirementsSelectionGoal</Property>
                   <Property Name="SelectionValueExpression">ProcessingTasks.TaskResourceRequirementsSelectionValueExpression</Property>
                   <Property Name="SelectionCondition">ProcessingTasks.TaskResourceRequirementsSelectionCondition</Property>
@@ -3527,9 +3576,9 @@
               <Value>ProcessingTaskResourcesReferencedTableName</Value>
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">ProcessingTasks.TaskResourceRequirementsObjectType</Property>
-                  <Property Name="ObjectName">ProcessingTasks.TaskResourceRequirementsObjectName</Property>
-                  <Property Name="ObjectListName">ProcessingTasks.TaskResourceRequirementsObjectListName</Property>
+                  <Property Name="ResourceType">ProcessingTasks.TaskResourceRequirementsResourceType</Property>
+                  <Property Name="ResourceName">ProcessingTasks.TaskResourceRequirementsResourceName</Property>
+                  <Property Name="ResourceListName">ProcessingTasks.TaskResourceRequirementsResourceListName</Property>
                   <Property Name="QuantityType">All</Property>
                   <Property Name="KeepReservedCondition">ProcessingTasks.TaskResourceRequirementsKeepReservedCondition</Property>
                   <Property Name="ReservationTimeout">ProcessingTasks.TaskResourceRequirementsReservationTimeout</Property>
@@ -3671,7 +3720,7 @@
             <Property Name="ResourceReleases">
               <Rows>
                 <Properties>
-                  <Property Name="ObjectName">OffShiftRuleToken.Resource</Property>
+                  <Property Name="ResourceName">OffShiftRuleToken.Resource</Property>
                   <Property Name="QuantityType">All</Property>
                 </Properties>
               </Rows>
@@ -3691,12 +3740,12 @@
             <Property Name="ResourceSeizes">
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">SecondaryResourceForProcessingObjectType</Property>
-                  <Property Name="ObjectName">SecondaryResourceForProcessingObjectName</Property>
-                  <Property Name="ObjectListName">SecondaryResourceForProcessingObjectListName</Property>
+                  <Property Name="ResourceType">SecondaryResourceForProcessingResourceType</Property>
+                  <Property Name="ResourceName">SecondaryResourceForProcessingResourceName</Property>
+                  <Property Name="ResourceListName">SecondaryResourceForProcessingResourceListName</Property>
                   <Property Name="QuantityType">Deficient</Property>
-                  <Property Name="NumberOfObjects">SecondaryResourceForProcessingNumberOfObjects</Property>
-                  <Property Name="UnitsPerObject">SecondaryResourceForProcessingUnitsPerObject</Property>
+                  <Property Name="NumberOfResources">SecondaryResourceForProcessingNumberOfResources</Property>
+                  <Property Name="UnitsPerResource">SecondaryResourceForProcessingUnitsPerResource</Property>
                   <Property Name="SelectionGoal">SecondaryResourceForProcessingSelectionGoal</Property>
                   <Property Name="SelectionValueExpression">SecondaryResourceForProcessingSelectionValueExpression</Property>
                   <Property Name="SelectionCondition">SecondaryResourceForProcessingSelectionCondition</Property>
@@ -3728,12 +3777,12 @@
               <Value>SecondaryResourcesForProcessing</Value>
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">SecondaryResourcesForProcessingObjectType</Property>
-                  <Property Name="ObjectName">SecondaryResourcesForProcessingObjectName</Property>
-                  <Property Name="ObjectListName">SecondaryResourcesForProcessingObjectListName</Property>
+                  <Property Name="ResourceType">SecondaryResourcesForProcessingResourceType</Property>
+                  <Property Name="ResourceName">SecondaryResourcesForProcessingResourceName</Property>
+                  <Property Name="ResourceListName">SecondaryResourcesForProcessingResourceListName</Property>
                   <Property Name="QuantityType">Deficient</Property>
-                  <Property Name="NumberOfObjects">SecondaryResourcesForProcessingNumberOfObjects</Property>
-                  <Property Name="UnitsPerObject">SecondaryResourcesForProcessingUnitsPerObject</Property>
+                  <Property Name="NumberOfResources">SecondaryResourcesForProcessingNumberOfResources</Property>
+                  <Property Name="UnitsPerResource">SecondaryResourcesForProcessingUnitsPerResource</Property>
                   <Property Name="SelectionGoal">SecondaryResourcesForProcessingSelectionGoal</Property>
                   <Property Name="SelectionValueExpression">SecondaryResourcesForProcessingSelectionValueExpression</Property>
                   <Property Name="SelectionCondition">SecondaryResourcesForProcessingSelectionCondition</Property>
@@ -3764,7 +3813,7 @@
             <Property Name="ResourceReleases">
               <Rows>
                 <Properties>
-                  <Property Name="ObjectName">OffShiftRuleToken.Resource</Property>
+                  <Property Name="ResourceName">OffShiftRuleToken.Resource</Property>
                   <Property Name="QuantityType">All</Property>
                 </Properties>
               </Rows>
@@ -3785,12 +3834,12 @@
               <Value>ProcessingTaskResourcesReferencedTableName</Value>
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">ProcessingTasks.TaskResourceRequirementsObjectType</Property>
-                  <Property Name="ObjectName">ProcessingTasks.TaskResourceRequirementsObjectName</Property>
-                  <Property Name="ObjectListName">ProcessingTasks.TaskResourceRequirementsObjectListName</Property>
+                  <Property Name="ResourceType">ProcessingTasks.TaskResourceRequirementsResourceType</Property>
+                  <Property Name="ResourceName">ProcessingTasks.TaskResourceRequirementsResourceName</Property>
+                  <Property Name="ResourceListName">ProcessingTasks.TaskResourceRequirementsResourceListName</Property>
                   <Property Name="QuantityType">Deficient</Property>
-                  <Property Name="NumberOfObjects">ProcessingTasks.TaskResourceRequirementsNumberOfObjects</Property>
-                  <Property Name="UnitsPerObject">ProcessingTasks.TaskResourceRequirementsUnitsPerObject</Property>
+                  <Property Name="NumberOfResources">ProcessingTasks.TaskResourceRequirementsNumberOfResources</Property>
+                  <Property Name="UnitsPerResource">ProcessingTasks.TaskResourceRequirementsUnitsPerResource</Property>
                   <Property Name="SelectionGoal">ProcessingTasks.TaskResourceRequirementsSelectionGoal</Property>
                   <Property Name="SelectionValueExpression">ProcessingTasks.TaskResourceRequirementsSelectionValueExpression</Property>
                   <Property Name="SelectionCondition">ProcessingTasks.TaskResourceRequirementsSelectionCondition</Property>
@@ -3821,7 +3870,7 @@
             <Property Name="ResourceMoveRequests">
               <Rows>
                 <Properties>
-                  <Property Name="ObjectName">OffShiftRuleToken.Resource</Property>
+                  <Property Name="ResourceName">OffShiftRuleToken.Resource</Property>
                   <Property Name="DestinationNode">OffShiftRuleToken.DestinationNode</Property>
                   <Property Name="SkipMoveCondition">Math.If(OffShiftRuleToken.Resource.Is.Entity, (OffShiftRuleToken.DestinationNode==Nothing)||(OffShiftRuleToken.Resource.Entity.CurrentNode==OffShiftRuleToken.DestinationNode), True)</Property>
                 </Properties>
@@ -3945,8 +3994,8 @@
           <SymbolInstance Center="0 0 0" ExternallyVisible="True">
             <SymbolRef Id="[UseExternalSymbol]" />
             <Decorations>
-              <Decoration SurfacePath="0,0" SurfaceId="0">
-                <MaterialRef Id="463e9fdd-68e0-4da4-98e8-146742281824" />
+              <Decoration SurfacePath="0,0" SurfaceId="0" DynamicPath="True">
+                <MaterialRef Id="012a5d26-cff8-4c8b-b9d4-788b47e57f01" />
               </Decoration>
             </Decorations>
           </SymbolInstance>
@@ -3955,8 +4004,8 @@
           <SymbolInstance Center="0 0 0" ExternallyVisible="True">
             <SymbolRef Id="[UseExternalSymbol]" />
             <Decorations>
-              <Decoration SurfacePath="0,0" SurfaceId="0">
-                <MaterialRef Id="8bdb23f9-45fc-4f83-b944-9655aacd7eff" />
+              <Decoration SurfacePath="0,0" SurfaceId="0" DynamicPath="True">
+                <MaterialRef Id="3dad5488-f077-469b-a196-6f095436148d" />
               </Decoration>
             </Decorations>
           </SymbolInstance>
@@ -3965,8 +4014,8 @@
           <SymbolInstance Center="0 0 0" ExternallyVisible="True">
             <SymbolRef Id="[UseExternalSymbol]" />
             <Decorations>
-              <Decoration SurfacePath="0,0" SurfaceId="0">
-                <MaterialRef Id="714c6b0d-1157-4a26-a517-107731e3a56b" />
+              <Decoration SurfacePath="0,0" SurfaceId="0" DynamicPath="True">
+                <MaterialRef Id="c23f657a-9f8c-4bba-a408-769c89191f2c" />
               </Decoration>
             </Decorations>
           </SymbolInstance>
@@ -3975,8 +4024,8 @@
           <SymbolInstance Center="0 0 0" ExternallyVisible="True">
             <SymbolRef Id="[UseExternalSymbol]" />
             <Decorations>
-              <Decoration SurfacePath="0,0" SurfaceId="0">
-                <MaterialRef Id="fb845f45-940c-45ca-9fbf-ec04b3091d6b" />
+              <Decoration SurfacePath="0,0" SurfaceId="0" DynamicPath="True">
+                <MaterialRef Id="93b09560-4a70-4a87-86f3-dbff9b584491" />
               </Decoration>
             </Decorations>
           </SymbolInstance>
@@ -3985,8 +4034,8 @@
           <SymbolInstance Center="0 0 0" ExternallyVisible="True">
             <SymbolRef Id="[UseExternalSymbol]" />
             <Decorations>
-              <Decoration SurfacePath="0,0" SurfaceId="0">
-                <MaterialRef Id="2514dd76-8516-4121-b5d2-38fc46c36c0d" />
+              <Decoration SurfacePath="0,0" SurfaceId="0" DynamicPath="True">
+                <MaterialRef Id="71c3694b-6d09-4600-9843-52c395a35e83" />
               </Decoration>
             </Decorations>
           </SymbolInstance>
@@ -3995,8 +4044,8 @@
           <SymbolInstance Center="0 0 0" ExternallyVisible="True">
             <SymbolRef Id="[UseExternalSymbol]" />
             <Decorations>
-              <Decoration SurfacePath="0,0" SurfaceId="0">
-                <MaterialRef Id="72b7d298-a5e0-4102-8020-49e0af6eed0c" />
+              <Decoration SurfacePath="0,0" SurfaceId="0" DynamicPath="True">
+                <MaterialRef Id="2483cc15-536c-4a75-87b8-e7a86ed38393" />
               </Decoration>
             </Decorations>
           </SymbolInstance>
@@ -4005,8 +4054,8 @@
           <SymbolInstance Center="0 0 0" ExternallyVisible="True">
             <SymbolRef Id="[UseExternalSymbol]" />
             <Decorations>
-              <Decoration SurfacePath="0,0" SurfaceId="0">
-                <MaterialRef Id="4fa5192b-c85d-4fd0-8e35-ba4e0d2212d8" />
+              <Decoration SurfacePath="0,0" SurfaceId="0" DynamicPath="True">
+                <MaterialRef Id="c592ef68-c9b2-4498-a88a-6f267e1cb1d8" />
               </Decoration>
             </Decorations>
           </SymbolInstance>
@@ -4015,8 +4064,8 @@
           <SymbolInstance Center="0 0 0" ExternallyVisible="True">
             <SymbolRef Id="[UseExternalSymbol]" />
             <Decorations>
-              <Decoration SurfacePath="0,0" SurfaceId="0">
-                <MaterialRef Id="0a81d99a-84e0-41b9-98a3-ebeee98451a4" />
+              <Decoration SurfacePath="0,0" SurfaceId="0" DynamicPath="True">
+                <MaterialRef Id="8bcd44f5-18a6-482e-8bee-9b34e233f981" />
               </Decoration>
             </Decorations>
           </SymbolInstance>
@@ -4044,4 +4093,4 @@
     </Graphics>
   </Dashboard>
 </Fragment>
-<!-- NIDqpk2BXRsHX+k4ovswAkd574SQc/dR8qGZXyKlCjcnrINcUf4FfU+FjIQVIpFZeaOJoLDTIvynq5Y9fKDWSA== -->
+<!-- awFGuG2uvyF/CI+AJzbR87ABh49nIDuZmFHWF06UHh7RbqhF6vWZqY4NQxXGU6aSWzYy7czD4UdSIZr6K5J9DQ== -->

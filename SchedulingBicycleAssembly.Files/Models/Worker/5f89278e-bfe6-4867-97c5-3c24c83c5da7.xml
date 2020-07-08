@@ -972,7 +972,7 @@ The resource's capacity will be automatically adjusted to the maximum allowable 
             <Property Name="ResourceReleases">
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">ParentObject</Property>
+                  <Property Name="ResourceType">ParentObject</Property>
                   <Property Name="QuantityType">All</Property>
                 </Properties>
               </Rows>
@@ -1106,7 +1106,7 @@ The resource's capacity will be automatically adjusted to the maximum allowable 
             <Property Name="ResourceReleases">
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">ParentObject</Property>
+                  <Property Name="ResourceType">ParentObject</Property>
                   <Property Name="QuantityType">All</Property>
                 </Properties>
               </Rows>
@@ -1639,7 +1639,7 @@ The resource's capacity will be automatically adjusted to the maximum allowable 
             <Property Name="ResourceSeizes">
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">ParentObject</Property>
+                  <Property Name="ResourceType">ParentObject</Property>
                   <Property Name="SelectionGoal"></Property>
                   <Property Name="SelectionValueExpression"></Property>
                   <Property Name="RecordResourceCost">False</Property>
@@ -1752,7 +1752,7 @@ The resource's capacity will be automatically adjusted to the maximum allowable 
             <Property Name="ResourceSeizes">
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">ParentObject</Property>
+                  <Property Name="ResourceType">ParentObject</Property>
                   <Property Name="SelectionGoal"></Property>
                   <Property Name="SelectionValueExpression"></Property>
                   <Property Name="RecordResourceCost">False</Property>
@@ -2065,4 +2065,4 @@ The resource's capacity will be automatically adjusted to the maximum allowable 
     <AnimationSetup MinimumNumberOfFramesToDisplayIdleAnimation="10" />
   </Graphics>
 </Fragment>
-<!-- NeayJUjl+OlKfz9tJO95jz21ZgvDTdWscLR5qoEakSUI8QamnoHxYBHd+9qo2qShXgTK7VQ74rwh95tNisxqeA== -->
+<!-- pQHr3ACpbxve05hOSm7nZr+Z5poMdkRQchiDTt7a17CxrUc+ibsnx6frlGw3dTFutYKHN9oj0MuUY3uTOkKfBA== -->

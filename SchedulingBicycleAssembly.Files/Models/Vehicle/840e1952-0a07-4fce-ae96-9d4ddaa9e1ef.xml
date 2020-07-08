@@ -430,7 +430,7 @@
             <Property Name="ResourceSeizes">
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">ParentObject</Property>
+                  <Property Name="ResourceType">ParentObject</Property>
                   <Property Name="SelectionGoal"></Property>
                   <Property Name="SelectionValueExpression"></Property>
                   <Property Name="RecordResourceCost">False</Property>
@@ -1078,7 +1078,7 @@ The resource's capacity will be automatically adjusted to the maximum allowable 
             <Property Name="ResourceSeizes">
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">ParentObject</Property>
+                  <Property Name="ResourceType">ParentObject</Property>
                   <Property Name="MovePriority">False</Property>
                   <Property Name="SkipSeizeCondition">Capacity.Allocated&gt;0</Property>
                 </Properties>
@@ -1093,8 +1093,8 @@ The resource's capacity will be automatically adjusted to the maximum allowable 
             <Property Name="ResourceReleases">
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">ParentObject</Property>
-                  <Property Name="UnitsPerObject">(VisitRequestQueue.NumberWaiting==0)&amp;&amp;(NumberRiders.Loading==0)&amp;&amp;(RideStation.Contents==0)</Property>
+                  <Property Name="ResourceType">ParentObject</Property>
+                  <Property Name="UnitsPerResource">(VisitRequestQueue.NumberWaiting==0)&amp;&amp;(NumberRiders.Loading==0)&amp;&amp;(RideStation.Contents==0)</Property>
                 </Properties>
               </Rows>
             </Property>
@@ -1206,7 +1206,7 @@ The resource's capacity will be automatically adjusted to the maximum allowable 
             <Property Name="ResourceReleases">
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">ParentObject</Property>
+                  <Property Name="ResourceType">ParentObject</Property>
                   <Property Name="QuantityType">All</Property>
                 </Properties>
               </Rows>
@@ -1355,7 +1355,7 @@ The resource's capacity will be automatically adjusted to the maximum allowable 
             <Property Name="ResourceReleases">
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">ParentObject</Property>
+                  <Property Name="ResourceType">ParentObject</Property>
                   <Property Name="QuantityType">All</Property>
                 </Properties>
               </Rows>
@@ -1585,8 +1585,8 @@ The resource's capacity will be automatically adjusted to the maximum allowable 
             <Property Name="ResourceReleases">
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">ParentObject</Property>
-                  <Property Name="UnitsPerObject">(ResourceState==List.ResourceStateName.OffShiftTransporting)&amp;&amp;(RideStation.Contents==0)</Property>
+                  <Property Name="ResourceType">ParentObject</Property>
+                  <Property Name="UnitsPerResource">(ResourceState==List.ResourceStateName.OffShiftTransporting)&amp;&amp;(RideStation.Contents==0)</Property>
                 </Properties>
               </Rows>
             </Property>
@@ -1929,7 +1929,7 @@ The resource's capacity will be automatically adjusted to the maximum allowable 
             <Property Name="ResourceSeizes">
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">ParentObject</Property>
+                  <Property Name="ResourceType">ParentObject</Property>
                   <Property Name="SelectionGoal"></Property>
                   <Property Name="SelectionValueExpression"></Property>
                   <Property Name="RecordResourceCost">False</Property>
@@ -2042,7 +2042,7 @@ The resource's capacity will be automatically adjusted to the maximum allowable 
             <Property Name="ResourceSeizes">
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">ParentObject</Property>
+                  <Property Name="ResourceType">ParentObject</Property>
                   <Property Name="SelectionGoal"></Property>
                   <Property Name="SelectionValueExpression"></Property>
                   <Property Name="RecordResourceCost">False</Property>
@@ -2194,7 +2194,7 @@ The resource's capacity will be automatically adjusted to the maximum allowable 
             <Property Name="ResourceSeizes">
               <Rows>
                 <Properties>
-                  <Property Name="ObjectType">ParentObject</Property>
+                  <Property Name="ResourceType">ParentObject</Property>
                   <Property Name="SelectionGoal"></Property>
                   <Property Name="SelectionValueExpression"></Property>
                   <Property Name="RecordResourceCost">False</Property>
@@ -2600,4 +2600,4 @@ The resource's capacity will be automatically adjusted to the maximum allowable 
     <AnimationSetup MinimumNumberOfFramesToDisplayIdleAnimation="10" />
   </Graphics>
 </Fragment>
-<!-- OUnxHJOiZxcUJPREKrIjroP0FTr6ufTLiby1fHhvxGiAoK7/tC8smHLGKfDDriWBSGvdZonS5LbR8T5LGL0swA== -->
+<!-- cKN7i5uNjyak21NaemEY7hF5PMhy7XKCshsbFa4mPa74J5yS9SUrekCRic9SMJlV/+H4AcnaZlhIvu2Ve4g6Aw== -->

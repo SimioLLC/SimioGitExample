@@ -1098,7 +1098,7 @@
             <Property Name="ResourceReleases">
               <Rows>
                 <Properties>
-                  <Property Name="ObjectName">MaterialAssembly</Property>
+                  <Property Name="ResourceName">MaterialAssembly</Property>
                 </Properties>
               </Rows>
             </Property>
@@ -2696,6 +2696,9 @@
           </Rows>
         </Property>
         <Property Name="SecondaryResourcesForProcessingIsRepeatGroup">False</Property>
+        <Property Name="SecondaryResourceForProcessingResourceType">Select From List</Property>
+        <Property Name="SecondaryResourceForProcessingResourceName">Resources.SecondaryResourceName</Property>
+        <Property Name="SecondaryResourceForProcessingResourceListName">ResourcesSecondaryWorkers.Workers</Property>
         <Property Name="SecondaryResourcesForProcessingOffShiftRule">Finish Work Already Started</Property>
         <Property Name="SecondaryResourcesForProcessingImmediatelyTrySeize">True</Property>
         <Property Name="SecondaryResourcesForProcessingImmediatelyTryAllocateWhenReleased">True</Property>
@@ -2934,6 +2937,9 @@
           </Rows>
         </Property>
         <Property Name="SecondaryResourcesForProcessingIsRepeatGroup">False</Property>
+        <Property Name="SecondaryResourceForProcessingResourceType">Select From List</Property>
+        <Property Name="SecondaryResourceForProcessingResourceName">Resources.SecondaryResourceName</Property>
+        <Property Name="SecondaryResourceForProcessingResourceListName">ResourcesSecondaryWorkers.Workers</Property>
         <Property Name="SecondaryResourcesForProcessingOffShiftRule">Finish Work Already Started</Property>
         <Property Name="SecondaryResourcesForProcessingImmediatelyTrySeize">True</Property>
         <Property Name="SecondaryResourcesForProcessingImmediatelyTryAllocateWhenReleased">True</Property>
@@ -3172,6 +3178,9 @@
           </Rows>
         </Property>
         <Property Name="SecondaryResourcesForProcessingIsRepeatGroup">False</Property>
+        <Property Name="SecondaryResourceForProcessingResourceType">Select From List</Property>
+        <Property Name="SecondaryResourceForProcessingResourceName">Resources.SecondaryResourceName</Property>
+        <Property Name="SecondaryResourceForProcessingResourceListName">ResourcesSecondaryWorkers.Workers</Property>
         <Property Name="SecondaryResourcesForProcessingOffShiftRule">Finish Work Already Started</Property>
         <Property Name="SecondaryResourcesForProcessingImmediatelyTrySeize">True</Property>
         <Property Name="SecondaryResourcesForProcessingImmediatelyTryAllocateWhenReleased">True</Property>
@@ -3410,6 +3419,9 @@
           </Rows>
         </Property>
         <Property Name="SecondaryResourcesForProcessingIsRepeatGroup">False</Property>
+        <Property Name="SecondaryResourceForProcessingResourceType">Select From List</Property>
+        <Property Name="SecondaryResourceForProcessingResourceName">Resources.SecondaryResourceName</Property>
+        <Property Name="SecondaryResourceForProcessingResourceListName">ResourcesSecondaryWorkers.Workers</Property>
         <Property Name="SecondaryResourcesForProcessingOffShiftRule">Finish Work Already Started</Property>
         <Property Name="SecondaryResourcesForProcessingImmediatelyTrySeize">True</Property>
         <Property Name="SecondaryResourcesForProcessingImmediatelyTryAllocateWhenReleased">True</Property>
@@ -3648,6 +3660,9 @@
           </Rows>
         </Property>
         <Property Name="SecondaryResourcesForProcessingIsRepeatGroup">False</Property>
+        <Property Name="SecondaryResourceForProcessingResourceType">Select From List</Property>
+        <Property Name="SecondaryResourceForProcessingResourceName">Resources.SecondaryResourceName</Property>
+        <Property Name="SecondaryResourceForProcessingResourceListName">ResourcesSecondaryWorkers.Workers</Property>
         <Property Name="SecondaryResourcesForProcessingOffShiftRule">Finish Work Already Started</Property>
         <Property Name="SecondaryResourcesForProcessingImmediatelyTrySeize">True</Property>
         <Property Name="SecondaryResourcesForProcessingImmediatelyTryAllocateWhenReleased">True</Property>
@@ -3886,6 +3901,9 @@
           </Rows>
         </Property>
         <Property Name="SecondaryResourcesForProcessingIsRepeatGroup">False</Property>
+        <Property Name="SecondaryResourceForProcessingResourceType">Select From List</Property>
+        <Property Name="SecondaryResourceForProcessingResourceName">Resources.SecondaryResourceName</Property>
+        <Property Name="SecondaryResourceForProcessingResourceListName">ResourcesSecondaryWorkers.Workers</Property>
         <Property Name="SecondaryResourcesForProcessingOffShiftRule">Finish Work Already Started</Property>
         <Property Name="SecondaryResourcesForProcessingImmediatelyTrySeize">True</Property>
         <Property Name="SecondaryResourcesForProcessingImmediatelyTryAllocateWhenReleased">True</Property>
@@ -4124,6 +4142,9 @@
           </Rows>
         </Property>
         <Property Name="SecondaryResourcesForProcessingIsRepeatGroup">False</Property>
+        <Property Name="SecondaryResourceForProcessingResourceType">Select From List</Property>
+        <Property Name="SecondaryResourceForProcessingResourceName">Resources.SecondaryResourceName</Property>
+        <Property Name="SecondaryResourceForProcessingResourceListName">ResourcesSecondaryWorkers.Workers</Property>
         <Property Name="SecondaryResourcesForProcessingOffShiftRule">Finish Work Already Started</Property>
         <Property Name="SecondaryResourcesForProcessingImmediatelyTrySeize">True</Property>
         <Property Name="SecondaryResourcesForProcessingImmediatelyTryAllocateWhenReleased">True</Property>
@@ -4362,6 +4383,9 @@
           </Rows>
         </Property>
         <Property Name="SecondaryResourcesForProcessingIsRepeatGroup">False</Property>
+        <Property Name="SecondaryResourceForProcessingResourceType">Select From List</Property>
+        <Property Name="SecondaryResourceForProcessingResourceName">Resources.SecondaryResourceName</Property>
+        <Property Name="SecondaryResourceForProcessingResourceListName">ResourcesSecondaryWorkers.Workers</Property>
         <Property Name="SecondaryResourcesForProcessingOffShiftRule">Finish Work Already Started</Property>
         <Property Name="SecondaryResourcesForProcessingImmediatelyTrySeize">True</Property>
         <Property Name="SecondaryResourcesForProcessingImmediatelyTryAllocateWhenReleased">True</Property>
@@ -4600,6 +4624,9 @@
           </Rows>
         </Property>
         <Property Name="SecondaryResourcesForProcessingIsRepeatGroup">False</Property>
+        <Property Name="SecondaryResourceForProcessingResourceType">Select From List</Property>
+        <Property Name="SecondaryResourceForProcessingResourceName">Resources.SecondaryResourceName</Property>
+        <Property Name="SecondaryResourceForProcessingResourceListName">ResourcesSecondaryWorkers.Workers</Property>
         <Property Name="SecondaryResourcesForProcessingOffShiftRule">Finish Work Already Started</Property>
         <Property Name="SecondaryResourcesForProcessingImmediatelyTrySeize">True</Property>
         <Property Name="SecondaryResourcesForProcessingImmediatelyTryAllocateWhenReleased">True</Property>
@@ -4838,6 +4865,9 @@
           </Rows>
         </Property>
         <Property Name="SecondaryResourcesForProcessingIsRepeatGroup">False</Property>
+        <Property Name="SecondaryResourceForProcessingResourceType">Select From List</Property>
+        <Property Name="SecondaryResourceForProcessingResourceName">Resources.SecondaryResourceName</Property>
+        <Property Name="SecondaryResourceForProcessingResourceListName">ResourcesSecondaryWorkers.Workers</Property>
         <Property Name="SecondaryResourcesForProcessingOffShiftRule">Finish Work Already Started</Property>
         <Property Name="SecondaryResourcesForProcessingImmediatelyTrySeize">True</Property>
         <Property Name="SecondaryResourcesForProcessingImmediatelyTryAllocateWhenReleased">True</Property>
@@ -4980,9 +5010,9 @@
               <Property Name="TaskBranchType">Conditional</Property>
               <Property Name="TaskConditionOrProbability">Assemblers1stShift.Population.NumberInSystem &lt;= 8</Property>
               <Property Name="TaskProcessingTime">Random.Triangular(.8, 1, 1.2) * Routings.ProcessTime</Property>
-              <Property Name="TaskResourceRequirementsObjectType">Select From List</Property>
-              <Property Name="TaskResourceRequirementsObjectName">Resources.SecondaryResourceName</Property>
-              <Property Name="TaskResourceRequirementsObjectListName">ResourcesSecondaryWorkers.Workers</Property>
+              <Property Name="TaskResourceRequirementsResourceType">Select From List</Property>
+              <Property Name="TaskResourceRequirementsResourceName">Resources.SecondaryResourceName</Property>
+              <Property Name="TaskResourceRequirementsResourceListName">ResourcesSecondaryWorkers.Workers</Property>
               <Property Name="TaskResourceRequirementsRequestMove">To Node</Property>
               <Property Name="TaskResourceRequirementsDestinationNode">Server.Input</Property>
               <Property Name="TaskResourceRequirementsOffShiftRule">Finish Work Already Started</Property>
@@ -4998,13 +5028,13 @@
               <Property Name="TaskBranchType">Conditional</Property>
               <Property Name="TaskConditionOrProbability">Assemblers1stShift.Population.NumberInSystem &gt; 8</Property>
               <Property Name="TaskProcessingTime">Random.Triangular(.4, .5, .6) * Routings.ProcessTime</Property>
-              <Property Name="TaskResourceRequirementsObjectType">Select From List</Property>
-              <Property Name="TaskResourceRequirementsObjectName">Resources.SecondaryResourceName</Property>
-              <Property Name="TaskResourceRequirementsObjectListName">ResourcesSecondaryWorkers.Workers</Property>
+              <Property Name="TaskResourceRequirementsResourceType">Select From List</Property>
+              <Property Name="TaskResourceRequirementsResourceName">Resources.SecondaryResourceName</Property>
+              <Property Name="TaskResourceRequirementsResourceListName">ResourcesSecondaryWorkers.Workers</Property>
               <Property Name="TaskResourceRequirementsRequestMove">To Node</Property>
               <Property Name="TaskResourceRequirementsDestinationNode">Server.Input</Property>
               <Property Name="TaskResourceRequirementsOffShiftRule">Finish Work Already Started</Property>
-              <Property Name="TaskResourceRequirementsNumberOfObjects">2</Property>
+              <Property Name="TaskResourceRequirementsNumberOfResources">2</Property>
               <Property Name="TaskResourceRequirementsMustSimultaneouslySeize">True</Property>
               <Property Name="TaskResourceRequirementsImmediatelyTrySeize">True</Property>
               <Property Name="TaskResourceRequirementsImmediatelyTryAllocateWhenReleased">True</Property>
@@ -5210,9 +5240,9 @@
               <Property Name="TaskBranchType">Conditional</Property>
               <Property Name="TaskConditionOrProbability">Assemblers1stShift.Population.NumberInSystem &lt;= 8</Property>
               <Property Name="TaskProcessingTime">Random.Triangular(.8, 1, 1.2) * Routings.ProcessTime</Property>
-              <Property Name="TaskResourceRequirementsObjectType">Select From List</Property>
-              <Property Name="TaskResourceRequirementsObjectName">Resources.SecondaryResourceName</Property>
-              <Property Name="TaskResourceRequirementsObjectListName">ResourcesSecondaryWorkers.Workers</Property>
+              <Property Name="TaskResourceRequirementsResourceType">Select From List</Property>
+              <Property Name="TaskResourceRequirementsResourceName">Resources.SecondaryResourceName</Property>
+              <Property Name="TaskResourceRequirementsResourceListName">ResourcesSecondaryWorkers.Workers</Property>
               <Property Name="TaskResourceRequirementsRequestMove">To Node</Property>
               <Property Name="TaskResourceRequirementsDestinationNode">Server.Input</Property>
               <Property Name="TaskResourceRequirementsOffShiftRule">Finish Work Already Started</Property>
@@ -5228,13 +5258,13 @@
               <Property Name="TaskBranchType">Conditional</Property>
               <Property Name="TaskConditionOrProbability">Assemblers1stShift.Population.NumberInSystem &gt; 8</Property>
               <Property Name="TaskProcessingTime">Random.Triangular(.4, .5, .6) * Routings.ProcessTime</Property>
-              <Property Name="TaskResourceRequirementsObjectType">Select From List</Property>
-              <Property Name="TaskResourceRequirementsObjectName">Resources.SecondaryResourceName</Property>
-              <Property Name="TaskResourceRequirementsObjectListName">ResourcesSecondaryWorkers.Workers</Property>
+              <Property Name="TaskResourceRequirementsResourceType">Select From List</Property>
+              <Property Name="TaskResourceRequirementsResourceName">Resources.SecondaryResourceName</Property>
+              <Property Name="TaskResourceRequirementsResourceListName">ResourcesSecondaryWorkers.Workers</Property>
               <Property Name="TaskResourceRequirementsRequestMove">To Node</Property>
               <Property Name="TaskResourceRequirementsDestinationNode">Server.Input</Property>
               <Property Name="TaskResourceRequirementsOffShiftRule">Finish Work Already Started</Property>
-              <Property Name="TaskResourceRequirementsNumberOfObjects">2</Property>
+              <Property Name="TaskResourceRequirementsNumberOfResources">2</Property>
               <Property Name="TaskResourceRequirementsMustSimultaneouslySeize">True</Property>
               <Property Name="TaskResourceRequirementsImmediatelyTrySeize">True</Property>
               <Property Name="TaskResourceRequirementsImmediatelyTryAllocateWhenReleased">True</Property>
@@ -5441,9 +5471,9 @@
               <Property Name="TaskConditionOrProbability">Assemblers1stShift.Population.NumberInSystem &lt;= 8</Property>
               <Property Name="TaskProcessingTime">Random.Triangular(.8, 1, 1.2) * Routings.ProcessTime</Property>
               <Property Name="TaskAutoCancelTrigger">None</Property>
-              <Property Name="TaskResourceRequirementsObjectType">Select From List</Property>
-              <Property Name="TaskResourceRequirementsObjectName">Resources.SecondaryResourceName</Property>
-              <Property Name="TaskResourceRequirementsObjectListName">ResourcesSecondaryWorkers.Workers</Property>
+              <Property Name="TaskResourceRequirementsResourceType">Select From List</Property>
+              <Property Name="TaskResourceRequirementsResourceName">Resources.SecondaryResourceName</Property>
+              <Property Name="TaskResourceRequirementsResourceListName">ResourcesSecondaryWorkers.Workers</Property>
               <Property Name="TaskResourceRequirementsRequestMove">To Node</Property>
               <Property Name="TaskResourceRequirementsDestinationNode">Server.Input</Property>
               <Property Name="TaskResourceRequirementsOffShiftRule">Finish Work Already Started</Property>
@@ -5460,13 +5490,13 @@
               <Property Name="TaskConditionOrProbability">Assemblers1stShift.Population.NumberInSystem &gt; 8</Property>
               <Property Name="TaskProcessingTime">Random.Triangular(.4, .5, .6) * Routings.ProcessTime</Property>
               <Property Name="TaskAutoCancelTrigger">None</Property>
-              <Property Name="TaskResourceRequirementsObjectType">Select From List</Property>
-              <Property Name="TaskResourceRequirementsObjectName">Resources.SecondaryResourceName</Property>
-              <Property Name="TaskResourceRequirementsObjectListName">ResourcesSecondaryWorkers.Workers</Property>
+              <Property Name="TaskResourceRequirementsResourceType">Select From List</Property>
+              <Property Name="TaskResourceRequirementsResourceName">Resources.SecondaryResourceName</Property>
+              <Property Name="TaskResourceRequirementsResourceListName">ResourcesSecondaryWorkers.Workers</Property>
               <Property Name="TaskResourceRequirementsRequestMove">To Node</Property>
               <Property Name="TaskResourceRequirementsDestinationNode">Server.Input</Property>
               <Property Name="TaskResourceRequirementsOffShiftRule">Finish Work Already Started</Property>
-              <Property Name="TaskResourceRequirementsNumberOfObjects">2</Property>
+              <Property Name="TaskResourceRequirementsNumberOfResources">2</Property>
               <Property Name="TaskResourceRequirementsMustSimultaneouslySeize">True</Property>
               <Property Name="TaskResourceRequirementsImmediatelyTrySeize">True</Property>
               <Property Name="TaskResourceRequirementsImmediatelyTryAllocateWhenReleased">True</Property>
@@ -5673,9 +5703,9 @@
               <Property Name="TaskConditionOrProbability">Assemblers1stShift.Population.NumberInSystem &lt;= 8</Property>
               <Property Name="TaskProcessingTime">Random.Triangular(.8, 1, 1.2) * Routings.ProcessTime</Property>
               <Property Name="TaskAutoCancelTrigger">None</Property>
-              <Property Name="TaskResourceRequirementsObjectType">Select From List</Property>
-              <Property Name="TaskResourceRequirementsObjectName">Resources.SecondaryResourceName</Property>
-              <Property Name="TaskResourceRequirementsObjectListName">ResourcesSecondaryWorkers.Workers</Property>
+              <Property Name="TaskResourceRequirementsResourceType">Select From List</Property>
+              <Property Name="TaskResourceRequirementsResourceName">Resources.SecondaryResourceName</Property>
+              <Property Name="TaskResourceRequirementsResourceListName">ResourcesSecondaryWorkers.Workers</Property>
               <Property Name="TaskResourceRequirementsRequestMove">To Node</Property>
               <Property Name="TaskResourceRequirementsDestinationNode">Server.Input</Property>
               <Property Name="TaskResourceRequirementsOffShiftRule">Finish Work Already Started</Property>
@@ -5692,13 +5722,13 @@
               <Property Name="TaskConditionOrProbability">Assemblers1stShift.Population.NumberInSystem &gt; 8</Property>
               <Property Name="TaskProcessingTime">Random.Triangular(.4, .5, .6) * Routings.ProcessTime</Property>
               <Property Name="TaskAutoCancelTrigger">None</Property>
-              <Property Name="TaskResourceRequirementsObjectType">Select From List</Property>
-              <Property Name="TaskResourceRequirementsObjectName">Resources.SecondaryResourceName</Property>
-              <Property Name="TaskResourceRequirementsObjectListName">ResourcesSecondaryWorkers.Workers</Property>
+              <Property Name="TaskResourceRequirementsResourceType">Select From List</Property>
+              <Property Name="TaskResourceRequirementsResourceName">Resources.SecondaryResourceName</Property>
+              <Property Name="TaskResourceRequirementsResourceListName">ResourcesSecondaryWorkers.Workers</Property>
               <Property Name="TaskResourceRequirementsRequestMove">To Node</Property>
               <Property Name="TaskResourceRequirementsDestinationNode">Server.Input</Property>
               <Property Name="TaskResourceRequirementsOffShiftRule">Finish Work Already Started</Property>
-              <Property Name="TaskResourceRequirementsNumberOfObjects">2</Property>
+              <Property Name="TaskResourceRequirementsNumberOfResources">2</Property>
               <Property Name="TaskResourceRequirementsMustSimultaneouslySeize">True</Property>
               <Property Name="TaskResourceRequirementsImmediatelyTrySeize">True</Property>
               <Property Name="TaskResourceRequirementsImmediatelyTryAllocateWhenReleased">True</Property>
@@ -5905,9 +5935,9 @@
               <Property Name="TaskConditionOrProbability">Assemblers1stShift.Population.NumberInSystem &lt;= 8</Property>
               <Property Name="TaskProcessingTime">Random.Triangular(.8, 1, 1.2) * Routings.ProcessTime</Property>
               <Property Name="TaskAutoCancelTrigger">None</Property>
-              <Property Name="TaskResourceRequirementsObjectType">Select From List</Property>
-              <Property Name="TaskResourceRequirementsObjectName">Resources.SecondaryResourceName</Property>
-              <Property Name="TaskResourceRequirementsObjectListName">ResourcesSecondaryWorkers.Workers</Property>
+              <Property Name="TaskResourceRequirementsResourceType">Select From List</Property>
+              <Property Name="TaskResourceRequirementsResourceName">Resources.SecondaryResourceName</Property>
+              <Property Name="TaskResourceRequirementsResourceListName">ResourcesSecondaryWorkers.Workers</Property>
               <Property Name="TaskResourceRequirementsRequestMove">To Node</Property>
               <Property Name="TaskResourceRequirementsDestinationNode">Server.Input</Property>
               <Property Name="TaskResourceRequirementsOffShiftRule">Finish Work Already Started</Property>
@@ -5924,13 +5954,13 @@
               <Property Name="TaskConditionOrProbability">Assemblers1stShift.Population.NumberInSystem &gt; 8</Property>
               <Property Name="TaskProcessingTime">Random.Triangular(.4, .5, .6) * Routings.ProcessTime</Property>
               <Property Name="TaskAutoCancelTrigger">None</Property>
-              <Property Name="TaskResourceRequirementsObjectType">Select From List</Property>
-              <Property Name="TaskResourceRequirementsObjectName">Resources.SecondaryResourceName</Property>
-              <Property Name="TaskResourceRequirementsObjectListName">ResourcesSecondaryWorkers.Workers</Property>
+              <Property Name="TaskResourceRequirementsResourceType">Select From List</Property>
+              <Property Name="TaskResourceRequirementsResourceName">Resources.SecondaryResourceName</Property>
+              <Property Name="TaskResourceRequirementsResourceListName">ResourcesSecondaryWorkers.Workers</Property>
               <Property Name="TaskResourceRequirementsRequestMove">To Node</Property>
               <Property Name="TaskResourceRequirementsDestinationNode">Server.Input</Property>
               <Property Name="TaskResourceRequirementsOffShiftRule">Finish Work Already Started</Property>
-              <Property Name="TaskResourceRequirementsNumberOfObjects">2</Property>
+              <Property Name="TaskResourceRequirementsNumberOfResources">2</Property>
               <Property Name="TaskResourceRequirementsMustSimultaneouslySeize">True</Property>
               <Property Name="TaskResourceRequirementsImmediatelyTrySeize">True</Property>
               <Property Name="TaskResourceRequirementsImmediatelyTryAllocateWhenReleased">True</Property>
@@ -6137,9 +6167,9 @@
               <Property Name="TaskConditionOrProbability">Assemblers1stShift.Population.NumberInSystem &lt;= 8</Property>
               <Property Name="TaskProcessingTime">Random.Triangular(.8, 1, 1.2) * Routings.ProcessTime</Property>
               <Property Name="TaskAutoCancelTrigger">None</Property>
-              <Property Name="TaskResourceRequirementsObjectType">Select From List</Property>
-              <Property Name="TaskResourceRequirementsObjectName">Resources.SecondaryResourceName</Property>
-              <Property Name="TaskResourceRequirementsObjectListName">ResourcesSecondaryWorkers.Workers</Property>
+              <Property Name="TaskResourceRequirementsResourceType">Select From List</Property>
+              <Property Name="TaskResourceRequirementsResourceName">Resources.SecondaryResourceName</Property>
+              <Property Name="TaskResourceRequirementsResourceListName">ResourcesSecondaryWorkers.Workers</Property>
               <Property Name="TaskResourceRequirementsRequestMove">To Node</Property>
               <Property Name="TaskResourceRequirementsDestinationNode">Server.Input</Property>
               <Property Name="TaskResourceRequirementsOffShiftRule">Finish Work Already Started</Property>
@@ -6156,13 +6186,13 @@
               <Property Name="TaskConditionOrProbability">Assemblers1stShift.Population.NumberInSystem &gt; 8</Property>
               <Property Name="TaskProcessingTime">Random.Triangular(.4, .5, .6) * Routings.ProcessTime</Property>
               <Property Name="TaskAutoCancelTrigger">None</Property>
-              <Property Name="TaskResourceRequirementsObjectType">Select From List</Property>
-              <Property Name="TaskResourceRequirementsObjectName">Resources.SecondaryResourceName</Property>
-              <Property Name="TaskResourceRequirementsObjectListName">ResourcesSecondaryWorkers.Workers</Property>
+              <Property Name="TaskResourceRequirementsResourceType">Select From List</Property>
+              <Property Name="TaskResourceRequirementsResourceName">Resources.SecondaryResourceName</Property>
+              <Property Name="TaskResourceRequirementsResourceListName">ResourcesSecondaryWorkers.Workers</Property>
               <Property Name="TaskResourceRequirementsRequestMove">To Node</Property>
               <Property Name="TaskResourceRequirementsDestinationNode">Server.Input</Property>
               <Property Name="TaskResourceRequirementsOffShiftRule">Finish Work Already Started</Property>
-              <Property Name="TaskResourceRequirementsNumberOfObjects">2</Property>
+              <Property Name="TaskResourceRequirementsNumberOfResources">2</Property>
               <Property Name="TaskResourceRequirementsMustSimultaneouslySeize">True</Property>
               <Property Name="TaskResourceRequirementsImmediatelyTrySeize">True</Property>
               <Property Name="TaskResourceRequirementsImmediatelyTryAllocateWhenReleased">True</Property>
@@ -6369,9 +6399,9 @@
               <Property Name="TaskConditionOrProbability">Assemblers1stShift.Population.NumberInSystem &lt;= 8</Property>
               <Property Name="TaskProcessingTime">Random.Triangular(.8, 1, 1.2) * Routings.ProcessTime</Property>
               <Property Name="TaskAutoCancelTrigger">None</Property>
-              <Property Name="TaskResourceRequirementsObjectType">Select From List</Property>
-              <Property Name="TaskResourceRequirementsObjectName">Resources.SecondaryResourceName</Property>
-              <Property Name="TaskResourceRequirementsObjectListName">ResourcesSecondaryWorkers.Workers</Property>
+              <Property Name="TaskResourceRequirementsResourceType">Select From List</Property>
+              <Property Name="TaskResourceRequirementsResourceName">Resources.SecondaryResourceName</Property>
+              <Property Name="TaskResourceRequirementsResourceListName">ResourcesSecondaryWorkers.Workers</Property>
               <Property Name="TaskResourceRequirementsRequestMove">To Node</Property>
               <Property Name="TaskResourceRequirementsDestinationNode">Server.Input</Property>
               <Property Name="TaskResourceRequirementsOffShiftRule">Finish Work Already Started</Property>
@@ -6388,13 +6418,13 @@
               <Property Name="TaskConditionOrProbability">Assemblers1stShift.Population.NumberInSystem &gt; 8</Property>
               <Property Name="TaskProcessingTime">Random.Triangular(.4, .5, .6) * Routings.ProcessTime</Property>
               <Property Name="TaskAutoCancelTrigger">None</Property>
-              <Property Name="TaskResourceRequirementsObjectType">Select From List</Property>
-              <Property Name="TaskResourceRequirementsObjectName">Resources.SecondaryResourceName</Property>
-              <Property Name="TaskResourceRequirementsObjectListName">ResourcesSecondaryWorkers.Workers</Property>
+              <Property Name="TaskResourceRequirementsResourceType">Select From List</Property>
+              <Property Name="TaskResourceRequirementsResourceName">Resources.SecondaryResourceName</Property>
+              <Property Name="TaskResourceRequirementsResourceListName">ResourcesSecondaryWorkers.Workers</Property>
               <Property Name="TaskResourceRequirementsRequestMove">To Node</Property>
               <Property Name="TaskResourceRequirementsDestinationNode">Server.Input</Property>
               <Property Name="TaskResourceRequirementsOffShiftRule">Finish Work Already Started</Property>
-              <Property Name="TaskResourceRequirementsNumberOfObjects">2</Property>
+              <Property Name="TaskResourceRequirementsNumberOfResources">2</Property>
               <Property Name="TaskResourceRequirementsMustSimultaneouslySeize">True</Property>
               <Property Name="TaskResourceRequirementsImmediatelyTrySeize">True</Property>
               <Property Name="TaskResourceRequirementsImmediatelyTryAllocateWhenReleased">True</Property>
@@ -6601,9 +6631,9 @@
               <Property Name="TaskConditionOrProbability">Assemblers1stShift.Population.NumberInSystem &lt;= 8</Property>
               <Property Name="TaskProcessingTime">Random.Triangular(.8, 1, 1.2) * Routings.ProcessTime</Property>
               <Property Name="TaskAutoCancelTrigger">None</Property>
-              <Property Name="TaskResourceRequirementsObjectType">Select From List</Property>
-              <Property Name="TaskResourceRequirementsObjectName">Resources.SecondaryResourceName</Property>
-              <Property Name="TaskResourceRequirementsObjectListName">ResourcesSecondaryWorkers.Workers</Property>
+              <Property Name="TaskResourceRequirementsResourceType">Select From List</Property>
+              <Property Name="TaskResourceRequirementsResourceName">Resources.SecondaryResourceName</Property>
+              <Property Name="TaskResourceRequirementsResourceListName">ResourcesSecondaryWorkers.Workers</Property>
               <Property Name="TaskResourceRequirementsRequestMove">To Node</Property>
               <Property Name="TaskResourceRequirementsDestinationNode">Server.Input</Property>
               <Property Name="TaskResourceRequirementsOffShiftRule">Finish Work Already Started</Property>
@@ -6620,13 +6650,13 @@
               <Property Name="TaskConditionOrProbability">Assemblers1stShift.Population.NumberInSystem &gt; 8</Property>
               <Property Name="TaskProcessingTime">Random.Triangular(.4, .5, .6) * Routings.ProcessTime</Property>
               <Property Name="TaskAutoCancelTrigger">None</Property>
-              <Property Name="TaskResourceRequirementsObjectType">Select From List</Property>
-              <Property Name="TaskResourceRequirementsObjectName">Resources.SecondaryResourceName</Property>
-              <Property Name="TaskResourceRequirementsObjectListName">ResourcesSecondaryWorkers.Workers</Property>
+              <Property Name="TaskResourceRequirementsResourceType">Select From List</Property>
+              <Property Name="TaskResourceRequirementsResourceName">Resources.SecondaryResourceName</Property>
+              <Property Name="TaskResourceRequirementsResourceListName">ResourcesSecondaryWorkers.Workers</Property>
               <Property Name="TaskResourceRequirementsRequestMove">To Node</Property>
               <Property Name="TaskResourceRequirementsDestinationNode">Server.Input</Property>
               <Property Name="TaskResourceRequirementsOffShiftRule">Finish Work Already Started</Property>
-              <Property Name="TaskResourceRequirementsNumberOfObjects">2</Property>
+              <Property Name="TaskResourceRequirementsNumberOfResources">2</Property>
               <Property Name="TaskResourceRequirementsMustSimultaneouslySeize">True</Property>
               <Property Name="TaskResourceRequirementsImmediatelyTrySeize">True</Property>
               <Property Name="TaskResourceRequirementsImmediatelyTryAllocateWhenReleased">True</Property>
@@ -8420,4 +8450,4 @@
     <AnimationSetup MinimumNumberOfFramesToDisplayIdleAnimation="10" />
   </Graphics>
 </Fragment>
-<!-- GFtxCv0TGh7L3bTGEo/BjhKGLv4Ok/5Y5ksPVTA3JsEXlv8FIi8emI6G59b1BzYm1tw0V9DuHGbmAHQ+J0FCnA== -->
+<!-- r7KppUcDRCLWutfreUpXfX8hXdBryG4mS6FZC5NgLCHUb1kbEWsH7y1XTCH6Hn1oHgCGB1APNybMDMzL54skzg== -->

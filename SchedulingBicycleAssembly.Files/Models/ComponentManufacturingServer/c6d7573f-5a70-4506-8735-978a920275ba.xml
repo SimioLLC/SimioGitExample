@@ -137,9 +137,6 @@
       <Override Name="AssignmentsBeforeExiting" DefaultValue="0 Rows" />
       <Override Name="AssignmentsOnBalking" DefaultValue="0 Rows" />
       <Override Name="AssignmentsOnReneging" DefaultValue="0 Rows" />
-      <Override Name="SecondaryResourceForProcessingObjectType" DefaultValue="Select From List" />
-      <Override Name="SecondaryResourceForProcessingObjectName" DefaultValue="Resources.SecondaryResourceName" />
-      <Override Name="SecondaryResourceForProcessingObjectListName" DefaultValue="ResourcesSecondaryWorkers.Workers" />
       <Override Name="SecondaryResourceForProcessingRequestMove" DefaultValue="To Node" />
       <Override Name="SecondaryResourceForProcessingDestinationNode" DefaultValue="Server.Input" />
       <Override Name="SecondaryResourceSeizesOnEntering" DefaultValue="0 Rows" />
@@ -258,4 +255,4 @@
     <AnimationSetup MinimumNumberOfFramesToDisplayIdleAnimation="10" />
   </Graphics>
 </Fragment>
-<!-- rUxOznV2Xhmz6uLudo/7PxosPlNgsCFNKQxmc26v5iMdptTyI2nUtOTZfqfdun1MSP460MKm/2qBNz6Hv+jc8A== -->
+<!-- GY2RoY8Ff+s6sMeFOISk32d1thrJI9G0+junZYDXat2+rSTw/2e8tirhrOVEJNTQ4LBFnKvLlfoeU0XCT3ztOQ== -->
