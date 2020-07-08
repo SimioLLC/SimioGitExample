@@ -6334,7 +6334,7 @@
           </Properties>
           <Graphics ExternallyVisible="True" />
         </Node>
-        <Node Name="Output@Test1" Type="TransferNode" Location="11.875 -8.88178419700125E-16 13.1875" YawDeg="90" Scope="Public">
+        <Node Name="Output@Test1" Type="TransferNode" Location="12.0625 0 13.0625" YawDeg="90" Scope="Public">
           <Properties>
             <Property Name="InitialCost" Units="USD">0.0</Property>
             <Property Name="InitialCostRate" Units="USD per Hour">0.0</Property>
@@ -7570,7 +7570,7 @@
         </PathDecoratorUsage>
       </Graphics>
     </Link>
-    <Link Name="Conveyor8" Type="Conveyor" Size="3.45 2 0" Scope="Public" Start="Input@Test1" End="Output@Test1">
+    <Link Name="Conveyor8" Type="Conveyor" Size="3.64 2 0" Scope="Public" Start="Input@Test1" End="Output@Test1">
       <Properties>
         <Property Name="InitialCost" Units="USD">0.0</Property>
         <Property Name="InitialCostRate" Units="USD per Hour">0.0</Property>
@@ -7589,7 +7589,7 @@
         </PathDecoratorUsage>
       </Graphics>
     </Link>
-    <Link Name="Conveyor11" Type="Conveyor" Size="7.11 2 0" Scope="Public" Start="Output@Test1" End="TransferNode1">
+    <Link Name="Conveyor11" Type="Conveyor" Size="6.96 2 0" Scope="Public" Start="Output@Test1" End="TransferNode1">
       <Properties>
         <Property Name="InitialCost" Units="USD">0.0</Property>
         <Property Name="InitialCostRate" Units="USD per Hour">0.0</Property>
@@ -8450,4 +8450,4 @@
     <AnimationSetup MinimumNumberOfFramesToDisplayIdleAnimation="10" />
   </Graphics>
 </Fragment>
-<!-- Kb3Q9dy5hWGuSiX4vZGyoRiUlf5lERHmOeZ9mrm7vG4qh12RUn4SXUglVlS5v3XvAPhnC/dsT+SeVmeAYaTQwg== -->
+<!-- Z9ymwh78Hj2xeGyv5DdGwLFeQ615hRmz+qaKL1McpPfCYxiVP81wyb3069VziyDd9U/QFkV/1tHPDgyrhTwmAg== -->
