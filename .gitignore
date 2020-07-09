@@ -1,0 +1,5 @@
+# Ignore Simio backup files
+/*.backup
+
+# Ignore all log files (in Simio, these are simulation data files)
+/*.log
