@@ -11,9 +11,6 @@
       <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[1]" />
       <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[1]|Riders" />
       <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[1]|Tasks" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[10]" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[10]|Riders" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[10]|Tasks" />
       <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[2]" />
       <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[2]|Riders" />
       <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[2]|Tasks" />
@@ -35,9 +32,6 @@
       <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[8]" />
       <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[8]|Riders" />
       <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[8]|Tasks" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[9]" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[9]|Riders" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[9]|Tasks" />
       <Row FullName="|Assembly Line|Assemblers1stShift|Riders" />
       <Row FullName="|Assembly Line|Assemblers1stShift|Tasks" />
       <Row FullName="|Assembly Line|Assemblers2ndShift" />
@@ -103,8 +97,6 @@
       <Row FullName="|Shipping and Receiving" Expanded="True" />
       <Row FullName="|Shipping and Receiving|ReceivingVehicle" />
       <Row FullName="|Shipping and Receiving|ReceivingVehicle|Population Members" />
-      <Row FullName="|Shipping and Receiving|ReceivingVehicle|Population Members|ReceivingVehicle[1]" />
-      <Row FullName="|Shipping and Receiving|ReceivingVehicle|Population Members|ReceivingVehicle[1]|Riders" />
       <Row FullName="|Shipping and Receiving|ReceivingVehicle|Riders" />
       <Row FullName="|Shipping and Receiving|ReceivingVehicle|Tasks" />
       <Row FullName="|Shipping and Receiving|StockVehicle" />
