@@ -93,6 +93,7 @@
         <StateValue Name="RoutingKey" Value="24" />
         <StateValue Name="ScheduledResource" Value="Power1" />
         <StateValue Name="ScheduledStartTime" Value="12/04/2017 08:30:33" />
+        <StateValue Name="ScheduledEndTime" Value="12/04/2017 09:00:38" />
         <StateValue Name="ScheduledQuantity" Value="12" />
       </InteractiveValues>
     </StateResults>
@@ -105,6 +106,7 @@
         <StateValue Name="RoutingKey" Value="24" />
         <StateValue Name="ScheduledResource" Value="MainFrame1" />
         <StateValue Name="ScheduledStartTime" Value="12/04/2017 08:30:33" />
+        <StateValue Name="ScheduledEndTime" Value="12/04/2017 09:00:51" />
         <StateValue Name="ScheduledQuantity" Value="12" />
       </InteractiveValues>
     </StateResults>
@@ -117,6 +119,7 @@
         <StateValue Name="RoutingKey" Value="24" />
         <StateValue Name="ScheduledResource" Value="Power2" />
         <StateValue Name="ScheduledStartTime" Value="12/04/2017 08:30:34" />
+        <StateValue Name="ScheduledEndTime" Value="12/04/2017 09:00:39" />
         <StateValue Name="ScheduledQuantity" Value="12" />
       </InteractiveValues>
     </StateResults>
@@ -129,9 +132,82 @@
         <StateValue Name="RoutingKey" Value="24" />
         <StateValue Name="ScheduledResource" Value="MainFrame2" />
         <StateValue Name="ScheduledStartTime" Value="12/04/2017 08:30:34" />
+        <StateValue Name="ScheduledEndTime" Value="12/04/2017 09:00:52" />
+        <StateValue Name="ScheduledQuantity" Value="12" />
+      </InteractiveValues>
+    </StateResults>
+  </Row>
+  <Row>
+    <Properties />
+    <StateResults>
+      <InteractiveValues>
+        <StateValue Name="OrderId" Value="0" />
+        <StateValue Name="RoutingKey" Value="24" />
+        <StateValue Name="ScheduledResource" Value="Final1" />
+        <StateValue Name="ScheduledStartTime" Value="12/04/2017 09:00:42" />
+        <StateValue Name="ScheduledQuantity" Value="12" />
+      </InteractiveValues>
+    </StateResults>
+  </Row>
+  <Row>
+    <Properties />
+    <StateResults>
+      <InteractiveValues>
+        <StateValue Name="OrderId" Value="0" />
+        <StateValue Name="RoutingKey" Value="24" />
+        <StateValue Name="ScheduledResource" Value="Final2" />
+        <StateValue Name="ScheduledStartTime" Value="12/04/2017 09:00:42" />
+        <StateValue Name="ScheduledQuantity" Value="12" />
+      </InteractiveValues>
+    </StateResults>
+  </Row>
+  <Row>
+    <Properties />
+    <StateResults>
+      <InteractiveValues>
+        <StateValue Name="OrderId" Value="0" />
+        <StateValue Name="RoutingKey" Value="24" />
+        <StateValue Name="ScheduledResource" Value="Power1" />
+        <StateValue Name="ScheduledStartTime" Value="12/04/2017 09:00:54" />
+        <StateValue Name="ScheduledQuantity" Value="12" />
+      </InteractiveValues>
+    </StateResults>
+  </Row>
+  <Row>
+    <Properties />
+    <StateResults>
+      <InteractiveValues>
+        <StateValue Name="OrderId" Value="0" />
+        <StateValue Name="RoutingKey" Value="24" />
+        <StateValue Name="ScheduledResource" Value="MainFrame1" />
+        <StateValue Name="ScheduledStartTime" Value="12/04/2017 09:00:54" />
+        <StateValue Name="ScheduledQuantity" Value="12" />
+      </InteractiveValues>
+    </StateResults>
+  </Row>
+  <Row>
+    <Properties />
+    <StateResults>
+      <InteractiveValues>
+        <StateValue Name="OrderId" Value="0" />
+        <StateValue Name="RoutingKey" Value="24" />
+        <StateValue Name="ScheduledResource" Value="Power2" />
+        <StateValue Name="ScheduledStartTime" Value="12/04/2017 09:00:56" />
+        <StateValue Name="ScheduledQuantity" Value="12" />
+      </InteractiveValues>
+    </StateResults>
+  </Row>
+  <Row>
+    <Properties />
+    <StateResults>
+      <InteractiveValues>
+        <StateValue Name="OrderId" Value="0" />
+        <StateValue Name="RoutingKey" Value="24" />
+        <StateValue Name="ScheduledResource" Value="MainFrame2" />
+        <StateValue Name="ScheduledStartTime" Value="12/04/2017 09:00:56" />
         <StateValue Name="ScheduledQuantity" Value="12" />
       </InteractiveValues>
     </StateResults>
   </Row>
 </Fragment>
-<!-- YFS4MxyEYBDZmJjL9kfP+CVSg+9zCOQoFPk46brtAw1q95mHHY9GkKLLx+gH1hLtm5D4bqeO1SUMGouWFmuDDw== -->
+<!-- bcMWuzW3Vl5W6FEMsHZDKn3NfSp+LrANyrmSsKpmsZ6f2CU3w6b9LIVyYBDDyl7fsF0rg6pfrl1wEjkqbVDFPA== -->
