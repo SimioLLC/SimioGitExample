@@ -3,3 +3,8 @@
 
 # Ignore all log files (in Simio, these are simulation data files)
 /*.log
+
+# Ignore all stats files (in Simio, these are simulation data files)
+/*.stats
+
+
