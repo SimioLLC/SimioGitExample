@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ProductVersion="12.208.20863.0" FileVersion="216" WriteToMultipleFiles="True" Id="a9a11b7c-c8ee-4fa2-97ad-3d374de461e4" xmlns="http://www.simio.com/projects/v1">
-  <DocumentInfo LicenseInfo="14:1" UserName="" Organization="Simio" SerialNumber="6948" SaveDate="2020-07-11T11:42:06" Sig="F8jyACNPLEtNFMnnfogTUhfS4gotv5yeKW0Wi+gcE12aFAl/OMF97RWFWlbhAaiiprImVNn12i5ff3Se7reDzw==" />
+  <DocumentInfo LicenseInfo="14:1" UserName="" Organization="Simio" SerialNumber="6948" SaveDate="2020-07-11T13:55:39" Sig="LCxlBpPL7YStqcaCFhhUaCZ8YBS1ykFKDnm1FK/DKEV4GQSLN6aOIuvnQm3wVaE0DGTCFhWpO8lw4aiTiLHjmw==" />
   <Models>
     <Model Definition="ModelEntity" Runnable="False">
       <TargetSettings HighRiskThreshold="50" MediumRiskThreshold="80" HighRiskColor="ff0000" MediumRiskColor="ffff00" LowRiskColor="90ee90" />
@@ -315,21 +315,21 @@
       <NodeDefinition Name="ComponentManufacturingTransferNode" Id="ce633769-500b-4cd3-8e72-f1998d87b32f" Revision="2" BaseClass="TransferNode" Author="Simio Employee" CheckBaseForAdvancedProperties="True" Color="1e90ff">
         <FileRef Name="Models\ComponentManufacturingTransferNode\ce633769-500b-4cd3-8e72-f1998d87b32f.xml" />
       </NodeDefinition>
-      <EntityDefinition Name="ModelEntity" Id="595bfa43-fc05-4b1c-b867-d5f7ed0b9638" Revision="7" Author="Simio Employee" Description="The default entity definition for your project." CheckBaseForAdvancedProperties="True">
+      <EntityDefinition Name="ModelEntity" Id="595bfa43-fc05-4b1c-b867-d5f7ed0b9638" Revision="8" Author="Simio Employee" Description="The default entity definition for your project." CheckBaseForAdvancedProperties="True">
         <FileRef Name="Models\ModelEntity\595bfa43-fc05-4b1c-b867-d5f7ed0b9638.xml" />
       </EntityDefinition>
-      <FixedDefinition Name="Model" Id="b457820f-d0c8-47e4-a497-ef40fdb26f1e" Revision="155" Author="Simio Employee" Version="202">
+      <FixedDefinition Name="Model" Id="b457820f-d0c8-47e4-a497-ef40fdb26f1e" Revision="156" Author="Simio Employee" Version="202">
         <FileRef Name="Models\Model\b457820f-d0c8-47e4-a497-ef40fdb26f1e.xml" />
       </FixedDefinition>
     </Definitions>
     <DefinitionRefs>
       <DefinitionRef Name="ModelEntity">
         <Id>595bfa43-fc05-4b1c-b867-d5f7ed0b9638</Id>
-        <Revision>7</Revision>
+        <Revision>8</Revision>
       </DefinitionRef>
       <DefinitionRef Name="Model">
         <Id>b457820f-d0c8-47e4-a497-ef40fdb26f1e</Id>
-        <Revision>155</Revision>
+        <Revision>156</Revision>
       </DefinitionRef>
       <DefinitionRef Name="AssemblyLineServer">
         <Id>5b53f988-7833-40bc-b1c5-e56d54a2a1f4</Id>
@@ -2759,4 +2759,4 @@
     </Materials>
   </CommonItems>
 </Project>
-<!-- Pln+H47ypnkvtqS0IiL7669lzrWxHnHuXxzQ3BjFAGamblZGWAW4r922FQw+h0D8tAPS7/Wys9M472/gRIbEBw== -->
+<!-- x+Rl7EawkNHCNLOTBnfseAp1fKQZDrS6YfjZndSHvHFqmKCIcBUMi0hhHALD9krVLKJlshu8fkEZB8RN/seePA== -->
