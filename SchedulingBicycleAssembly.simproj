@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ProductVersion="12.208.20863.0" FileVersion="216" WriteToMultipleFiles="True" Id="a9a11b7c-c8ee-4fa2-97ad-3d374de461e4" xmlns="http://www.simio.com/projects/v1">
-  <DocumentInfo LicenseInfo="14:1" UserName="" Organization="Simio" SerialNumber="6948" SaveDate="2020-07-11T01:51:46" Sig="NEkrl6LAwdjRtjrciekwMqvyfCUHFQ3RlTb+bR2wiL8WGNymJFw1WnMH/l1qaadjIM3A0kVXMH8mkM09zxUiXQ==" />
+  <DocumentInfo LicenseInfo="14:1" UserName="" Organization="Simio" SerialNumber="6948" SaveDate="2020-07-11T11:42:06" Sig="F8jyACNPLEtNFMnnfogTUhfS4gotv5yeKW0Wi+gcE12aFAl/OMF97RWFWlbhAaiiprImVNn12i5ff3Se7reDzw==" />
   <Models>
     <Model Definition="ModelEntity" Runnable="False">
       <TargetSettings HighRiskThreshold="50" MediumRiskThreshold="80" HighRiskColor="ff0000" MediumRiskColor="ffff00" LowRiskColor="90ee90" />
-      <ViewInfo>
+      <ViewInfo ActiveModel="True" ActiveView="Process">
         <Process DefaultCategoryExpanded="True" />
       </ViewInfo>
     </Model>
@@ -61,12 +61,12 @@
         <TableReport Name="Dispatch List Report" DataSourceName="Table.ManufacturingOrdersOutput" Data="Data\TableReports\Model_DispatchListReport.xml" />
         <TableReport Name="Order Details" DataSourceName="Table.ManufacturingOrders" Data="Data\TableReports\Model_OrderDetails.xml" />
       </TableReports>
-      <ViewInfo ActiveModel="True" ActiveView="Facility">
+      <ViewInfo>
         <Facility FollowDistanceRatio="1">
           <Camera Orientation="Perspective" Location="26.1411501322089 13.2642905685554 23.2328302835964" Direction="-0.577350269189626 -0.577350269189626 -0.577350269189626" Zoom="66.980831460917244" />
           <ObjectDisplay LineArrows="False" SnapToGrid="True" Background="1e90ff" />
           <Libraries Width="192">
-            <Library Name="Standard Library" Size="77" Expanded="True" />
+            <Library Name="Standard Library" Size="366" Expanded="True" />
             <Library Name="Flow Library" Size="28" />
           </Libraries>
         </Facility>
@@ -225,10 +225,10 @@
       </Icon>
       <ViewInfo>
         <Facility FollowDistanceRatio="1">
-          <Camera Orientation="Top" Location="-0.715490309953477 13.7837103829623 0.868703089631465" Direction="0 -1 -2.22044604925031E-16" Zoom="14.237406179266733" />
+          <Camera Orientation="Top" Location="-19.8263881063674 222.144674035878 -6.15479647590933" Direction="0 -1 -2.22044604925031E-16" Zoom="222.14467403587793" />
           <ObjectDisplay SnapToGrid="True" Background="ffffff" />
           <Libraries Width="122">
-            <Library Name="Standard Library" Size="500" Expanded="True" />
+            <Library Name="Standard Library" Size="366" Expanded="True" />
             <Library Name="Flow Library" Size="28" />
           </Libraries>
         </Facility>
@@ -242,14 +242,14 @@
       </Icon>
       <ViewInfo>
         <Facility FollowDistanceRatio="1">
-          <Camera Orientation="Top" Location="0.835134940144521 13.3417898974017 0.655157145894147" Direction="0 -1 -2.22044604925031E-16" Zoom="13.81031429179207" />
+          <Camera Orientation="Top" Location="0.835134940144521 13.8103142917921 0.655157145894147" Direction="0 -1 -2.22044604925031E-16" Zoom="13.81031429179207" />
           <ObjectDisplay SnapToGrid="True" Background="ffffff" />
           <Libraries Width="122">
-            <Library Name="Standard Library" Size="460" Expanded="True" />
+            <Library Name="Standard Library" Size="366" Expanded="True" />
             <Library Name="Flow Library" Size="28" />
           </Libraries>
         </Facility>
-        <Process DefaultCategoryExpanded="True" />
+        <Process PanelWidth="181" DefaultCategoryExpanded="True" />
       </ViewInfo>
     </Model>
     <Model Definition="ComponentManufacturingTransferNode" Runnable="False">
@@ -315,21 +315,21 @@
       <NodeDefinition Name="ComponentManufacturingTransferNode" Id="ce633769-500b-4cd3-8e72-f1998d87b32f" Revision="2" BaseClass="TransferNode" Author="Simio Employee" CheckBaseForAdvancedProperties="True" Color="1e90ff">
         <FileRef Name="Models\ComponentManufacturingTransferNode\ce633769-500b-4cd3-8e72-f1998d87b32f.xml" />
       </NodeDefinition>
-      <EntityDefinition Name="ModelEntity" Id="595bfa43-fc05-4b1c-b867-d5f7ed0b9638" Revision="6" Author="Simio Employee" Description="The default entity definition for your project." CheckBaseForAdvancedProperties="True">
+      <EntityDefinition Name="ModelEntity" Id="595bfa43-fc05-4b1c-b867-d5f7ed0b9638" Revision="7" Author="Simio Employee" Description="The default entity definition for your project." CheckBaseForAdvancedProperties="True">
         <FileRef Name="Models\ModelEntity\595bfa43-fc05-4b1c-b867-d5f7ed0b9638.xml" />
       </EntityDefinition>
-      <FixedDefinition Name="Model" Id="b457820f-d0c8-47e4-a497-ef40fdb26f1e" Revision="154" Author="Simio Employee" Version="202">
+      <FixedDefinition Name="Model" Id="b457820f-d0c8-47e4-a497-ef40fdb26f1e" Revision="155" Author="Simio Employee" Version="202">
         <FileRef Name="Models\Model\b457820f-d0c8-47e4-a497-ef40fdb26f1e.xml" />
       </FixedDefinition>
     </Definitions>
     <DefinitionRefs>
       <DefinitionRef Name="ModelEntity">
         <Id>595bfa43-fc05-4b1c-b867-d5f7ed0b9638</Id>
-        <Revision>6</Revision>
+        <Revision>7</Revision>
       </DefinitionRef>
       <DefinitionRef Name="Model">
         <Id>b457820f-d0c8-47e4-a497-ef40fdb26f1e</Id>
-        <Revision>154</Revision>
+        <Revision>155</Revision>
       </DefinitionRef>
       <DefinitionRef Name="AssemblyLineServer">
         <Id>5b53f988-7833-40bc-b1c5-e56d54a2a1f4</Id>
@@ -2759,4 +2759,4 @@
     </Materials>
   </CommonItems>
 </Project>
-<!-- h65WGwQFkBaBldzgKQd0wL5CVXkf5kFvxzDuqS6la6Hn0Ip4L/poKq8B13xFImvHv2L1FqPCpThm6uzlRYOdIw== -->
+<!-- Pln+H47ypnkvtqS0IiL7669lzrWxHnHuXxzQ3BjFAGamblZGWAW4r922FQw+h0D8tAPS7/Wys9M472/gRIbEBw== -->
