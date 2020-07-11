@@ -204,7 +204,7 @@
         </Step>
         <Step Type="a40a2add-ceab-4e0c-bea1-acb941a15281" ReadableType="Alert" Name="Alert1" ID="17">
           <Properties>
-            <Property Name="Message">Hi Alice!</Property>
+            <Property Name="Message">Hi Alice! .. and Bob.</Property>
           </Properties>
           <Exit Name="Exit" Type="Primary" NextID="2" />
         </Step>
@@ -240,4 +240,4 @@
     <AnimationSetup MinimumNumberOfFramesToDisplayIdleAnimation="10" />
   </Graphics>
 </Fragment>
-<!-- RYt8QJ6OyS6tCAGe3MindOuoidDml/x9P13Lu8XXkh05zMM4cyMd+si+zclo/DyEpq+VP1zBMH09/JYUCgHz0A== -->
+<!-- Amp4o1PczGHtlrJcii+vUIDCl4t5u8Eh9mpnIjIOBYeSV1dDIf2VRh2/1YnqBXA5lyQfbZWX5FaeKn+zwNiR6g== -->
