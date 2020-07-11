@@ -7400,9 +7400,9 @@
         </PathDecoratorUsage>
       </Graphics>
     </Link>
-    <Link Name="Conveyor18" Type="Conveyor" Size="26.75 2 0" Scope="Public" Start="TransferNode1" End="MemberInput@PackAndShip">
+    <Link Name="Conveyor18" Type="Conveyor" Size="28.82 2 0" Scope="Public" Start="TransferNode1" End="MemberInput@PackAndShip">
       <Points>
-        <Point Location="20.5 0 6" />
+        <Point Location="23.75 0 8.72410376171736" />
       </Points>
       <Properties>
         <Property Name="InitialCost" Units="USD">0.0</Property>
@@ -8450,4 +8450,4 @@
     <AnimationSetup MinimumNumberOfFramesToDisplayIdleAnimation="10" />
   </Graphics>
 </Fragment>
-<!-- /DkUPzUzJhRxd5O1V5uSuXP/sOpQdIxk/J9cMsRZrPRknX3x2JGch8Q13uiv0TsMXqdeoqefaNc6faolIGB9yg== -->
+<!-- aLtLvn+c6OqS4tx4VLpONNuokOMSETd5ZgGgyvc4c9ko9vrCzCU/khEUZH6kzHwjncVLfY1nhD9IKyWYVbTo+A== -->
