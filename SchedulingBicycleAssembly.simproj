@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ProductVersion="12.208.20863.0" FileVersion="216" WriteToMultipleFiles="True" Id="a9a11b7c-c8ee-4fa2-97ad-3d374de461e4" xmlns="http://www.simio.com/projects/v1">
-  <DocumentInfo LicenseInfo="14:1" UserName="" Organization="Simio" SerialNumber="6948" SaveDate="2020-07-10T23:24:03" Sig="ieDf6b/aqHHewVGUCGZeYfQINl+0kkaEHvCbI6ws+FUQvtY8a77piuhX/joQ2td4rY99dlHloGneZWfvkJn5uA==" />
+  <DocumentInfo LicenseInfo="14:1" UserName="" Organization="Simio" SerialNumber="6948" SaveDate="2020-07-11T01:51:46" Sig="NEkrl6LAwdjRtjrciekwMqvyfCUHFQ3RlTb+bR2wiL8WGNymJFw1WnMH/l1qaadjIM3A0kVXMH8mkM09zxUiXQ==" />
   <Models>
     <Model Definition="ModelEntity" Runnable="False">
       <TargetSettings HighRiskThreshold="50" MediumRiskThreshold="80" HighRiskColor="ff0000" MediumRiskColor="ffff00" LowRiskColor="90ee90" />
@@ -52,27 +52,6 @@
           </Property>
         </Properties>
       </RunnableInstance>
-      <InteractiveStatistics ResultSetId="aab1f63c-f7a3-44ee-b7eb-dce8971809ed" ResultSetTimeStampUtc="2020-07-10T11:39:49.1612050Z">
-        <FileRef Name="Results\Model\Interactive_Results.stats" />
-      </InteractiveStatistics>
-      <ResourceUsageLog_v2>
-        <FileRef Name="Results\Model\ResourceUsage.log" />
-      </ResourceUsageLog_v2>
-      <TransporterUsageLog_v2>
-        <FileRef Name="Results\Model\TransporterUsage.log" />
-      </TransporterUsageLog_v2>
-      <StateObservationLog_v2>
-        <FileRef Name="Results\Model\StateObservation.log" />
-      </StateObservationLog_v2>
-      <MaterialUsageLog_v2>
-        <FileRef Name="Results\Model\MaterialUsage.log" />
-      </MaterialUsageLog_v2>
-      <TaskLog_v2>
-        <FileRef Name="Results\Model\Task.log" />
-      </TaskLog_v2>
-      <ResourceInfoLog_v2>
-        <FileRef Name="Results\Model\ResourceInfo.log" />
-      </ResourceInfoLog_v2>
       <DashboardReports SelectedDashboard="Materials">
         <DashboardReport Name="Order Details" Data="Data\Dashboards\Model_OrderDetails.xml" />
         <DashboardReport Name="Materials" Data="Data\Dashboards\Model_Materials.xml" />
@@ -84,10 +63,10 @@
       </TableReports>
       <ViewInfo ActiveModel="True" ActiveView="Facility">
         <Facility FollowDistanceRatio="1">
-          <Camera Orientation="Perspective" Location="30.2958265972502 18.9489865265077 20.6911628524962" Direction="-0.577350269189626 -0.577350269189626 -0.577350269189626" Zoom="66.980831460917244" />
+          <Camera Orientation="Perspective" Location="26.1411501322089 13.2642905685554 23.2328302835964" Direction="-0.577350269189626 -0.577350269189626 -0.577350269189626" Zoom="66.980831460917244" />
           <ObjectDisplay LineArrows="False" SnapToGrid="True" Background="1e90ff" />
           <Libraries Width="192">
-            <Library Name="Standard Library" Size="147" Expanded="True" />
+            <Library Name="Standard Library" Size="77" Expanded="True" />
             <Library Name="Flow Library" Size="28" />
           </Libraries>
         </Facility>
@@ -339,7 +318,7 @@
       <EntityDefinition Name="ModelEntity" Id="595bfa43-fc05-4b1c-b867-d5f7ed0b9638" Revision="6" Author="Simio Employee" Description="The default entity definition for your project." CheckBaseForAdvancedProperties="True">
         <FileRef Name="Models\ModelEntity\595bfa43-fc05-4b1c-b867-d5f7ed0b9638.xml" />
       </EntityDefinition>
-      <FixedDefinition Name="Model" Id="b457820f-d0c8-47e4-a497-ef40fdb26f1e" Revision="153" Author="Simio Employee" Version="202">
+      <FixedDefinition Name="Model" Id="b457820f-d0c8-47e4-a497-ef40fdb26f1e" Revision="154" Author="Simio Employee" Version="202">
         <FileRef Name="Models\Model\b457820f-d0c8-47e4-a497-ef40fdb26f1e.xml" />
       </FixedDefinition>
     </Definitions>
@@ -350,7 +329,7 @@
       </DefinitionRef>
       <DefinitionRef Name="Model">
         <Id>b457820f-d0c8-47e4-a497-ef40fdb26f1e</Id>
-        <Revision>153</Revision>
+        <Revision>154</Revision>
       </DefinitionRef>
       <DefinitionRef Name="AssemblyLineServer">
         <Id>5b53f988-7833-40bc-b1c5-e56d54a2a1f4</Id>
@@ -2780,4 +2759,4 @@
     </Materials>
   </CommonItems>
 </Project>
-<!-- dc092hu5VmNsjksK2QF8+jCaxBM4jXWZtVgpIM5rbxya96WZhC+Kn8gJ/vLbq5tvTdOYRQRADt7oSeJBiuFj/A== -->
+<!-- h65WGwQFkBaBldzgKQd0wL5CVXkf5kFvxzDuqS6la6Hn0Ip4L/poKq8B13xFImvHv2L1FqPCpThm6uzlRYOdIw== -->

@@ -8,36 +8,6 @@
       <Row FullName="|Assembly Line" Expanded="True" />
       <Row FullName="|Assembly Line|Assemblers1stShift" />
       <Row FullName="|Assembly Line|Assemblers1stShift|Population Members" Expanded="True" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[1]" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[1]|Riders" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[1]|Tasks" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[10]" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[10]|Riders" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[10]|Tasks" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[2]" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[2]|Riders" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[2]|Tasks" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[3]" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[3]|Riders" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[3]|Tasks" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[4]" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[4]|Riders" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[4]|Tasks" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[5]" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[5]|Riders" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[5]|Tasks" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[6]" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[6]|Riders" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[6]|Tasks" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[7]" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[7]|Riders" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[7]|Tasks" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[8]" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[8]|Riders" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[8]|Tasks" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[9]" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[9]|Riders" />
-      <Row FullName="|Assembly Line|Assemblers1stShift|Population Members|Assemblers1stShift[9]|Tasks" />
       <Row FullName="|Assembly Line|Assemblers1stShift|Riders" />
       <Row FullName="|Assembly Line|Assemblers1stShift|Tasks" />
       <Row FullName="|Assembly Line|Assemblers2ndShift" />
@@ -71,21 +41,6 @@
       <Row FullName="|Component Manufacturing|Machine2|Tasks" />
       <Row FullName="|Component Manufacturing|Operators" />
       <Row FullName="|Component Manufacturing|Operators|Population Members" Expanded="True" />
-      <Row FullName="|Component Manufacturing|Operators|Population Members|Operators[1]" />
-      <Row FullName="|Component Manufacturing|Operators|Population Members|Operators[1]|Riders" />
-      <Row FullName="|Component Manufacturing|Operators|Population Members|Operators[1]|Tasks" />
-      <Row FullName="|Component Manufacturing|Operators|Population Members|Operators[2]" />
-      <Row FullName="|Component Manufacturing|Operators|Population Members|Operators[2]|Riders" />
-      <Row FullName="|Component Manufacturing|Operators|Population Members|Operators[2]|Tasks" />
-      <Row FullName="|Component Manufacturing|Operators|Population Members|Operators[3]" />
-      <Row FullName="|Component Manufacturing|Operators|Population Members|Operators[3]|Riders" />
-      <Row FullName="|Component Manufacturing|Operators|Population Members|Operators[3]|Tasks" />
-      <Row FullName="|Component Manufacturing|Operators|Population Members|Operators[4]" />
-      <Row FullName="|Component Manufacturing|Operators|Population Members|Operators[4]|Riders" />
-      <Row FullName="|Component Manufacturing|Operators|Population Members|Operators[4]|Tasks" />
-      <Row FullName="|Component Manufacturing|Operators|Population Members|Operators[5]" />
-      <Row FullName="|Component Manufacturing|Operators|Population Members|Operators[5]|Riders" />
-      <Row FullName="|Component Manufacturing|Operators|Population Members|Operators[5]|Tasks" />
       <Row FullName="|Component Manufacturing|Operators|Riders" />
       <Row FullName="|Component Manufacturing|Operators|Tasks" />
       <Row FullName="|Component Manufacturing|Paint1" />
@@ -107,8 +62,6 @@
       <Row FullName="|Shipping and Receiving|ReceivingVehicle|Tasks" />
       <Row FullName="|Shipping and Receiving|StockVehicle" />
       <Row FullName="|Shipping and Receiving|StockVehicle|Population Members" />
-      <Row FullName="|Shipping and Receiving|StockVehicle|Population Members|StockVehicle[1]" />
-      <Row FullName="|Shipping and Receiving|StockVehicle|Population Members|StockVehicle[1]|Riders" />
       <Row FullName="|Shipping and Receiving|StockVehicle|Riders" />
       <Row FullName="|Shipping and Receiving|StockVehicle|Tasks" />
     </Rows>
