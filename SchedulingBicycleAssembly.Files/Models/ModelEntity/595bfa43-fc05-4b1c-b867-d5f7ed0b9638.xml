@@ -57,7 +57,7 @@
   </States>
   <Events />
   <Processes>
-    <Process Name="OnEnteredFreeSpace" IsOverride="True" ShowAsUserExecutableProcess="False" InterfaceProcessID="Entity.OnEnteredFreeSpace" BeginStepID="17">
+    <Process Name="OnEnteredFreeSpace" IsOverride="True" ShowAsUserExecutableProcess="False" InterfaceProcessID="Entity.OnEnteredFreeSpace" BeginStepID="2" ExcludedFromLimits="True">
       <Properties>
         <Property Name="TokenClassName">FreeSpaceSteeringToken</Property>
         <Property Name="TokenActionOnAssociatedObjectDestroyed">EndProcess</Property>
@@ -202,12 +202,6 @@
             <Property Name="NodeName">DestinationNode</Property>
           </Properties>
         </Step>
-        <Step Type="a40a2add-ceab-4e0c-bea1-acb941a15281" ReadableType="Alert" Name="Alert1" ID="17">
-          <Properties>
-            <Property Name="Message">Hi from Alice @ 12:41</Property>
-          </Properties>
-          <Exit Name="Exit" Type="Primary" NextID="2" />
-        </Step>
       </Steps>
     </Process>
   </Processes>
@@ -240,4 +234,4 @@
     <AnimationSetup MinimumNumberOfFramesToDisplayIdleAnimation="10" />
   </Graphics>
 </Fragment>
-<!-- sKIKz3FUkrvwPyf2k7NmAU9FwsuO/JrXSKPW8ufTd9+xtBk0j2dzQ6fvCRoYundWGI6SvHALMM6tso3bP4heKQ== -->
+<!-- W2s4/FyvKF95EjkViKsU2wYflMunwU1uwn0VPYNCazq/HPNc7LjJsw58Av4jner89Ufr5ZZ0fSW5JvNDzdLMPA== -->

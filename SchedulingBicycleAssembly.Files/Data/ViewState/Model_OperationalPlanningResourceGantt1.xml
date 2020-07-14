@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<OperationalPlanningResourceGantt Model="Model" FileVersion="213" xmlns="http://www.simio.com/projects/v1">
+<OperationalPlanningResourceGantt Model="Model" FileVersion="216" xmlns="http://www.simio.com/projects/v1">
   <Gantt StartTime="2017-12-04T02:51:01" StopTime="2017-12-08T18:51:01">
     <Columns>
       <Column Name="Resource" Width="208" />
