@@ -7165,7 +7165,7 @@
         </AttachedObjects>
       </Graphics>
     </Fixed>
-    <Node Name="TransferNode1" Type="TransferNode" Location="19.6875 0 20.9375" YawDeg="90" Scope="Public">
+    <Node Name="TransferNode1" Type="TransferNode" Location="19.375 0 15" YawDeg="90" Scope="Public">
       <Properties>
         <Property Name="InitialCost" Units="USD">0.0</Property>
         <Property Name="InitialCostRate" Units="USD per Hour">0.0</Property>
@@ -7400,7 +7400,7 @@
         </PathDecoratorUsage>
       </Graphics>
     </Link>
-    <Link Name="Conveyor18" Type="Conveyor" Size="30.75 2 0" Scope="Public" Start="TransferNode1" End="MemberInput@PackAndShip">
+    <Link Name="Conveyor18" Type="Conveyor" Size="24.86 2 0" Scope="Public" Start="TransferNode1" End="MemberInput@PackAndShip">
       <Points>
         <Point Location="20.5 0 6" />
       </Points>
@@ -7589,7 +7589,7 @@
         </PathDecoratorUsage>
       </Graphics>
     </Link>
-    <Link Name="Conveyor11" Type="Conveyor" Size="11.36 2 0" Scope="Public" Start="Output@Test1" End="TransferNode1">
+    <Link Name="Conveyor11" Type="Conveyor" Size="8.17 2 0" Scope="Public" Start="Output@Test1" End="TransferNode1">
       <Properties>
         <Property Name="InitialCost" Units="USD">0.0</Property>
         <Property Name="InitialCostRate" Units="USD per Hour">0.0</Property>
@@ -7726,7 +7726,7 @@
         </PathDecoratorUsage>
       </Graphics>
     </Link>
-    <Link Name="Conveyor19" Type="Conveyor" Size="9.33 2 0" Scope="Public" Start="Output@Test2" End="TransferNode1">
+    <Link Name="Conveyor19" Type="Conveyor" Size="8.31 2 0" Scope="Public" Start="Output@Test2" End="TransferNode1">
       <Properties>
         <Property Name="InitialCost" Units="USD">0.0</Property>
         <Property Name="InitialCostRate" Units="USD per Hour">0.0</Property>
@@ -8450,4 +8450,4 @@
     <AnimationSetup MinimumNumberOfFramesToDisplayIdleAnimation="10" />
   </Graphics>
 </Fragment>
-<!-- s6JL2/wtpbjyx3khR8dEuAFwznNsDWKvpPVxxkMuzuJIJQI7MllOHSbkymsJ/h0H5f//5n6tKu3+g7HcYAJ0OQ== -->
+<!-- TVntPPfCnIczQbMlEM5lki7y3t5OTyYHeGbMl15eM8UqQkFxe449HQsa9/vsWlW82n/tVlTpjHXG6P5WNayk0g== -->
