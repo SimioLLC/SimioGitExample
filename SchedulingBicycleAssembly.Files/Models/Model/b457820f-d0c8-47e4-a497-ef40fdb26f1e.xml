@@ -697,6 +697,7 @@
               </Property>
               <Property Name="MaterialQuantity">Math.If( ManufacturingOrders.OrderStatus == List.OrderStatus.WIP &amp;&amp; WorkInProcess.AvailableRowCount &gt; 0 &amp;&amp; WorkInProcess[1].CurrentRouteNumber == Routings.RouteNumber, 0.0, Math.If( BillOfMaterials.MaterialUse == Enum.MaterialActionType.Consume,  BillOfMaterials.RequiredQuantity * ManufacturingOrders.Quantity, 0.0))</Property>
               <Property Name="MaterialLotID">BillOfMaterials.RequiredLotId</Property>
+              <Property Name="ConstraintScope">RequestedItem</Property>
             </Properties>
           </Rows>
         </Property>
@@ -713,6 +714,7 @@
               </Property>
               <Property Name="MaterialQuantity">Math.If( ManufacturingOrders.OrderStatus == List.OrderStatus.WIP &amp;&amp; WorkInProcess.AvailableRowCount &gt; 0 &amp;&amp; WorkInProcess[1].CurrentRouteNumber == Routings.RouteNumber, 0.0, Math.If( BillOfMaterials.MaterialUse == Enum.MaterialActionType.Consume,  BillOfMaterials.RequiredQuantity, 0.0))</Property>
               <Property Name="MaterialLotID">BillOfMaterials.RequiredLotId</Property>
+              <Property Name="ConstraintScope">RequestedItem</Property>
             </Properties>
           </Rows>
         </Property>
@@ -8450,4 +8452,3 @@
     <AnimationSetup MinimumNumberOfFramesToDisplayIdleAnimation="10" />
   </Graphics>
 </Fragment>
-<!-- fnAxNCsa0sJQFfzxfmKV+jU/OV5kZmAsVi2gSrq7eRbfOmTOmzdHwPiineO/rLcrZPVfSgnvcPMZUajZ1bI2JA== -->

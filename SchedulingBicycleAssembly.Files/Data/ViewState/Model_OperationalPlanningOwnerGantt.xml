@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<OperationalPlanningOwnerGantt Model="Model" FileVersion="216" xmlns="http://www.simio.com/projects/v1">
+<OperationalPlanningOwnerGantt Model="Model" FileVersion="222" xmlns="http://www.simio.com/projects/v1">
   <Gantt StartTime="2017-12-04T14:29:29" StopTime="2017-12-09T06:29:29">
     <Columns>
       <Column Name="Entity" Width="173" />
       <Column Name="#" Width="50" />
+      <Column Name="MaterialName" Width="50" />
     </Columns>
     <RowVisibility ConstraintRows="False" SummaryRows="False" Targets="False" TaskResourceUsageRows="False" TaskConstraintRows="False" />
   </Gantt>

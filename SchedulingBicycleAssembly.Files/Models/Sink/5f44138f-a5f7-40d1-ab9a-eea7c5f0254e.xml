@@ -1,5 +1,4 @@
 <Fragment>
-  <Compatibility ParseElementFunctionsInExpressionsLast="True" ParseNonEntityAssociatedObjectForPropertyReference="False" AllowInteractiveEntryOfNonStandardElementNames="False" />
   <ChangeDescriptions>
     <ChangeDescription Version="34">Version 2.37: Updated the Sink object to use the string '[DynamicObjects]' as the Data Source field for classifying the sink's 'Time In System' tally statistic results.</ChangeDescription>
     <ChangeDescription Version="36">Version 2.39: Updated the Sink object process logic to specify all of the object's process delays as non-interruptible. Added a 'State Assignments' property category.</ChangeDescription>
@@ -24,6 +23,7 @@
     <ChangeDescription Version="64">Version 8.135: Hide the inherited 'ExpectedSetupTimeExpression' and 'ExpectedOperationTimeExpression' properties.</ChangeDescription>
     <ChangeDescription Version="65">Version 8.137: Required update due to BasicNode object updates.</ChangeDescription>
     <ChangeDescription Version="66">Version 8.147: Property description string updates.</ChangeDescription>
+    <ChangeDescription Version="67">Version 12.212: Required update due to BasicNode and TransferNode object updates.</ChangeDescription>
   </ChangeDescriptions>
   <ChangeStringReplacements>
     <ChangeStringReplacement Version="56" RegularExpressionPattern="(^|[^\w_])(?i:InitializedAddOnProcess)([^\w_]|$)" ReplacementString="$1RunInitializedAddOnProcess$2" />
@@ -120,7 +120,7 @@
     <Process Name="OnRunInitialized" IsOverride="True" ShowAsUserExecutableProcess="False" InterfaceProcessID="Object.OnRunInitialized" BeginStepID="2">
       <Properties />
       <Steps>
-        <Step Type="Execute" Name="RunInitialized_AddOnProcess" ID="2">
+        <Step Type="Execute" Name="RunInitializedAddOnProcess" ID="2">
           <Properties>
             <Property Name="ProcessName">
               <Value>RunInitializedAddOnProcess</Value>
@@ -132,7 +132,7 @@
     <Process Name="OnRunEnding" IsOverride="True" ShowAsUserExecutableProcess="False" InterfaceProcessID="Object.OnRunEnding" BeginStepID="2">
       <Properties />
       <Steps>
-        <Step Type="Execute" Name="RunEnding_AddOnProcess" ID="2">
+        <Step Type="Execute" Name="RunEndingAddOnProcess" ID="2">
           <Properties>
             <Property Name="ProcessName">
               <Value>RunEndingAddOnProcess</Value>
@@ -164,7 +164,7 @@
           </Properties>
           <Exit Name="Exit" Type="Primary" NextID="3" />
         </Step>
-        <Step Type="Execute" Name="Entered_AddOnProcess" ID="3">
+        <Step Type="Execute" Name="EnteredAddOnProcess" ID="3">
           <Properties>
             <Property Name="ProcessName">
               <Value>EnteredAddOnProcess</Value>
@@ -182,7 +182,7 @@
           <Properties />
           <Exit Name="Exit" Type="Primary" NextID="6" />
         </Step>
-        <Step Type="Execute" Name="DestroyingEntity_AddOnProcess" ID="6">
+        <Step Type="Execute" Name="DestroyingEntityAddOnProcess" ID="6">
           <Properties>
             <Property Name="ProcessName">
               <Value>DestroyingEntityAddOnProcess</Value>
@@ -195,7 +195,7 @@
             <Property Name="TallyStatisticName">
               <Value>TimeInSystem</Value>
             </Property>
-            <Property Name="Value">Entity.TimeInSystem</Property>
+            <Property Name="ValueExpression">Entity.TimeInSystem</Property>
           </Properties>
           <Exit Name="Exit" Type="Primary" NextID="8" />
         </Step>
@@ -227,8 +227,6 @@
           <Point Location="-4 0 0.5" />
         </Points>
       </Queue>
-      <PadBoundingBoxForSymbol Value="True" />
-      <OffsetDynamicRelativeToExternalBounds Value="False" />
     </Graphics>
   </External>
   <Graphics>
@@ -238,7 +236,7 @@
     <Graphics>
       <StatusLabel Center="-5 0 -1.5" Width="10" Height="1" ExternallyVisible="True" BackColor="00ffffff" TextColor="0000ff" Expression="&quot;InputBuffer&quot;" />
       <StatusLabel Center="1.875 0 -1.5" Width="3.75" Height="1" ExternallyVisible="True" Expression="InputBuffer.Contents" />
-      <Plot Center="11 0 2" Width="14" Height="8" ExternallyVisible="True" Title="InputBuffer.Contents" XAxisLabel="Time" YAxisLabel="Value" TextScale="0.5">
+      <Plot Center="11 0 2" Width="14" Height="8" ExternallyVisible="True" Title="InputBuffer.Contents" XAxisLabel="Time" YAxisLabel="Value" Look="Chameleon;Office">
         <Range Type="Hours">1</Range>
         <PlotLines>
           <PlotLine Expression="InputBuffer.Contents" />
@@ -247,4 +245,3 @@
     </Graphics>
   </Dashboard>
 </Fragment>
-<!-- Rd9u+46n/xMIc8OnfUNuHp8+4WLdZ8eb5pA+XSTYLQ5aNzFzFn3n4T+1oFj97cGO0cAFJpijZSoiNPWSXU5ZGw== -->

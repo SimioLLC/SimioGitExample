@@ -48,6 +48,7 @@
     <ChangeDescription Version="156">Version 10.175: Added Other Routing Out Options -&gt; Required Materials -&gt; InventorySiteType &amp; SiteObjectName properties.</ChangeDescription>
     <ChangeDescription Version="157">Version 11.193:  Other Routing Out Options -&gt; Required Materials -&gt; Optional 'Lot ID' property if required material from an inventory site.</ChangeDescription>
     <ChangeDescription Version="158">Version 11.203: Added 'Route Constraint Logic' property.</ChangeDescription>
+    <ChangeDescription Version="159">Version 12.212: Renamed 'TalliesOnEnteringValue' property to 'TalliesOnEnteringValueExpression'. Renamed 'TalliesOnExitedValue' property to 'TalliesOnExitedValueExpression'.</ChangeDescription>
   </ChangeDescriptions>
   <ChangeStringReplacements>
     <ChangeStringReplacement Version="104" RegularExpressionPattern="(^|[^\w_])(?i:AutoTransferOnEntry)([^\w_]|$)" ReplacementString="$1ExternalNodeName.HasValue$2" />
@@ -233,12 +234,15 @@
         <ExpressionProperty Name="TalliesOnEnteringTallyCondition" DisplayName="Condition" Description="The condition required to record the tally statistic." Category="Basic Logic" DefaultValue="0.0" Parent="TalliesOnEnteringTallyConditionType" NullString="null">
           <Switch Property="TalliesOnEnteringTallyConditionType" Value="CustomCondition" />
         </ExpressionProperty>
-        <ElementProperty Name="TalliesOnEnteringTallyStatisticName" DisplayName="Tally Statistic Name" Description="The tally statistic for which the value is to be recorded." Category="Basic Logic" Required="False" NullString="null" Type="TallyStatistic" />
-        <EnumProperty Name="TalliesOnEnteringValueType" DisplayName="Value Type" Description="The type of value to record. The value type 'Expression' records the value of the specified expression. The value type 'TimeBetween' records the time between arrivals to Tally steps referencing the tally statistic." Category="Basic Logic" DefaultValue="Expression" NullString="null" EnumType="TallyValueType" />
-        <ExpressionProperty Name="TalliesOnEnteringValue" DisplayName="Value" Description="The expression value to be recorded." Category="Basic Logic" DefaultValue="0.0" NullString="null" UnitTypeProperty="TalliesOnEnteringTallyStatisticName">
+        <ElementProperty Name="TalliesOnEnteringTallyStatisticName" DisplayName="Tally Statistic Name" Description="The name of the tally statistic for which to record an observation value." Category="Basic Logic" Required="False" NullString="null" Type="TallyStatistic" />
+        <EnumProperty Name="TalliesOnEnteringValueType" DisplayName="Value Type" Description="The type of observation value to record.&#xD;&#xA;&#xD;&#xA;If the value type is 'Expression', then the value of the specified expression is recorded.&#xD;&#xA;&#xD;&#xA;If the value type is 'TimeBetween', then the time since the last entity arrival to this or any other Tally step referencing the tally statistic is recorded." Category="Basic Logic" DefaultValue="Expression" NullString="null" EnumType="TallyValueType" />
+        <ExpressionProperty Name="TalliesOnEnteringValueExpression" DisplayName="Value Expression" Description="The expression returning the value to be recorded." Category="Basic Logic" DefaultValue="0.0" NullString="null" UnitTypeProperty="TalliesOnEnteringTallyStatisticName">
           <Switch Property="TalliesOnEnteringValueType" Value="Expression" />
         </ExpressionProperty>
         <Overrides />
+        <PropertyReplacements>
+          <PropertyReplacement Version="159" OldPropertyName="TalliesOnEnteringValue" NewPropertyName="TalliesOnEnteringValueExpression" />
+        </PropertyReplacements>
       </PropertyDefinitions>
     </RepeatingProperty>
     <RepeatingProperty Name="TalliesOnExited" DisplayName="On Exited" Description="Optional tally statistics to record when an entity has exited the node." ComplexityLevel="Advanced" Category="Tally Statistics" Required="False" NullString="null">
@@ -257,12 +261,15 @@
         <ExpressionProperty Name="TalliesOnExitedTallyCondition" DisplayName="Condition" Description="The condition required to record the tally statistic." Category="Basic Logic" DefaultValue="0.0" Parent="TalliesOnExitedTallyConditionType" NullString="null">
           <Switch Property="TalliesOnExitedTallyConditionType" Value="CustomCondition" />
         </ExpressionProperty>
-        <ElementProperty Name="TalliesOnExitedTallyStatisticName" DisplayName="Tally Statistic Name" Description="The tally statistic for which the value is to be recorded." Category="Basic Logic" Required="False" NullString="null" Type="TallyStatistic" />
-        <EnumProperty Name="TalliesOnExitedValueType" DisplayName="Value Type" Description="The type of value to record. The value type 'Expression' records the value of the specified expression. The value type 'TimeBetween' records the time between arrivals to Tally steps referencing the tally statistic." Category="Basic Logic" DefaultValue="Expression" NullString="null" EnumType="TallyValueType" />
-        <ExpressionProperty Name="TalliesOnExitedValue" DisplayName="Value" Description="The expression value to be recorded." Category="Basic Logic" DefaultValue="0.0" NullString="null" UnitTypeProperty="TalliesOnExitedTallyStatisticName">
+        <ElementProperty Name="TalliesOnExitedTallyStatisticName" DisplayName="Tally Statistic Name" Description="The name of the tally statistic for which to record an observation value." Category="Basic Logic" Required="False" NullString="null" Type="TallyStatistic" />
+        <EnumProperty Name="TalliesOnExitedValueType" DisplayName="Value Type" Description="The type of observation value to record.&#xD;&#xA;&#xD;&#xA;If the value type is 'Expression', then the value of the specified expression is recorded.&#xD;&#xA;&#xD;&#xA;If the value type is 'TimeBetween', then the time since the last entity arrival to this or any other Tally step referencing the tally statistic is recorded." Category="Basic Logic" DefaultValue="Expression" NullString="null" EnumType="TallyValueType" />
+        <ExpressionProperty Name="TalliesOnExitedValueExpression" DisplayName="Value Expression" Description="The expression returning the value to be recorded." Category="Basic Logic" DefaultValue="0.0" NullString="null" UnitTypeProperty="TalliesOnExitedTallyStatisticName">
           <Switch Property="TalliesOnExitedValueType" Value="Expression" />
         </ExpressionProperty>
         <Overrides />
+        <PropertyReplacements>
+          <PropertyReplacement Version="159" OldPropertyName="TalliesOnExitedValue" NewPropertyName="TalliesOnExitedValueExpression" />
+        </PropertyReplacements>
       </PropertyDefinitions>
     </RepeatingProperty>
     <ElementProperty Name="RunInitializedAddOnProcess" DisplayName="Run Initialized" Description="Occurs when the simulation run is initialized." ComplexityLevel="Advanced" Category="Add-On Process Triggers" Required="False" NullString="null" ValueListFilter="UserExecutableProcessesOnly" Type="Process" />
@@ -407,7 +414,7 @@
                     <Value>TalliesOnEnteringTallyStatisticName</Value>
                   </Property>
                   <Property Name="TalliesValueType">TalliesOnEnteringValueType</Property>
-                  <Property Name="TalliesValue">TalliesOnEnteringValue</Property>
+                  <Property Name="TalliesValueExpression">TalliesOnEnteringValueExpression</Property>
                   <Property Name="TalliesNumberOfObservations">Math.If(TalliesOnEntering.TalliesOnEnteringTallyConditionType==List.ActionConditionType.NoCondition,1,TalliesOnEntering.TalliesOnEnteringTallyConditionType==List.ActionConditionType.IsEntity, !Entity.Is.Transporter,TalliesOnEntering.TalliesOnEnteringTallyConditionType==List.ActionConditionType.IsTransporter, Entity.Is.Transporter, TalliesOnEntering.TalliesOnEnteringTallyCondition&gt;0.0)</Property>
                 </Properties>
               </Rows>
@@ -508,7 +515,7 @@
                     <Value>TalliesOnExitedTallyStatisticName</Value>
                   </Property>
                   <Property Name="TalliesValueType">TalliesOnExitedValueType</Property>
-                  <Property Name="TalliesValue">TalliesOnExitedValue</Property>
+                  <Property Name="TalliesValueExpression">TalliesOnExitedValueExpression</Property>
                   <Property Name="TalliesNumberOfObservations">Math.If(TalliesOnExited.TalliesOnExitedTallyConditionType==List.ActionConditionType.NoCondition,1,TalliesOnExited.TalliesOnExitedTallyConditionType==List.ActionConditionType.IsEntity, !Entity.Is.Transporter,TalliesOnExited.TalliesOnExitedTallyConditionType==List.ActionConditionType.IsTransporter, Entity.Is.Transporter, TalliesOnExited.TalliesOnExitedTallyCondition&gt;0.0)</Property>
                 </Properties>
               </Rows>
@@ -564,7 +571,7 @@
                     <Value>TalliesOnEnteringTallyStatisticName</Value>
                   </Property>
                   <Property Name="TalliesValueType">TalliesOnEnteringValueType</Property>
-                  <Property Name="TalliesValue">TalliesOnEnteringValue</Property>
+                  <Property Name="TalliesValueExpression">TalliesOnEnteringValueExpression</Property>
                   <Property Name="TalliesNumberOfObservations">Math.If(TalliesOnEntering.TalliesOnEnteringTallyConditionType==List.ActionConditionType.NoCondition,1,TalliesOnEntering.TalliesOnEnteringTallyConditionType==List.ActionConditionType.IsEntity, !Entity.Is.Transporter,TalliesOnEntering.TalliesOnEnteringTallyConditionType==List.ActionConditionType.IsTransporter, Entity.Is.Transporter, TalliesOnEntering.TalliesOnEnteringTallyCondition&gt;0.0)</Property>
                 </Properties>
               </Rows>
@@ -643,7 +650,7 @@
                     <Value>TalliesOnEnteringTallyStatisticName</Value>
                   </Property>
                   <Property Name="TalliesValueType">TalliesOnEnteringValueType</Property>
-                  <Property Name="TalliesValue">TalliesOnEnteringValue</Property>
+                  <Property Name="TalliesValueExpression">TalliesOnEnteringValueExpression</Property>
                   <Property Name="TalliesNumberOfObservations">Math.If(TalliesOnEntering.TalliesOnEnteringTallyConditionType==List.ActionConditionType.NoCondition,1,TalliesOnEntering.TalliesOnEnteringTallyConditionType==List.ActionConditionType.IsEntity, !Entity.Is.Transporter,TalliesOnEntering.TalliesOnEnteringTallyConditionType==List.ActionConditionType.IsTransporter, Entity.Is.Transporter, TalliesOnEntering.TalliesOnEnteringTallyCondition&gt;0.0)</Property>
                 </Properties>
               </Rows>
@@ -828,7 +835,7 @@ It is recommended to verify that the entity is using the intended travel mode. I
               <Value>DestinationRoutingGroupName</Value>
             </Property>
             <Property Name="SelectionGoal">DestinationSelectionGoal</Property>
-            <Property Name="SelectionExpression">DestinationSelectionExpression</Property>
+            <Property Name="SelectionValueExpression">DestinationSelectionExpression</Property>
             <Property Name="BlockedDestinationRule">BlockedDestinationRule</Property>
             <Property Name="SelectionCondition">DestinationSelectionCondition</Property>
             <Property Name="RouteConstraintLogic">
@@ -865,7 +872,7 @@ It is recommended to verify that the entity is using the intended travel mode. I
               <Value>RoutingOut</Value>
             </Property>
             <Property Name="SelectionGoal">DestinationSelectionGoal</Property>
-            <Property Name="SelectionExpression">DestinationSelectionExpression</Property>
+            <Property Name="SelectionValueExpression">DestinationSelectionExpression</Property>
             <Property Name="BlockedDestinationRule">BlockedDestinationRule</Property>
             <Property Name="SelectionCondition">DestinationSelectionCondition</Property>
             <Property Name="RouteConstraintLogic">
@@ -962,4 +969,3 @@ It is recommended to verify that the entity is using the intended travel mode. I
     <AnimationSetup MinimumNumberOfFramesToDisplayIdleAnimation="10" />
   </Graphics>
 </Fragment>
-<!-- a3/XHqo9wF6LtBhAvvqSX08eBehmkgMVGpHP+M1ke+3gCWv1wzc8MPDl4bfCgCsArjaH68sppS8wXb6b8fDheQ== -->

@@ -46,6 +46,7 @@
     <ChangeDescription Version="116">Version 10.180: Some property description updates.</ChangeDescription>
     <ChangeDescription Version="117">Version 11.193: Required update due to TransferNode object update.</ChangeDescription>
     <ChangeDescription Version="118">Version 12.203: Required update due to TransferNode object update.</ChangeDescription>
+    <ChangeDescription Version="119">Version 12.212: Required update due to BasicNode and TransferNode object updates.</ChangeDescription>
   </ChangeDescriptions>
   <ChangeStringReplacements>
     <ChangeStringReplacement Version="77" RegularExpressionPattern="(^|[^\w_])(?i:InitializedAddOnProcess)([^\w_]|$)" ReplacementString="$1RunInitializedAddOnProcess$2" />
@@ -763,4 +764,3 @@
     </Graphics>
   </Dashboard>
 </Fragment>
-<!-- cMKYNzxIsaiewj5c52hb9s7pwRsbLjsH3H2opogs5d90yUKDhNEF2bV2wQNYYWdd6UiMXII3L8rRaG93H5ke1w== -->

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project ProductVersion="12.208.20863.0" FileVersion="216" WriteToMultipleFiles="True" Id="a9a11b7c-c8ee-4fa2-97ad-3d374de461e4" xmlns="http://www.simio.com/projects/v1">
-  <DocumentInfo LicenseInfo="14:1" UserName="" Organization="Simio" SerialNumber="6948" SaveDate="2020-07-15T11:22:07" Sig="lrtwjQSvVUqIQ6k8EFQhC+FgyizLovFKDBdfSjkdRwdoQOiJl/PtyuRwYWxOe7tjOC235Ezv1jTERAm8Wn01pw==" />
+<Project ProductVersion="12.214.21764.0" FileVersion="222" WriteToMultipleFiles="True" Id="a9a11b7c-c8ee-4fa2-97ad-3d374de461e4" xmlns="http://www.simio.com/projects/v1">
+  <DocumentInfo LicenseInfo="15:1" UserName="" Organization="Simio" SerialNumber="6947" SaveDate="2020-10-13T23:41:04" Sig="jl8zRu3wwTBIPOlU1LtenkjhKIdqmDQaj8LbA2XVV+fqx/ur3KrTumpw4FtwTAYbreFBJ7Ccpf07SuouMqx+aw==" />
   <Models>
     <Model Definition="ModelEntity" Runnable="False">
       <TargetSettings HighRiskThreshold="50" MediumRiskThreshold="80" HighRiskColor="ff0000" MediumRiskColor="ffff00" LowRiskColor="90ee90" />
-      <ViewInfo>
-        <Process DefaultCategoryExpanded="True" />
-      </ViewInfo>
+      <ModelViewInfo>
+        <FileRef Name="ViewInfos\ModelEntity_ModelViewInfo.xml" />
+      </ModelViewInfo>
     </Model>
     <Model Definition="Model">
       <RunSetup AnimationInterval="1000" DisableRandomness="True" ReplicationNumber="1" LogInteractiveRuntimeData="True" Latitude="40.539912" Longitude="-80.180157">
         <StartDate>2017-12-04T08:00:00</StartDate>
         <RunLength Units="Days">7</RunLength>
-        <CompatibilitySettings OnResourceCapacityIncreaseScheduleLateCurrentEventToTryAllocateCapacity="False" TokenIsSuspendedFunctionConsidersOnlySuspensionsAppliedExplicitlyToTheToken="True" ScheduleLateCurrentEventToTryBatchingWhenBatchQueueItemInserted="False" ExcludeUnrelatedRowsInTimerArrivalTables="False" ReportMaterialConsumptionCostAsUsageCostCharged="False" AllowMaterialAllocationQueueBypassing="True" ScheduleLateCurrentEventToTryAllocatingWhenMaterialProduced="False" EvaluateExpressionFunctionsInExpressionsUsingUnitTypesOfExpression="True" AlwaysDoFullChecksOfBatchLogicParentQueues="False" AlwaysUseSeizeSelectionGoalWhenCheckingResourceAllocationQueue="False" AutomaticallyAdjustTimerTargetTriggeringEventCountIfZeroToOne="True" AutoDestroyZeroVolumeEntitiesInContainersWithZeroRateInflow="False" AllowIndexingPastRelatedRowsForTableStateIndexing="True" SearchAssociatedObjectsOfCandidateObjectsForTableReferences="False" OnSeizedProcessCompatibilityMode="True" OnReleasedProcessCompatibilityMode="True" SearchCopiesTableReferencesWhenSearchedTableIsImplicitlyReferenced="False" AutoCancelMoveRequestIfResourceReleased="False" SearchStepUsesExplicitCopyOverTableRowReferences="False" AlwaysCheckSpecificRunSpaceContextWhenResolvingTableRowReferences="False" ExcludeEntitiesTransferringOutOfChildStationsFromResourceUtilization="False" MinimalAutomaticRouteRequestQueueChecking="False" AllChangeoverLogicExpressionEvaluationsAllowResourceReferences="False" SearchRelatedRowsOnlyOptionAlwaysLooksForBestForeignKeyRelationship="False" AllowTokenBasedTableRowReferencesInQueueRankingExpressions="False" />
+        <CompatibilitySettings OnResourceCapacityIncreaseScheduleLateCurrentEventToTryAllocateCapacity="False" TokenIsSuspendedFunctionConsidersOnlySuspensionsAppliedExplicitlyToTheToken="True" ScheduleLateCurrentEventToTryBatchingWhenBatchQueueItemInserted="False" ExcludeUnrelatedRowsInTimerArrivalTables="False" ReportMaterialConsumptionCostAsUsageCostCharged="False" AllowMaterialAllocationQueueBypassing="True" ScheduleLateCurrentEventToTryAllocatingWhenMaterialProduced="False" EvaluateExpressionFunctionsInExpressionsUsingUnitTypesOfExpression="True" AlwaysDoFullChecksOfBatchLogicParentQueues="False" AlwaysUseSeizeSelectionGoalWhenCheckingResourceAllocationQueue="False" AutomaticallyAdjustTimerTargetTriggeringEventCountIfZeroToOne="True" AutoDestroyZeroVolumeEntitiesInContainersWithZeroRateInflow="False" AllowIndexingPastRelatedRowsForTableStateIndexing="True" SearchAssociatedObjectsOfCandidateObjectsForTableReferences="False" OnSeizedProcessCompatibilityMode="True" OnReleasedProcessCompatibilityMode="True" SearchCopiesTableReferencesWhenSearchedTableIsImplicitlyReferenced="False" AutoCancelMoveRequestIfResourceReleased="False" SearchStepUsesExplicitCopyOverTableRowReferences="False" AlwaysCheckSpecificRunSpaceContextWhenResolvingTableRowReferences="False" ExcludeEntitiesTransferringOutOfChildStationsFromResourceUtilization="False" MinimalAutomaticRouteRequestQueueChecking="False" AllChangeoverLogicExpressionEvaluationsAllowResourceReferences="False" SearchRelatedRowsOnlyOptionAlwaysLooksForBestForeignKeyRelationship="False" AllowTokenBasedTableRowReferencesInQueueRankingExpressions="False" ScheduleConstraintLogicRelatedQueueChecksAsLatestCurrentEvents="False" RecordStateVariableValueWheneverStateStatisticFunctionCalled="True" />
       </RunSetup>
       <TargetSettings HighRiskThreshold="50" MediumRiskThreshold="80" HighRiskColor="ff0000" MediumRiskColor="ffff00" LowRiskColor="90ee90" />
       <RunnableInstance>
@@ -88,214 +88,45 @@
         <TableReport Name="Dispatch List Report" DataSourceName="Table.ManufacturingOrdersOutput" Data="Data\TableReports\Model_DispatchListReport.xml" />
         <TableReport Name="Order Details" DataSourceName="Table.ManufacturingOrders" Data="Data\TableReports\Model_OrderDetails.xml" />
       </TableReports>
-      <ViewInfo ActiveModel="True" ActiveView="Facility">
-        <Facility FollowDistanceRatio="1">
-          <Camera Orientation="Perspective" Location="33.3989328435696 18.9489865265077 20.4808538125426" Direction="-0.577350269189626 -0.577350269189626 -0.577350269189626" Zoom="66.980831460917244" />
-          <ObjectDisplay LineArrows="False" SnapToGrid="True" Background="1e90ff" />
-          <Libraries Width="122">
-            <Library Name="Standard Library" Size="390" Expanded="True" />
-            <Library Name="Flow Library" Size="28" />
-          </Libraries>
-        </Facility>
-        <Process>
-          <Categories>
-            <Category Name="_Initialization" Expanded="True" />
-            <Category Name="AssemblyNodeRoutingGroup Add-On Processes" Expanded="True" />
-            <Category Name="Input@Stock Add-On Processes" Expanded="True" />
-            <Category Name="MainFrameAdd-On Processes" Expanded="True" />
-          </Categories>
-        </Process>
-        <External>
-          <Camera Orientation="Top" Location="0 0 0" Direction="0 0 0" />
-          <ObjectDisplay NodeLabels="False" SnapToGrid="True" />
-        </External>
-        <Dashboard>
-          <Camera Orientation="Top" Location="0 0 0" Direction="0 0 0" />
-          <ObjectDisplay NodeLabels="False" SnapToGrid="True" />
-        </Dashboard>
-        <StandardTables>
-          <DevExpressLayout>
-            <FileRef Name="Data\DevExpressLayout.xml" />
-          </DevExpressLayout>
-          <Tables SelectedTable="Resources">
-            <Table Name="Resources" FilterEnabled="True">
-              <Columns>
-                <Column Name="ResourceName" Width="114" />
-                <Column Name="Description" Width="73" />
-                <Column Name="XLocation" Width="110" />
-                <Column Name="ZLocation" Width="110" />
-                <Column Name="Area" Width="76" />
-                <Column Name="Workcell" Width="60" />
-                <Column Name="ObjectType" Width="139" />
-                <Column Name="WorkSchedule" Width="91" />
-                <Column Name="CostRate" Width="203" />
-                <Column Name="ChangeoverMatrix" Width="112" />
-                <Column Name="SecondaryResourceName" Width="149" />
-                <Column Name="ChangeoverEfficiency" Width="128" />
-              </Columns>
-            </Table>
-            <Table Name="Materials" FilterEnabled="True">
-              <Columns>
-                <Column Name="MaterialName" Width="127" />
-                <Column Name="MaterialClass" Width="119" />
-                <Column Name="MaterialCost" Width="173" />
-                <Column Name="MaterialColor" Width="86" />
-                <Column Name="GanttColor" Width="77" />
-                <Column Name="MaterialStateStatistic" Width="128" />
-                <Column Name="PictureId" Width="66" />
-              </Columns>
-            </Table>
-            <Table Name="MaterialLots" FilterEnabled="True">
-              <Columns>
-                <Column Name="MaterialName" Width="146" />
-                <Column Name="LotId" Width="48" />
-                <Column Name="Quantity" Width="62" />
-              </Columns>
-            </Table>
-            <Table Name="ManufacturingOrders" FilterEnabled="True">
-              <Columns>
-                <Column Name="Enabled" Width="58" />
-                <Column Name="OrderId" Width="80" />
-                <Column Name="Customer" Width="103" />
-                <Column Name="MaterialName" Width="113" />
-                <Column Name="ReleaseDate" Width="118" />
-                <Column Name="DueDate" Width="124" />
-                <Column Name="OrderStatus" Width="82" />
-                <Column Name="Priority" Width="54" />
-                <Column Name="Quantity" Width="62" />
-                <Column Name="AdjustedReleaseDate" Width="255" />
-                <Column Name="ShipDate" Width="66" />
-                <Column Name="ProductionCost" Width="127" />
-                <Column Name="RowNumber" Width="81" />
-                <Column Name="TargetShipDate_Value" Width="118" />
-                <Column Name="TargetShipDate_Status" Width="62" />
-                <Column Name="TargetCost_Value" Width="77" />
-                <Column Name="TargetCost_Status" Width="57" />
-              </Columns>
-            </Table>
-            <Table Name="Routings" FilterEnabled="True">
-              <Columns>
-                <Column Name="RoutingKey" Width="145" />
-                <Column Name="MaterialName" Width="127" />
-                <Column Name="Sequence" Width="67" />
-                <Column Name="RouteNumber" Width="89" />
-                <Column Name="SetupTime" Width="118" />
-                <Column Name="ProcessTime" Width="127" />
-              </Columns>
-            </Table>
-            <Table Name="BillOfMaterials" FilterEnabled="True">
-              <Columns>
-                <Column Name="RoutingKey" Width="164" />
-                <Column Name="ComponentMaterial" Width="126" />
-                <Column Name="RequiredQuantity" Width="108" />
-                <Column Name="RequiredLotId" Width="94" />
-                <Column Name="MaterialUse" Width="79" />
-              </Columns>
-            </Table>
-            <Table Name="WorkInProcess" FilterEnabled="True">
-              <Columns>
-                <Column Name="OrderId" Width="112" />
-                <Column Name="CurrentRouteNumber" Width="129" />
-                <Column Name="CurrentResource" Width="105" />
-                <Column Name="FractionOfSetupCompleted" Width="159" />
-                <Column Name="CompletedQuantity" Width="116" />
-                <Column Name="AccruedCost" Width="174" />
-              </Columns>
-            </Table>
-            <Table Name="ManufacturingOrdersOutput" FilterEnabled="True">
-              <Columns>
-                <Column Name="OrderId" Width="61" />
-                <Column Name="RoutingKey" Width="78" />
-                <Column Name="ScheduledResource" Width="117" />
-                <Column Name="ScheduledStartTime" Width="121" />
-                <Column Name="ScheduledEndTime" Width="115" />
-                <Column Name="ScheduledQuantity" Width="114" />
-              </Columns>
-            </Table>
-            <Table Name="PurchaseOrders" FilterEnabled="True">
-              <Columns>
-                <Column Name="PONumber" Width="74" />
-                <Column Name="MaterialName" Width="88" />
-                <Column Name="ArrivalDate" Width="124" />
-                <Column Name="Quantity" Width="62" />
-              </Columns>
-            </Table>
-            <Table Name="ResourcesSecondaryWorkers" FilterEnabled="True">
-              <Columns>
-                <Column Name="Resource" Width="103" />
-                <Column Name="Workers" Width="103" />
-              </Columns>
-            </Table>
-            <Table Name="RoutingDestinations" FilterEnabled="True">
-              <Columns>
-                <Column Name="ResourceName" Width="95" />
-                <Column Name="Node" Width="90" />
-              </Columns>
-            </Table>
-          </Tables>
-        </StandardTables>
-        <InteractivePivotGrid>
-          <DevExpressIncantation Layout="&lt;XtraSerializer version=&quot;1.0&quot; application=&quot;PivotGrid&quot;&gt;&#xD;&#xA;  &lt;property name=&quot;#LayoutVersion&quot; /&gt;&#xD;&#xA;  &lt;property name=&quot;Fields&quot; iskey=&quot;true&quot; value=&quot;12&quot;&gt;&#xD;&#xA;    &lt;property name=&quot;Item1&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;      &lt;property name=&quot;CustomTotals&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;ImageIndex&quot;&gt;-1&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ToolTips&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;HeaderText&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ValueText&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldEditName&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;Name&quot;&gt;fieldScenarioName&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Area&quot;&gt;ColumnArea&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AllowedAreas&quot;&gt;RowArea, ColumnArea&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldName&quot;&gt;ScenarioName&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Index&quot;&gt;0&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SortBySummaryInfo&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;Conditions&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;FieldComponentName&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;TotalsVisibility&quot;&gt;None&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FilterValues&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;Values&quot;&gt;~Xtra#Array0, &lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;ValuesCore&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;DeferFilterString&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ShowBlanks&quot;&gt;true&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;FilterType&quot;&gt;Excluded&lt;/property&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AreaIndex&quot;&gt;0&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ActualSortMode&quot;&gt;Default&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Visible&quot;&gt;false&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SummaryFilter&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;StartValue&quot; isnull=&quot;true&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;EndValue&quot; isnull=&quot;true&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;Mode&quot;&gt;LastLevel&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;RowFieldComponentName&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ColumnFieldComponentName&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;    &lt;/property&gt;&#xD;&#xA;    &lt;property name=&quot;Item2&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;      &lt;property name=&quot;CustomTotals&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;ImageIndex&quot;&gt;-1&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ToolTips&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;HeaderText&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ValueText&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldEditName&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;Name&quot;&gt;fieldObjectType&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Area&quot;&gt;RowArea&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AllowedAreas&quot;&gt;RowArea, ColumnArea, FilterArea&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldName&quot;&gt;ObjectType&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Index&quot;&gt;1&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SortBySummaryInfo&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;Conditions&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;FieldComponentName&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;TotalsVisibility&quot;&gt;None&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FilterValues&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;Values&quot;&gt;~Xtra#Array0, &lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;ValuesCore&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;DeferFilterString&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ShowBlanks&quot;&gt;true&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;FilterType&quot;&gt;Excluded&lt;/property&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AreaIndex&quot;&gt;0&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ActualSortMode&quot;&gt;Default&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Width&quot;&gt;110&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SummaryFilter&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;StartValue&quot; isnull=&quot;true&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;EndValue&quot; isnull=&quot;true&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;Mode&quot;&gt;LastLevel&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;RowFieldComponentName&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ColumnFieldComponentName&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;    &lt;/property&gt;&#xD;&#xA;    &lt;property name=&quot;Item3&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;      &lt;property name=&quot;CustomTotals&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;ImageIndex&quot;&gt;-1&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ToolTips&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;HeaderText&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ValueText&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldEditName&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;Name&quot;&gt;fieldObjectName&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Area&quot;&gt;RowArea&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AllowedAreas&quot;&gt;RowArea, ColumnArea&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldName&quot;&gt;ObjectName&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Index&quot;&gt;2&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SortBySummaryInfo&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;Conditions&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;FieldComponentName&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;TotalsVisibility&quot;&gt;None&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FilterValues&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;Values&quot;&gt;~Xtra#Array0, &lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;ValuesCore&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;DeferFilterString&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ShowBlanks&quot;&gt;true&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;FilterType&quot;&gt;Excluded&lt;/property&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AreaIndex&quot;&gt;1&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ActualSortMode&quot;&gt;Default&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Width&quot;&gt;120&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SummaryFilter&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;StartValue&quot; isnull=&quot;true&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;EndValue&quot; isnull=&quot;true&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;Mode&quot;&gt;LastLevel&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;RowFieldComponentName&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ColumnFieldComponentName&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;    &lt;/property&gt;&#xD;&#xA;    &lt;property name=&quot;Item4&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;      &lt;property name=&quot;CustomTotals&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;ImageIndex&quot;&gt;-1&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ToolTips&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;HeaderText&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ValueText&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldEditName&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;Name&quot;&gt;fieldDataSource&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Area&quot;&gt;RowArea&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AllowedAreas&quot;&gt;RowArea, ColumnArea&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldName&quot;&gt;DataSource&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Index&quot;&gt;3&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SortBySummaryInfo&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;Conditions&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;FieldComponentName&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;TotalsVisibility&quot;&gt;None&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FilterValues&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;Values&quot;&gt;~Xtra#Array0, &lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;ValuesCore&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;DeferFilterString&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ShowBlanks&quot;&gt;true&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;FilterType&quot;&gt;Excluded&lt;/property&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AreaIndex&quot;&gt;2&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ActualSortMode&quot;&gt;Default&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Width&quot;&gt;120&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SummaryFilter&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;StartValue&quot; isnull=&quot;true&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;EndValue&quot; isnull=&quot;true&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;Mode&quot;&gt;LastLevel&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;RowFieldComponentName&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ColumnFieldComponentName&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;    &lt;/property&gt;&#xD;&#xA;    &lt;property name=&quot;Item5&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;      &lt;property name=&quot;CustomTotals&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;ImageIndex&quot;&gt;-1&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ToolTips&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;HeaderText&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ValueText&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldEditName&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;Name&quot;&gt;fieldStatisticCategory&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Area&quot;&gt;RowArea&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AllowedAreas&quot;&gt;RowArea, ColumnArea, FilterArea&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldName&quot;&gt;StatisticCategory&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Index&quot;&gt;4&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SortBySummaryInfo&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;Conditions&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;FieldComponentName&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;TotalsVisibility&quot;&gt;None&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FilterValues&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;Values&quot;&gt;~Xtra#Array0, &lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;ValuesCore&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;DeferFilterString&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ShowBlanks&quot;&gt;true&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;FilterType&quot;&gt;Excluded&lt;/property&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AreaIndex&quot;&gt;3&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ActualSortMode&quot;&gt;Default&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SummaryFilter&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;StartValue&quot; isnull=&quot;true&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;EndValue&quot; isnull=&quot;true&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;Mode&quot;&gt;LastLevel&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;RowFieldComponentName&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ColumnFieldComponentName&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;    &lt;/property&gt;&#xD;&#xA;    &lt;property name=&quot;Item6&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;      &lt;property name=&quot;CustomTotals&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;ImageIndex&quot;&gt;-1&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ToolTips&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;HeaderText&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ValueText&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldEditName&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;Name&quot;&gt;fieldDataItem&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Area&quot;&gt;RowArea&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AllowedAreas&quot;&gt;RowArea, ColumnArea&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldName&quot;&gt;DataItem&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Index&quot;&gt;5&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SortBySummaryInfo&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;Conditions&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;FieldComponentName&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;TotalsVisibility&quot;&gt;None&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FilterValues&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;Values&quot;&gt;~Xtra#Array0, &lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;ValuesCore&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;DeferFilterString&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ShowBlanks&quot;&gt;true&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;FilterType&quot;&gt;Excluded&lt;/property&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AreaIndex&quot;&gt;4&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ActualSortMode&quot;&gt;Default&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Width&quot;&gt;115&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SummaryFilter&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;StartValue&quot; isnull=&quot;true&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;EndValue&quot; isnull=&quot;true&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;Mode&quot;&gt;LastLevel&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;RowFieldComponentName&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ColumnFieldComponentName&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;    &lt;/property&gt;&#xD;&#xA;    &lt;property name=&quot;Item7&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;      &lt;property name=&quot;CustomTotals&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;ImageIndex&quot;&gt;-1&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ToolTips&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;HeaderText&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ValueText&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldEditName&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;Name&quot;&gt;fieldStatisticType&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Area&quot;&gt;RowArea&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AllowedAreas&quot;&gt;RowArea, ColumnArea&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldName&quot;&gt;StatisticTypeForDisplay&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Index&quot;&gt;6&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SortBySummaryInfo&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;Conditions&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;FieldComponentName&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;TotalsVisibility&quot;&gt;None&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FilterValues&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;ValuesCore&quot; iskey=&quot;true&quot; value=&quot;1&quot;&gt;&#xD;&#xA;          &lt;property name=&quot;Item1&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;            &lt;property name=&quot;Value&quot; type=&quot;System.String&quot;&gt;Minimum&lt;/property&gt;&#xD;&#xA;          &lt;/property&gt;&#xD;&#xA;        &lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;DeferFilterString&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ShowBlanks&quot;&gt;true&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;FilterType&quot;&gt;Excluded&lt;/property&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AreaIndex&quot;&gt;5&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ActualSortMode&quot;&gt;Default&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Width&quot;&gt;85&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SummaryFilter&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;StartValue&quot; isnull=&quot;true&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;EndValue&quot; isnull=&quot;true&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;Mode&quot;&gt;LastLevel&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;RowFieldComponentName&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ColumnFieldComponentName&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;    &lt;/property&gt;&#xD;&#xA;    &lt;property name=&quot;Item8&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;      &lt;property name=&quot;CustomTotals&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;Options&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;ShowGrandTotal&quot;&gt;false&lt;/property&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ImageIndex&quot;&gt;-1&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ToolTips&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;HeaderText&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ValueText&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldEditName&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;Name&quot;&gt;fieldValueAverage&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Area&quot;&gt;DataArea&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AllowedAreas&quot;&gt;DataArea&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldName&quot;&gt;AverageForDisplay&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Index&quot;&gt;7&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SortBySummaryInfo&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;Conditions&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;FieldComponentName&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FilterValues&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;Values&quot;&gt;~Xtra#Array0, &lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;ValuesCore&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;DeferFilterString&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ShowBlanks&quot;&gt;true&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;FilterType&quot;&gt;Excluded&lt;/property&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;CellFormat&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;FormatString&quot;&gt;N4&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;FormatType&quot;&gt;Numeric&lt;/property&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AreaIndex&quot;&gt;0&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ActualSortMode&quot;&gt;Default&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SummaryFilter&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;StartValue&quot; isnull=&quot;true&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;EndValue&quot; isnull=&quot;true&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;Mode&quot;&gt;LastLevel&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;RowFieldComponentName&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ColumnFieldComponentName&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;    &lt;/property&gt;&#xD;&#xA;    &lt;property name=&quot;Item9&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;      &lt;property name=&quot;CustomTotals&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;Options&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;ShowGrandTotal&quot;&gt;false&lt;/property&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ImageIndex&quot;&gt;-1&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ToolTips&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;HeaderText&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ValueText&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldEditName&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;Name&quot;&gt;fieldValueMinimum&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Area&quot;&gt;DataArea&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AllowedAreas&quot;&gt;DataArea&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldName&quot;&gt;MinimumForDisplay&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Index&quot;&gt;8&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SortBySummaryInfo&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;Conditions&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;FieldComponentName&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FilterValues&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;Values&quot;&gt;~Xtra#Array0, &lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;ValuesCore&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;DeferFilterString&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ShowBlanks&quot;&gt;true&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;FilterType&quot;&gt;Excluded&lt;/property&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;CellFormat&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;FormatString&quot;&gt;N4&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;FormatType&quot;&gt;Numeric&lt;/property&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AreaIndex&quot;&gt;1&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ActualSortMode&quot;&gt;Default&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Width&quot;&gt;49&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Visible&quot;&gt;false&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SummaryFilter&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;StartValue&quot; isnull=&quot;true&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;EndValue&quot; isnull=&quot;true&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;Mode&quot;&gt;LastLevel&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;RowFieldComponentName&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ColumnFieldComponentName&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;    &lt;/property&gt;&#xD;&#xA;    &lt;property name=&quot;Item10&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;      &lt;property name=&quot;CustomTotals&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;Options&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;ShowGrandTotal&quot;&gt;false&lt;/property&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ImageIndex&quot;&gt;-1&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ToolTips&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;HeaderText&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ValueText&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldEditName&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;Name&quot;&gt;fieldValueMaximum&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Area&quot;&gt;DataArea&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AllowedAreas&quot;&gt;DataArea&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldName&quot;&gt;MaximumForDisplay&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Index&quot;&gt;9&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SortBySummaryInfo&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;Conditions&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;FieldComponentName&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FilterValues&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;Values&quot;&gt;~Xtra#Array0, &lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;ValuesCore&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;DeferFilterString&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ShowBlanks&quot;&gt;true&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;FilterType&quot;&gt;Excluded&lt;/property&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;CellFormat&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;FormatString&quot;&gt;N4&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;FormatType&quot;&gt;Numeric&lt;/property&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AreaIndex&quot;&gt;2&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ActualSortMode&quot;&gt;Default&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Width&quot;&gt;53&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Visible&quot;&gt;false&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SummaryFilter&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;StartValue&quot; isnull=&quot;true&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;EndValue&quot; isnull=&quot;true&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;Mode&quot;&gt;LastLevel&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;RowFieldComponentName&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ColumnFieldComponentName&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;    &lt;/property&gt;&#xD;&#xA;    &lt;property name=&quot;Item11&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;      &lt;property name=&quot;CustomTotals&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;Options&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;ShowGrandTotal&quot;&gt;false&lt;/property&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ImageIndex&quot;&gt;-1&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ToolTips&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;HeaderText&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ValueText&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldEditName&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;Name&quot;&gt;fieldValueHalfWidth&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Area&quot;&gt;DataArea&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AllowedAreas&quot;&gt;DataArea&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldName&quot;&gt;HalfWidthForDisplay&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Index&quot;&gt;10&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SortBySummaryInfo&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;Conditions&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;FieldComponentName&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FilterValues&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;Values&quot;&gt;~Xtra#Array0, &lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;ValuesCore&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;DeferFilterString&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ShowBlanks&quot;&gt;true&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;FilterType&quot;&gt;Excluded&lt;/property&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;CellFormat&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;FormatString&quot;&gt;N4&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;FormatType&quot;&gt;Numeric&lt;/property&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AreaIndex&quot;&gt;3&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ActualSortMode&quot;&gt;Default&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Width&quot;&gt;63&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Visible&quot;&gt;false&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SummaryFilter&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;StartValue&quot; isnull=&quot;true&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;EndValue&quot; isnull=&quot;true&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;Mode&quot;&gt;LastLevel&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;RowFieldComponentName&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ColumnFieldComponentName&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;    &lt;/property&gt;&#xD;&#xA;    &lt;property name=&quot;Item12&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;      &lt;property name=&quot;CustomTotals&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;Options&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;ShowGrandTotal&quot;&gt;false&lt;/property&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ImageIndex&quot;&gt;-1&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ToolTips&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;HeaderText&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ValueText&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldEditName&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;Name&quot;&gt;fieldValueStandardDeviation&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Area&quot;&gt;DataArea&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AllowedAreas&quot;&gt;DataArea&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldName&quot;&gt;StandardDeviationForDisplay&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Index&quot;&gt;11&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SortBySummaryInfo&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;Conditions&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;FieldComponentName&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FilterValues&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;Values&quot;&gt;~Xtra#Array0, &lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;ValuesCore&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;DeferFilterString&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ShowBlanks&quot;&gt;true&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;FilterType&quot;&gt;Excluded&lt;/property&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;CellFormat&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;FormatString&quot;&gt;N4&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;FormatType&quot;&gt;Numeric&lt;/property&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AreaIndex&quot;&gt;4&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ActualSortMode&quot;&gt;Default&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Width&quot;&gt;55&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Visible&quot;&gt;false&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SummaryFilter&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;StartValue&quot; isnull=&quot;true&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;EndValue&quot; isnull=&quot;true&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;Mode&quot;&gt;LastLevel&lt;/property&gt;&#xD;&#xA;        &lt;property name=&quot;RowFieldComponentName&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ColumnFieldComponentName&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;    &lt;/property&gt;&#xD;&#xA;  &lt;/property&gt;&#xD;&#xA;  &lt;property name=&quot;Prefilter&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;    &lt;property name=&quot;Criteria&quot; isnull=&quot;true&quot; /&gt;&#xD;&#xA;    &lt;property name=&quot;ShowOperandTypeIcon&quot;&gt;false&lt;/property&gt;&#xD;&#xA;    &lt;property name=&quot;Enabled&quot;&gt;true&lt;/property&gt;&#xD;&#xA;  &lt;/property&gt;&#xD;&#xA;  &lt;property name=&quot;OptionsBehavior&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;    &lt;property name=&quot;ApplyBestFitOnFieldDragging&quot;&gt;true&lt;/property&gt;&#xD;&#xA;  &lt;/property&gt;&#xD;&#xA;  &lt;property name=&quot;OptionsFilterPopup&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;    &lt;property name=&quot;ToolbarButtons&quot;&gt;ShowOnlyAvailableItems, ShowNewValues, RadioMode, InvertFilter&lt;/property&gt;&#xD;&#xA;  &lt;/property&gt;&#xD;&#xA;  &lt;property name=&quot;OptionsCustomization&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;    &lt;property name=&quot;AllowExpand&quot;&gt;false&lt;/property&gt;&#xD;&#xA;  &lt;/property&gt;&#xD;&#xA;  &lt;property name=&quot;Groups&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;&lt;/XtraSerializer&gt;" />
-        </InteractivePivotGrid>
-        <OperationalPlanningResourceGantt>
-          <FileRef Name="Data\ViewState\Model_OperationalPlanningResourceGantt.xml" />
-        </OperationalPlanningResourceGantt>
-        <OperationalPlanningOwnerGantt>
-          <FileRef Name="Data\ViewState\Model_OperationalPlanningOwnerGantt.xml" />
-        </OperationalPlanningOwnerGantt>
-      </ViewInfo>
+      <ModelViewInfo>
+        <FileRef Name="ViewInfos\Model_ModelViewInfo.xml" />
+      </ModelViewInfo>
     </Model>
     <Model Definition="AssemblyLineServer" Runnable="False">
       <TargetSettings HighRiskThreshold="50" MediumRiskThreshold="80" HighRiskColor="ff0000" MediumRiskColor="ffff00" LowRiskColor="90ee90" />
       <Icon>
         <FileRef Name="Data\Icons\AssemblyLineServer.png" />
       </Icon>
-      <ViewInfo>
-        <Facility FollowDistanceRatio="1">
-          <Camera Orientation="Top" Location="-0.715490309953477 13.7837103829623 0.868703089631465" Direction="0 -1 -2.22044604925031E-16" Zoom="14.237406179266733" />
-          <ObjectDisplay SnapToGrid="True" Background="ffffff" />
-          <Libraries Width="122">
-            <Library Name="Standard Library" Size="500" Expanded="True" />
-            <Library Name="Flow Library" Size="28" />
-          </Libraries>
-        </Facility>
-        <Process DefaultCategoryExpanded="True" />
-      </ViewInfo>
+      <ModelViewInfo>
+        <FileRef Name="ViewInfos\AssemblyLineServer_ModelViewInfo.xml" />
+      </ModelViewInfo>
     </Model>
     <Model Definition="ComponentManufacturingServer" Runnable="False">
       <TargetSettings HighRiskThreshold="50" MediumRiskThreshold="80" HighRiskColor="ff0000" MediumRiskColor="ffff00" LowRiskColor="90ee90" />
       <Icon>
         <FileRef Name="Data\Icons\ComponentManufacturingServer.png" />
       </Icon>
-      <ViewInfo>
-        <Facility FollowDistanceRatio="1">
-          <Camera Orientation="Top" Location="0.835134940144521 13.3417898974017 0.655157145894147" Direction="0 -1 -2.22044604925031E-16" Zoom="13.81031429179207" />
-          <ObjectDisplay SnapToGrid="True" Background="ffffff" />
-          <Libraries Width="122">
-            <Library Name="Standard Library" Size="460" Expanded="True" />
-            <Library Name="Flow Library" Size="28" />
-          </Libraries>
-        </Facility>
-        <Process DefaultCategoryExpanded="True" />
-      </ViewInfo>
+      <ModelViewInfo>
+        <FileRef Name="ViewInfos\ComponentManufacturingServer_ModelViewInfo.xml" />
+      </ModelViewInfo>
     </Model>
     <Model Definition="ComponentManufacturingTransferNode" Runnable="False">
       <TargetSettings HighRiskThreshold="50" MediumRiskThreshold="80" HighRiskColor="ff0000" MediumRiskColor="ffff00" LowRiskColor="90ee90" />
       <Icon>
         <FileRef Name="Data\Icons\ComponentManufacturingTransferNode.png" />
       </Icon>
-      <ViewInfo>
-        <Process DefaultCategoryExpanded="True" />
-      </ViewInfo>
+      <ModelViewInfo>
+        <FileRef Name="ViewInfos\ComponentManufacturingTransferNode_ModelViewInfo.xml" />
+      </ModelViewInfo>
     </Model>
     <Model Definition="AssemblyLineTransferNode" Runnable="False">
       <TargetSettings HighRiskThreshold="50" MediumRiskThreshold="80" HighRiskColor="ff0000" MediumRiskColor="ffff00" LowRiskColor="90ee90" />
       <Icon>
         <FileRef Name="Data\Icons\AssemblyLineTransferNode.png" />
       </Icon>
-      <ViewInfo>
-        <Process DefaultCategoryExpanded="True" />
-      </ViewInfo>
+      <ModelViewInfo>
+        <FileRef Name="ViewInfos\AssemblyLineTransferNode_ModelViewInfo.xml" />
+      </ModelViewInfo>
     </Model>
   </Models>
   <Symbols>
@@ -330,22 +161,22 @@
   </PathDecorators>
   <CommonItems>
     <Definitions>
-      <FixedDefinition Name="AssemblyLineServer" Id="5b53f988-7833-40bc-b1c5-e56d54a2a1f4" Revision="28" BaseClass="Server" Author="Simio Employee" CheckBaseForAdvancedProperties="True">
+      <FixedDefinition Name="AssemblyLineServer" Id="5b53f988-7833-40bc-b1c5-e56d54a2a1f4" Revision="29" BaseClass="Server" Author="Simio Employee" CheckBaseForAdvancedProperties="True">
         <FileRef Name="Models\AssemblyLineServer\5b53f988-7833-40bc-b1c5-e56d54a2a1f4.xml" />
       </FixedDefinition>
-      <NodeDefinition Name="AssemblyLineTransferNode" Id="cea8f6aa-dd30-416f-ba7a-03e23f9c4e4f" Revision="1" BaseClass="TransferNode" Author="Simio Employee" CheckBaseForAdvancedProperties="True" Color="1e90ff">
+      <NodeDefinition Name="AssemblyLineTransferNode" Id="cea8f6aa-dd30-416f-ba7a-03e23f9c4e4f" Revision="2" BaseClass="TransferNode" Author="Simio Employee" CheckBaseForAdvancedProperties="True" Color="1e90ff">
         <FileRef Name="Models\AssemblyLineTransferNode\cea8f6aa-dd30-416f-ba7a-03e23f9c4e4f.xml" />
       </NodeDefinition>
-      <FixedDefinition Name="ComponentManufacturingServer" Id="c6d7573f-5a70-4506-8735-978a920275ba" Revision="27" BaseClass="Server" Author="Simio Employee" CheckBaseForAdvancedProperties="True">
+      <FixedDefinition Name="ComponentManufacturingServer" Id="c6d7573f-5a70-4506-8735-978a920275ba" Revision="28" BaseClass="Server" Author="Simio Employee" CheckBaseForAdvancedProperties="True">
         <FileRef Name="Models\ComponentManufacturingServer\c6d7573f-5a70-4506-8735-978a920275ba.xml" />
       </FixedDefinition>
-      <NodeDefinition Name="ComponentManufacturingTransferNode" Id="ce633769-500b-4cd3-8e72-f1998d87b32f" Revision="2" BaseClass="TransferNode" Author="Simio Employee" CheckBaseForAdvancedProperties="True" Color="1e90ff">
+      <NodeDefinition Name="ComponentManufacturingTransferNode" Id="ce633769-500b-4cd3-8e72-f1998d87b32f" Revision="3" BaseClass="TransferNode" Author="Simio Employee" CheckBaseForAdvancedProperties="True" Color="1e90ff">
         <FileRef Name="Models\ComponentManufacturingTransferNode\ce633769-500b-4cd3-8e72-f1998d87b32f.xml" />
       </NodeDefinition>
       <EntityDefinition Name="ModelEntity" Id="595bfa43-fc05-4b1c-b867-d5f7ed0b9638" Revision="6" Author="Simio Employee" Description="The default entity definition for your project." CheckBaseForAdvancedProperties="True">
         <FileRef Name="Models\ModelEntity\595bfa43-fc05-4b1c-b867-d5f7ed0b9638.xml" />
       </EntityDefinition>
-      <FixedDefinition Name="Model" Id="b457820f-d0c8-47e4-a497-ef40fdb26f1e" Revision="153" Author="Simio Employee" Version="202">
+      <FixedDefinition Name="Model" Id="b457820f-d0c8-47e4-a497-ef40fdb26f1e" Revision="154" Author="Simio Employee" Version="202">
         <FileRef Name="Models\Model\b457820f-d0c8-47e4-a497-ef40fdb26f1e.xml" />
       </FixedDefinition>
     </Definitions>
@@ -356,39 +187,39 @@
       </DefinitionRef>
       <DefinitionRef Name="Model">
         <Id>b457820f-d0c8-47e4-a497-ef40fdb26f1e</Id>
-        <Revision>153</Revision>
+        <Revision>154</Revision>
       </DefinitionRef>
       <DefinitionRef Name="AssemblyLineServer">
         <Id>5b53f988-7833-40bc-b1c5-e56d54a2a1f4</Id>
-        <Revision>28</Revision>
+        <Revision>29</Revision>
       </DefinitionRef>
       <DefinitionRef Name="ComponentManufacturingServer">
         <Id>c6d7573f-5a70-4506-8735-978a920275ba</Id>
-        <Revision>27</Revision>
+        <Revision>28</Revision>
       </DefinitionRef>
       <DefinitionRef Name="ComponentManufacturingTransferNode">
         <Id>ce633769-500b-4cd3-8e72-f1998d87b32f</Id>
-        <Revision>2</Revision>
+        <Revision>3</Revision>
       </DefinitionRef>
       <DefinitionRef Name="AssemblyLineTransferNode">
         <Id>cea8f6aa-dd30-416f-ba7a-03e23f9c4e4f</Id>
-        <Revision>1</Revision>
+        <Revision>2</Revision>
       </DefinitionRef>
       <DefinitionRef Name="Server">
         <Id>1bc342dc-9d96-49f2-ae4a-af8f05416564</Id>
-        <Revision>256</Revision>
+        <Revision>257</Revision>
       </DefinitionRef>
       <DefinitionRef Name="TransferNode">
         <Id>0d40fbf0-8206-443f-b771-65f85633a2f6</Id>
-        <Revision>158</Revision>
+        <Revision>159</Revision>
       </DefinitionRef>
       <DefinitionRef Name="Source">
         <Id>1d0ccf22-61f9-4fc0-9b3c-01d17e71402d</Id>
-        <Revision>118</Revision>
+        <Revision>119</Revision>
       </DefinitionRef>
       <DefinitionRef Name="Sink">
         <Id>5f44138f-a5f7-40d1-ab9a-eea7c5f0254e</Id>
-        <Revision>66</Revision>
+        <Revision>67</Revision>
       </DefinitionRef>
       <DefinitionRef Name="Worker">
         <Id>5f89278e-bfe6-4867-97c5-3c24c83c5da7</Id>
@@ -396,7 +227,7 @@
       </DefinitionRef>
       <DefinitionRef Name="Combiner">
         <Id>6df5a963-685f-49fb-901c-3683e5d8c754</Id>
-        <Revision>244</Revision>
+        <Revision>245</Revision>
       </DefinitionRef>
       <DefinitionRef Name="Vehicle">
         <Id>840e1952-0a07-4fce-ae96-9d4ddaa9e1ef</Id>
@@ -404,11 +235,11 @@
       </DefinitionRef>
       <DefinitionRef Name="Separator">
         <Id>91316ec9-4805-41e3-a4ff-dbeffe5bc1ee</Id>
-        <Revision>250</Revision>
+        <Revision>251</Revision>
       </DefinitionRef>
       <DefinitionRef Name="BasicNode">
         <Id>585953ca-c744-444b-92d9-8af032f3e9a1</Id>
-        <Revision>107</Revision>
+        <Revision>108</Revision>
       </DefinitionRef>
       <DefinitionRef Name="Path">
         <Id>93d39da5-5ba1-4ae1-a526-15bdb27d48e4</Id>
@@ -2253,10 +2084,10 @@
       </Symbol>
     </Symbols>
     <Definitions>
-      <NodeDefinition Name="BasicNode" Id="585953ca-c744-444b-92d9-8af032f3e9a1" Revision="107" Author="Simio Employee" Description="A BasicNode object may be used by an entity to transfer into or out of an object. This type of node may also be used to define an intersection point in a network of links." CheckBaseForAdvancedProperties="True" Color="808080">
+      <NodeDefinition Name="BasicNode" Id="585953ca-c744-444b-92d9-8af032f3e9a1" Revision="108" Description="A BasicNode object may be used by an entity to transfer into or out of an object. This type of node may also be used to define an intersection point in a network of links." CheckBaseForAdvancedProperties="True" Color="808080">
         <FileRef Name="Models\BasicNode\585953ca-c744-444b-92d9-8af032f3e9a1.xml" />
       </NodeDefinition>
-      <FixedDefinition Name="Combiner" Id="6df5a963-685f-49fb-901c-3683e5d8c754" Revision="244" Author="Simio Employee" Description="A Combiner object may be used to model a process that groups multiple entities together and then attaches the batch members to a parent entity." ResourceLogic="True">
+      <FixedDefinition Name="Combiner" Id="6df5a963-685f-49fb-901c-3683e5d8c754" Revision="245" Description="A Combiner object may be used to model a process that groups multiple entities together and then attaches the batch members to a parent entity." ResourceLogic="True">
         <FileRef Name="Models\Combiner\6df5a963-685f-49fb-901c-3683e5d8c754.xml" />
       </FixedDefinition>
       <LinkDefinition Name="Conveyor" Id="205487e1-5e9e-4b70-b80b-a6c333f7f872" Revision="97" Author="Simio Employee" Description="A Conveyor object may be used to move traveling entities between two node locations using an accumulating or non-accumulating conveyor." CheckBaseForAdvancedProperties="True" FlowConstraintMode="Default">
@@ -2265,19 +2096,19 @@
       <LinkDefinition Name="Path" Id="93d39da5-5ba1-4ae1-a526-15bdb27d48e4" Revision="63" Author="Simio Employee" Description="A Path object may be used to define a pathway between two node locations where the travel time is determined by the path length and a traveling entity's speed. Passing may or may not be allowed." CheckBaseForAdvancedProperties="True" FlowConstraintMode="Default">
         <FileRef Name="Models\Path\93d39da5-5ba1-4ae1-a526-15bdb27d48e4.xml" />
       </LinkDefinition>
-      <FixedDefinition Name="Separator" Id="91316ec9-4805-41e3-a4ff-dbeffe5bc1ee" Revision="250" Author="Simio Employee" Description="A Separator object may be used to model a process that splits batched members from a parent entity, makes copies of an entity, or creates new entities upon processing a parent entity without any copying." ResourceLogic="True">
+      <FixedDefinition Name="Separator" Id="91316ec9-4805-41e3-a4ff-dbeffe5bc1ee" Revision="251" Description="A Separator object may be used to model a process that splits batched members from a parent entity, makes copies of an entity, or creates new entities upon processing a parent entity without any copying." ResourceLogic="True">
         <FileRef Name="Models\Separator\91316ec9-4805-41e3-a4ff-dbeffe5bc1ee.xml" />
       </FixedDefinition>
-      <FixedDefinition Name="Server" Id="1bc342dc-9d96-49f2-ae4a-af8f05416564" Revision="256" Author="Simio Employee" Description="A Server object may be used to model a capacity-constrained processing location. Operations performed at the server can be modeled as either a processing time or as a sequence of tasks. Secondary resources or material requirements may be optionally specified." ResourceLogic="True">
+      <FixedDefinition Name="Server" Id="1bc342dc-9d96-49f2-ae4a-af8f05416564" Revision="257" Description="A Server object may be used to model a capacity-constrained processing location. Operations performed at the server can be modeled as either a processing time or as a sequence of tasks. Secondary resources or material requirements may be optionally specified." ResourceLogic="True">
         <FileRef Name="Models\Server\1bc342dc-9d96-49f2-ae4a-af8f05416564.xml" />
       </FixedDefinition>
-      <FixedDefinition Name="Sink" Id="5f44138f-a5f7-40d1-ab9a-eea7c5f0254e" Revision="66" Author="Simio Employee" Description="A Sink object may be used to destroy entities that have finished processing in the model." CheckBaseForAdvancedProperties="True">
+      <FixedDefinition Name="Sink" Id="5f44138f-a5f7-40d1-ab9a-eea7c5f0254e" Revision="67" Description="A Sink object may be used to destroy entities that have finished processing in the model." CheckBaseForAdvancedProperties="True">
         <FileRef Name="Models\Sink\5f44138f-a5f7-40d1-ab9a-eea7c5f0254e.xml" />
       </FixedDefinition>
-      <FixedDefinition Name="Source" Id="1d0ccf22-61f9-4fc0-9b3c-01d17e71402d" Revision="118" Author="Simio Employee" Description="A Source object may be used to generate entities of a specified type." CheckBaseForAdvancedProperties="True">
+      <FixedDefinition Name="Source" Id="1d0ccf22-61f9-4fc0-9b3c-01d17e71402d" Revision="119" Description="A Source object may be used to generate entities of a specified type." CheckBaseForAdvancedProperties="True">
         <FileRef Name="Models\Source\1d0ccf22-61f9-4fc0-9b3c-01d17e71402d.xml" />
       </FixedDefinition>
-      <NodeDefinition Name="TransferNode" Id="0d40fbf0-8206-443f-b771-65f85633a2f6" Revision="158" Author="Simio Employee" Description="A TransferNode object may be used by an entity to transfer into or out of an object. This type of node may also be used to define an intersection point in a network of links. Optional entity destination selection and transport logic is provided." CheckBaseForAdvancedProperties="True" Color="1e90ff">
+      <NodeDefinition Name="TransferNode" Id="0d40fbf0-8206-443f-b771-65f85633a2f6" Revision="159" Description="A TransferNode object may be used by an entity to transfer into or out of an object. This type of node may also be used to define an intersection point in a network of links. Optional entity destination selection and transport logic is provided." CheckBaseForAdvancedProperties="True" Color="1e90ff">
         <FileRef Name="Models\TransferNode\0d40fbf0-8206-443f-b771-65f85633a2f6.xml" />
       </NodeDefinition>
       <TransporterDefinition Name="Vehicle" Id="840e1952-0a07-4fce-ae96-9d4ddaa9e1ef" Revision="239" Author="Simio Employee" Description="A Vehicle object may be used to transport entities between node locations. Additionally, an 'On Demand' routing type vehicle may be used as a moveable resource that is seized and released for non-transport related tasks by model process logic." ResourceLogic="True" CheckBaseForAdvancedProperties="True">
@@ -2488,30 +2319,30 @@
           <FileRef Name="Data\Textures\Metal_Aluminum_Anodized.jpg" />
         </Image>
       </TextureMaterial>
-      <ColorMaterial Id="a749155a-2203-4b93-883d-b4581ebf218a" Color="008000" />
-      <ColorMaterial Id="c3097693-3fc0-409d-9b94-25753cef847f" Color="ffff00" />
-      <ColorMaterial Id="b3a6f6e2-468c-4d43-9733-94a137c98d6c" Color="ff0000" />
-      <ColorMaterial Id="ba85883d-9daf-4113-a60c-74de542609f1" Color="ffffff" />
-      <ColorMaterial Id="834f39be-5bee-4d5c-b280-b07ea39f861b" Color="ff0000" />
-      <ColorMaterial Id="63924491-42bc-4ba1-a420-67870b80f581" Color="ffffff" />
-      <ColorMaterial Id="54a12f66-3837-4e8e-a8e7-87c8e4635b8b" Color="008000" />
-      <ColorMaterial Id="861af63e-cc24-46f7-a24a-dd38a3712e93" Color="ffffff" />
-      <ColorMaterial Id="f4f71962-b439-4584-9eba-65d9e5729cc2" Color="008000" />
-      <ColorMaterial Id="1385d902-e2c0-4d55-ab3a-7a15f4843a74" Color="ffff00" />
-      <ColorMaterial Id="1f02f9c0-1a88-459e-aad9-b27f1285775a" Color="ff0000" />
-      <ColorMaterial Id="6a20f865-3c11-4797-9dd9-0eb8871c1349" Color="ffffff" />
-      <ColorMaterial Id="a6c7c034-c7be-4d09-9089-f2253b97686b" Color="ff0000" />
-      <ColorMaterial Id="85605443-58f9-4ceb-bf0d-4d4f867514b9" Color="ffffff" />
-      <ColorMaterial Id="86522ab0-73d4-4bc9-8665-60b93c90ae62" Color="008000" />
-      <ColorMaterial Id="d10333ab-f23e-4afa-ade9-ea3142552fe1" Color="ffffff" />
-      <ColorMaterial Id="65f76b5f-8b9e-49ec-9766-70c2e1d8b2b6" Color="008000" />
-      <ColorMaterial Id="61c41a75-b115-4253-9860-adba39368132" Color="ffff00" />
-      <ColorMaterial Id="ede83218-96e0-4811-9fed-633a1dc3eb62" Color="ff0000" />
-      <ColorMaterial Id="c9dbe4eb-4afd-4393-88d8-8b502c5305ae" Color="ffffff" />
-      <ColorMaterial Id="688a63df-0274-4225-8515-0cb26e186358" Color="ff0000" />
-      <ColorMaterial Id="fae57ef9-7bfb-4a00-a045-74784bb82e88" Color="ffffff" />
-      <ColorMaterial Id="d572b899-fb1b-46ee-bcf7-ca611b46b6a0" Color="008000" />
-      <ColorMaterial Id="6558bff6-12e7-49bf-9516-99fae4c7c452" Color="ffffff" />
+      <ColorMaterial Id="6d42021d-9bfe-4a55-b6d5-3a198f574fe0" Color="008000" />
+      <ColorMaterial Id="3a2abb2a-2073-4c89-9bd3-100bd16b7116" Color="ffff00" />
+      <ColorMaterial Id="6a2c2184-772a-4afc-8f89-34f054b0119f" Color="ff0000" />
+      <ColorMaterial Id="0d3313b1-f941-4225-8741-42917a2d3606" Color="ffffff" />
+      <ColorMaterial Id="ea73f545-bd58-46da-8a89-c4578a699502" Color="ff0000" />
+      <ColorMaterial Id="98862c80-7ee0-4542-ad44-2deb63bc0aeb" Color="ffffff" />
+      <ColorMaterial Id="2b0fc315-13a5-4960-b185-d225bbfa7130" Color="008000" />
+      <ColorMaterial Id="703c7e18-c6cb-400b-8c4a-89142e9bdd4a" Color="ffffff" />
+      <ColorMaterial Id="7bf52529-58e2-4d94-ace1-6b48641e49d6" Color="008000" />
+      <ColorMaterial Id="7bdb84e8-2ac8-4759-bc61-1fe893a750f3" Color="ffff00" />
+      <ColorMaterial Id="0b18c1cb-4b8c-415e-a150-07a91aa7b4e9" Color="ff0000" />
+      <ColorMaterial Id="857ff359-1aad-4fb7-b7a3-deaa71b580c7" Color="ffffff" />
+      <ColorMaterial Id="dd0da4b8-d3c5-4749-a892-fd019e222c4f" Color="ff0000" />
+      <ColorMaterial Id="8951e400-d007-425e-b56f-1a9e4658f42c" Color="ffffff" />
+      <ColorMaterial Id="3e158371-cfbf-4949-830e-be5832404c6b" Color="008000" />
+      <ColorMaterial Id="94328f7b-5b2c-4fd5-a5b7-e7bd361fa5b1" Color="ffffff" />
+      <ColorMaterial Id="3fb32c56-a778-4777-8904-e369e07c6df6" Color="008000" />
+      <ColorMaterial Id="5ef25c98-1c75-40ab-aab9-705da9719f3e" Color="ffff00" />
+      <ColorMaterial Id="b033013e-fb0e-4307-b3fb-9ca04fc52eaa" Color="ff0000" />
+      <ColorMaterial Id="27844782-4897-47a2-8c04-e43659a9945b" Color="ffffff" />
+      <ColorMaterial Id="85c6a16e-ae6d-4253-bfbd-df284a6a99d5" Color="ff0000" />
+      <ColorMaterial Id="63b7e4d1-9308-4b34-84bf-a48c51c64cb4" Color="ffffff" />
+      <ColorMaterial Id="66f8f0ae-4ffc-49e3-8668-3d28659cfe9f" Color="008000" />
+      <ColorMaterial Id="d637507f-b8c9-4d39-a4a9-5363c95ac704" Color="ffffff" />
       <ColorMaterial Id="2ffc04ec-6a4c-4c15-85cd-528b6b0770d2" Color="008000" />
       <ColorMaterial Id="9c984cad-45aa-4bea-aa16-96b32eafe6fc" Color="ffff00" />
       <ColorMaterial Id="54a94681-bda3-4108-8207-9f07cc0b797c" Color="ff0000" />
@@ -2786,4 +2617,3 @@
     </Materials>
   </CommonItems>
 </Project>
-<!-- 6z+MTbkkRx+p/T34H+1fdZHRQ77y3lZnIEI9jr3ZMX/8zPoq1jGjB7ZKv/NmhpSecSPkD4uRLbjh0e49FIjqnw== -->

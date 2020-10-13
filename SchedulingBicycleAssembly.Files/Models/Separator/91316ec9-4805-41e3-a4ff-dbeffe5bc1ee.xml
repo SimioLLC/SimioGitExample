@@ -84,6 +84,7 @@
     <ChangeDescription Version="246">Version 11.203: Added 'Seize Constraint Logic' property.</ChangeDescription>
     <ChangeDescription Version="248">Version 11.204: PerformProcessingTask process logic - Added ProcessingTaskToken.ExpectedSetupTime state assignment to get an expected setup time. Secondary Resource Requirements -&gt; Renamed 'SelectionExpression' properties to 'SelectionValueExpression'.</ChangeDescription>
     <ChangeDescription Version="250">Version 12.207: Renamed secondary resource-related properties 'ObjectType', 'ObjectName', 'ObjectListName', 'NumberOfObjects', &amp; 'UnitsPerObject' to 'ResourceType', 'ResourceName', 'ResourceListName', 'NumberOfResources',.&amp; 'UnitsPerResource' respectively.</ChangeDescription>
+    <ChangeDescription Version="251">Version 12.212: Required update due to BasicNode and TransferNode object updates.</ChangeDescription>
   </ChangeDescriptions>
   <ChangeStringReplacements>
     <ChangeStringReplacement Version="122" RegularExpressionPattern="(^|[^\w_])(?i:InitializedAddOnProcess)([^\w_]|$)" ReplacementString="$1RunInitializedAddOnProcess$2" />
@@ -354,7 +355,7 @@
         <ExpressionProperty Name="TaskResourceRequirementsKeepReservedCondition" DisplayName="Keep Reserved If" Description="Once the task has completed and released the resource requirements, an optional condition indicating whether to keep the released resource capacity reserved for possible later reuse by the same entity. Other entities will be unable to use a reserved resource unless the reservation is cancelled.&#xD;&#xA;&#xD;&#xA;In the expression, use the syntax Candidate.[ObjectClass].[Attribute] to reference an attribute of the task resource object(s) being released (e.g., Candidate.Object.Capacity).&#xD;&#xA;&#xD;&#xA;Note that when an entity is attempting to select a resource from a group of candidates (e.g., from a list or from a population of some resource type), by default a preference will be given to select a resource that has already been reserved by that entity irrespective of the specified selection goal.&#xD;&#xA;&#xD;&#xA;Leaving this property blank (no condition) is equivalent to entering False." ComplexityLevel="Advanced" Category="Resource Requirements/Advanced Options" DefaultValue="True" Required="False" NullString="null" SupportForeign="True" />
         <ExpressionProperty Name="TaskResourceRequirementsReservationTimeout" DisplayName="Reservation Timeout" Description="If the keep reserved condition is true, then an optional wait time before automatically cancelling the reservation.&#xD;&#xA;&#xD;&#xA;In the expression, use the syntax Candidate.[ObjectClass].[Attribute] to reference an attribute of the task resource object(s) being released (e.g., Candidate.Object.Capacity)." ComplexityLevel="Advanced" Category="Resource Requirements/Advanced Options" DefaultValue="Math.Epsilon" Required="False" NullString="null" UnitType="Time" SupportForeign="True" />
         <BooleanProperty Name="TaskResourceRequirementsImmediatelyTryAllocateWhenReleased" DisplayName="Immediately Try Allocate When Released" Description="Once the task has completed and released the resource requirements, indicates whether to immediately try allocating the released resource capacity to waiting seize requests before the execution of any other simulation logic in the system.&#xD;&#xA;&#xD;&#xA;Setting this property to False will skip immediate allocation. Instead, an evaluation of the resource allocation queues will be scheduled on the simulation’s current event calendar as a late priority event.&#xD;&#xA;&#xD;&#xA;NOTE: This property setting may vary from task to task but not from resource requirement to resource requirement for the same task. Thus, if using a table driven approach to define task sequence data, the value of this property may only be specified as a constant or by referencing a column in the table that defines each individual processing task." Category="Resource Requirements/Advanced Options" DefaultValue="False" NullString="null" />
-        <ExpressionProperty Name="TaskResourceRequirementsSkipRequirementCondition" DisplayName="Skip Requirement If" Description="Optional condition indicating whether to skip the resource requirement." Category="Resource Requirements/Advanced Options" Required="False" NullString="null" />
+        <ExpressionProperty Name="TaskResourceRequirementsSkipRequirementCondition" DisplayName="Skip Requirement If" Description="Optional condition indicating whether to skip the resource requirement. Is evaluated only once per task, at the start of execution of the underlying Seize step." Category="Resource Requirements/Advanced Options" Required="False" NullString="null" />
         <EnumProperty Name="TaskMaterialRequirementsActionType" DisplayName="Action Type" Description="The type of material-related action required." Category="Material Requirements" DefaultValue="Consume" NullString="null" EnumType="MaterialActionType" />
         <EnumProperty Name="TaskMaterialRequirementsConsumptionType" DisplayName="Consumption Type" Description="Indicates whether to consume a single material or a bill of materials. The material consumption will be required to start the processing of the task." Category="Material Requirements" DefaultValue="Material" NullString="null" EnumType="BOMActionRules">
           <Switch Property="TaskMaterialRequirementsActionType" Value="Consume" />
@@ -387,7 +388,7 @@
         <ExpressionProperty Name="TaskMaterialRequirementsProductionDelayTime" DisplayName="Production Delay Time" Description="Optional delay time after task is finished before producing the material and adding it to inventory.&#xD;&#xA;&#xD;&#xA;NOTE: This property has been deprecated. Use a Delay step or additional task instead. To edit a deprecated property, go to File-&gt;Settings-&gt;GUI-&gt;Display Deprecated Properties In Properties Window and change that setting to True." Category="Material Requirements/Advanced Options" DefaultValue="0.0" Deprecated="True" NullString="null" UnitType="Time">
           <Switch Property="TaskMaterialRequirementsActionType" Value="Produce" />
         </ExpressionProperty>
-        <ExpressionProperty Name="TaskMaterialRequirementsSkipRequirementCondition" DisplayName="Skip Requirement If" Description="Optional condition indicating whether to skip the material requirement." Category="Material Requirements/Advanced Options" Required="False" NullString="null" />
+        <ExpressionProperty Name="TaskMaterialRequirementsSkipRequirementCondition" DisplayName="Skip Requirement If" Description="Optional condition indicating whether to skip the material requirement. Is evaluated only once per task, at the start of execution of the underlying Consume or Produce step." Category="Material Requirements/Advanced Options" Required="False" NullString="null" />
         <ListProperty Name="TaskStateAssignmentsTrigger" DisplayName="Assign When" Description="Indicates when to perform the state assignment.&#xD;&#xA;&#xD;&#xA;‘Task Ready’ is when all of the task’s predecessor dependencies have been satisfied and the entity is about to try seizing or consuming the resources and materials needed (if any) to perform the task.&#xD;&#xA;&#xD;&#xA;‘Starting Task’ is when all of the task's resource and material requirements (if any) have been satisfied and the processing of the task is about to begin.&#xD;&#xA;&#xD;&#xA;‘Finished Task’ is when the processing of the task has been finished." Category="State Assignments" DefaultValue="Task Ready" NullString="null" List="TaskStateAssignmentTrigger">
           <Captions>
             <Caption Value="TaskReady" Display="Task Ready" />
@@ -3994,8 +3995,8 @@
           <SymbolInstance Center="0 0 0" ExternallyVisible="True">
             <SymbolRef Id="[UseExternalSymbol]" />
             <Decorations>
-              <Decoration SurfacePath="0,0" SurfaceId="0">
-                <MaterialRef Id="f4f71962-b439-4584-9eba-65d9e5729cc2" />
+              <Decoration SurfacePath="0,0" SurfaceId="0" DynamicPath="True">
+                <MaterialRef Id="7bf52529-58e2-4d94-ace1-6b48641e49d6" />
               </Decoration>
             </Decorations>
           </SymbolInstance>
@@ -4004,8 +4005,8 @@
           <SymbolInstance Center="0 0 0" ExternallyVisible="True">
             <SymbolRef Id="[UseExternalSymbol]" />
             <Decorations>
-              <Decoration SurfacePath="0,0" SurfaceId="0">
-                <MaterialRef Id="1385d902-e2c0-4d55-ab3a-7a15f4843a74" />
+              <Decoration SurfacePath="0,0" SurfaceId="0" DynamicPath="True">
+                <MaterialRef Id="7bdb84e8-2ac8-4759-bc61-1fe893a750f3" />
               </Decoration>
             </Decorations>
           </SymbolInstance>
@@ -4014,8 +4015,8 @@
           <SymbolInstance Center="0 0 0" ExternallyVisible="True">
             <SymbolRef Id="[UseExternalSymbol]" />
             <Decorations>
-              <Decoration SurfacePath="0,0" SurfaceId="0">
-                <MaterialRef Id="1f02f9c0-1a88-459e-aad9-b27f1285775a" />
+              <Decoration SurfacePath="0,0" SurfaceId="0" DynamicPath="True">
+                <MaterialRef Id="0b18c1cb-4b8c-415e-a150-07a91aa7b4e9" />
               </Decoration>
             </Decorations>
           </SymbolInstance>
@@ -4024,8 +4025,8 @@
           <SymbolInstance Center="0 0 0" ExternallyVisible="True">
             <SymbolRef Id="[UseExternalSymbol]" />
             <Decorations>
-              <Decoration SurfacePath="0,0" SurfaceId="0">
-                <MaterialRef Id="6a20f865-3c11-4797-9dd9-0eb8871c1349" />
+              <Decoration SurfacePath="0,0" SurfaceId="0" DynamicPath="True">
+                <MaterialRef Id="857ff359-1aad-4fb7-b7a3-deaa71b580c7" />
               </Decoration>
             </Decorations>
           </SymbolInstance>
@@ -4034,8 +4035,8 @@
           <SymbolInstance Center="0 0 0" ExternallyVisible="True">
             <SymbolRef Id="[UseExternalSymbol]" />
             <Decorations>
-              <Decoration SurfacePath="0,0" SurfaceId="0">
-                <MaterialRef Id="a6c7c034-c7be-4d09-9089-f2253b97686b" />
+              <Decoration SurfacePath="0,0" SurfaceId="0" DynamicPath="True">
+                <MaterialRef Id="dd0da4b8-d3c5-4749-a892-fd019e222c4f" />
               </Decoration>
             </Decorations>
           </SymbolInstance>
@@ -4044,8 +4045,8 @@
           <SymbolInstance Center="0 0 0" ExternallyVisible="True">
             <SymbolRef Id="[UseExternalSymbol]" />
             <Decorations>
-              <Decoration SurfacePath="0,0" SurfaceId="0">
-                <MaterialRef Id="85605443-58f9-4ceb-bf0d-4d4f867514b9" />
+              <Decoration SurfacePath="0,0" SurfaceId="0" DynamicPath="True">
+                <MaterialRef Id="8951e400-d007-425e-b56f-1a9e4658f42c" />
               </Decoration>
             </Decorations>
           </SymbolInstance>
@@ -4054,8 +4055,8 @@
           <SymbolInstance Center="0 0 0" ExternallyVisible="True">
             <SymbolRef Id="[UseExternalSymbol]" />
             <Decorations>
-              <Decoration SurfacePath="0,0" SurfaceId="0">
-                <MaterialRef Id="86522ab0-73d4-4bc9-8665-60b93c90ae62" />
+              <Decoration SurfacePath="0,0" SurfaceId="0" DynamicPath="True">
+                <MaterialRef Id="3e158371-cfbf-4949-830e-be5832404c6b" />
               </Decoration>
             </Decorations>
           </SymbolInstance>
@@ -4064,8 +4065,8 @@
           <SymbolInstance Center="0 0 0" ExternallyVisible="True">
             <SymbolRef Id="[UseExternalSymbol]" />
             <Decorations>
-              <Decoration SurfacePath="0,0" SurfaceId="0">
-                <MaterialRef Id="d10333ab-f23e-4afa-ade9-ea3142552fe1" />
+              <Decoration SurfacePath="0,0" SurfaceId="0" DynamicPath="True">
+                <MaterialRef Id="94328f7b-5b2c-4fd5-a5b7-e7bd361fa5b1" />
               </Decoration>
             </Decorations>
           </SymbolInstance>
@@ -4093,4 +4094,3 @@
     </Graphics>
   </Dashboard>
 </Fragment>
-<!-- /5+Yx4RWG7y/RJZRqf7w52uh8t40+i+9FQQSmoWQFu6f0QWRvPti6UZy5GdqNSt5zd3Vk7JNEw/SIeMojRF+vQ== -->
