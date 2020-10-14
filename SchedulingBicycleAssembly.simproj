@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ProductVersion="12.214.21764.0" FileVersion="222" WriteToMultipleFiles="True" Id="a9a11b7c-c8ee-4fa2-97ad-3d374de461e4" xmlns="http://www.simio.com/projects/v1">
-  <DocumentInfo LicenseInfo="15:1" UserName="" Organization="Simio" SerialNumber="6947" SaveDate="2020-10-13T23:41:04" Sig="jl8zRu3wwTBIPOlU1LtenkjhKIdqmDQaj8LbA2XVV+fqx/ur3KrTumpw4FtwTAYbreFBJ7Ccpf07SuouMqx+aw==" />
+  <DocumentInfo LicenseInfo="15:1" UserName="" Organization="Simio" SerialNumber="6947" SaveDate="2020-10-14T13:43:25" Sig="RLfUN2mTpPQ8jyUe7vwv7uYXzNGPSmf12nxxEtTFyrBaZNjxvArH8dZCZvU/Fl5QrWo1kt5nUDURwaR9noErrw==" />
   <Models>
     <Model Definition="ModelEntity" Runnable="False">
       <TargetSettings HighRiskThreshold="50" MediumRiskThreshold="80" HighRiskColor="ff0000" MediumRiskColor="ffff00" LowRiskColor="90ee90" />
@@ -154,6 +154,13 @@
     <SymbolRef Id="abde986b-965e-4c91-82ce-e6e414c4ac9c" />
     <SymbolRef Id="019021d3-7a61-44d9-b2ab-9fa7310979b3" />
   </Symbols>
+  <Materials>
+    <MaterialRef Id="a0562c5d-acc2-438d-94fd-c6d4f82dc81f" />
+    <MaterialRef Id="375dcfa3-76c5-4157-9023-e8a56a41063b" />
+    <MaterialRef Id="ed298184-d031-4f78-bb84-d60a42e1dd70" />
+    <MaterialRef Id="06f09426-5822-410f-8a24-fe997f258096" />
+    <MaterialRef Id="5230de3f-c9d9-4f64-872d-1f1a300dba85" />
+  </Materials>
   <PathDecorators>
     <PathDecoratorRef Id="6604199d-246c-47b0-b226-6bdb0a677a86" />
     <PathDecoratorRef Id="1599a9e4-917d-4d6b-b116-ae376b7fddeb" />
@@ -176,7 +183,7 @@
       <EntityDefinition Name="ModelEntity" Id="595bfa43-fc05-4b1c-b867-d5f7ed0b9638" Revision="6" Author="Simio Employee" Description="The default entity definition for your project." CheckBaseForAdvancedProperties="True">
         <FileRef Name="Models\ModelEntity\595bfa43-fc05-4b1c-b867-d5f7ed0b9638.xml" />
       </EntityDefinition>
-      <FixedDefinition Name="Model" Id="b457820f-d0c8-47e4-a497-ef40fdb26f1e" Revision="154" Author="Simio Employee" Version="202">
+      <FixedDefinition Name="Model" Id="b457820f-d0c8-47e4-a497-ef40fdb26f1e" Revision="155" Author="Simio Employee" Version="202">
         <FileRef Name="Models\Model\b457820f-d0c8-47e4-a497-ef40fdb26f1e.xml" />
       </FixedDefinition>
     </Definitions>
@@ -187,7 +194,7 @@
       </DefinitionRef>
       <DefinitionRef Name="Model">
         <Id>b457820f-d0c8-47e4-a497-ef40fdb26f1e</Id>
-        <Revision>154</Revision>
+        <Revision>155</Revision>
       </DefinitionRef>
       <DefinitionRef Name="AssemblyLineServer">
         <Id>5b53f988-7833-40bc-b1c5-e56d54a2a1f4</Id>
@@ -251,6 +258,31 @@
       </DefinitionRef>
     </DefinitionRefs>
     <Materials>
+      <TextureMaterial Id="a0562c5d-acc2-438d-94fd-c6d4f82dc81f" Name="Blue Marble Slabs">
+        <Image>
+          <FileRef Name="Data\Textures\Blue Marble Slabs.jpg" />
+        </Image>
+      </TextureMaterial>
+      <TextureMaterial Id="375dcfa3-76c5-4157-9023-e8a56a41063b" Name="Crystal Tiles">
+        <Image>
+          <FileRef Name="Data\Textures\Crystal Tiles.jpg" />
+        </Image>
+      </TextureMaterial>
+      <TextureMaterial Id="ed298184-d031-4f78-bb84-d60a42e1dd70" Name="FancyWallpaper">
+        <Image>
+          <FileRef Name="Data\Textures\FancyWallpaper.jpg" />
+        </Image>
+      </TextureMaterial>
+      <TextureMaterial Id="06f09426-5822-410f-8a24-fe997f258096" Name="Ore3">
+        <Image>
+          <FileRef Name="Data\Textures\Ore3.jpg" />
+        </Image>
+      </TextureMaterial>
+      <TextureMaterial Id="5230de3f-c9d9-4f64-872d-1f1a300dba85" Name="Rust Peel">
+        <Image>
+          <FileRef Name="Data\Textures\Rust Peel.jpg" />
+        </Image>
+      </TextureMaterial>
       <ColorMaterial Id="69b67927-df2f-45f0-9261-e6142cdfafbf" Color="008000" />
       <ColorMaterial Id="27857c74-c0d8-46ee-92a8-1c73b9b78063" Color="008000" />
       <ColorMaterial Id="84266bdf-1092-4140-a0c6-91131b03f626" Color="ffff00" />

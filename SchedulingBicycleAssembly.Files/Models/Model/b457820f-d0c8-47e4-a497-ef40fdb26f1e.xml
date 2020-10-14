@@ -5576,6 +5576,14 @@
         <SymbolInstances CurrentSymbolIndex="0" CurrentSymbolExpression="Server.ResourceState">
           <SymbolInstance Center="0 0 0" ExternallyVisible="True">
             <SymbolRef Id="61db6794-d045-4ba0-a159-4a56d46d605b" />
+            <Decorations>
+              <Decoration SurfacePath="0" SurfaceId="0">
+                <MaterialRef Id="5230de3f-c9d9-4f64-872d-1f1a300dba85" />
+              </Decoration>
+            </Decorations>
+            <FlowDecoration>
+              <MaterialRef Id="5230de3f-c9d9-4f64-872d-1f1a300dba85" />
+            </FlowDecoration>
           </SymbolInstance>
           <SymbolInstance Center="0 0 0" ExternallyVisible="True">
             <SymbolRef Id="8163f5a4-6ef7-4fe1-81fb-a4427977df09" />
@@ -5624,9 +5632,9 @@
         </AttachedObjects>
       </Graphics>
     </Fixed>
-    <Fixed Name="Power2" Type="AssemblyLineServer" Location="-9.26822091398707 0 16.7913816490565" YawDeg="90" Size="1.69213789701462 1.62950521707535 2.42456269264221" Scope="Public">
+    <Fixed Name="Power2" Type="AssemblyLineServer" Location="-8.4375 0 17.8125" YawDeg="90" Size="1.69213789701462 1.62950521707535 2.42456269264221" Scope="Public">
       <AssociatedNodes>
-        <Node Name="Input@Power2" Type="BasicNode" Location="-10.7682209139871 0 16.7913816490565" YawDeg="90" Scope="Public">
+        <Node Name="Input@Power2" Type="BasicNode" Location="-9.93750000000003 0 17.8125" YawDeg="90" Scope="Public">
           <Properties>
             <Property Name="InitialCost" Units="USD">0.0</Property>
             <Property Name="InitialCostRate" Units="USD per Hour">0.0</Property>
@@ -5640,7 +5648,7 @@
           </Properties>
           <Graphics ExternallyVisible="True" />
         </Node>
-        <Node Name="Output@Power2" Type="TransferNode" Location="-7.76822091398707 0 16.7913816490565" YawDeg="90" Scope="Public">
+        <Node Name="Output@Power2" Type="TransferNode" Location="-6.9375 0 17.8125" YawDeg="90" Scope="Public">
           <Properties>
             <Property Name="InitialCost" Units="USD">0.0</Property>
             <Property Name="InitialCostRate" Units="USD per Hour">0.0</Property>
@@ -5808,6 +5816,14 @@
         <SymbolInstances CurrentSymbolIndex="0" CurrentSymbolExpression="Server.ResourceState">
           <SymbolInstance Center="0 0 0" ExternallyVisible="True">
             <SymbolRef Id="61db6794-d045-4ba0-a159-4a56d46d605b" />
+            <Decorations>
+              <Decoration SurfacePath="0" SurfaceId="0">
+                <MaterialRef Id="5230de3f-c9d9-4f64-872d-1f1a300dba85" />
+              </Decoration>
+            </Decorations>
+            <FlowDecoration>
+              <MaterialRef Id="5230de3f-c9d9-4f64-872d-1f1a300dba85" />
+            </FlowDecoration>
           </SymbolInstance>
           <SymbolInstance Center="0 0 0" ExternallyVisible="True">
             <SymbolRef Id="8163f5a4-6ef7-4fe1-81fb-a4427977df09" />
@@ -5837,20 +5853,20 @@
         <AttachedObjects IndexList="72 73 74">
           <Queue Queue="InputBuffer.Contents" ExternallyVisible="True">
             <Points>
-              <Point Location="-10.2682209139871 0 17.2913816490565" />
-              <Point Location="-13.2682209139871 0 17.2913816490565" />
+              <Point Location="-9.43750000000003 0 18.3125" />
+              <Point Location="-12.4375 0 18.3125" />
             </Points>
           </Queue>
           <Queue Queue="OutputBuffer.Contents" ExternallyVisible="True">
             <Points>
-              <Point Location="-8.26822091398707 0 17.2913816490565" />
-              <Point Location="-5.26822091398707 0 17.2913816490565" />
+              <Point Location="-7.4375 0 18.3125" />
+              <Point Location="-4.4375 0 18.3125" />
             </Points>
           </Queue>
           <Queue Queue="Processing.Contents" ExternallyVisible="True">
             <Points>
-              <Point Location="-10.2682209139871 0 15.7913816490565" />
-              <Point Location="-8.26822091398707 0 15.7913816490565" />
+              <Point Location="-9.43750000000003 0 16.8125" />
+              <Point Location="-7.4375 0 16.8125" />
             </Points>
           </Queue>
         </AttachedObjects>
@@ -7611,7 +7627,7 @@
         </PathDecoratorUsage>
       </Graphics>
     </Link>
-    <Link Name="Conveyor12" Type="Conveyor" Size="6.72 2 0" Scope="Public" Start="Output@MainFrame2" End="Input@Power2">
+    <Link Name="Conveyor12" Type="Conveyor" Size="7.63 2 0" Scope="Public" Start="Output@MainFrame2" End="Input@Power2">
       <Properties>
         <Property Name="InitialCost" Units="USD">0.0</Property>
         <Property Name="InitialCostRate" Units="USD per Hour">0.0</Property>
@@ -7650,7 +7666,7 @@
         </PathDecoratorUsage>
       </Graphics>
     </Link>
-    <Link Name="Conveyor14" Type="Conveyor" Size="6.93 2 0" Scope="Public" Start="Output@Power2" End="Input@Final2">
+    <Link Name="Conveyor14" Type="Conveyor" Size="6.18 2 0" Scope="Public" Start="Output@Power2" End="Input@Final2">
       <Properties>
         <Property Name="InitialCost" Units="USD">0.0</Property>
         <Property Name="InitialCostRate" Units="USD per Hour">0.0</Property>

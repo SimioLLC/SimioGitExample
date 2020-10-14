@@ -101,8 +101,8 @@
     <Properties>
       <Property Name="ResourceName">Power2</Property>
       <Property Name="Description">Power2</Property>
-      <Property Name="XLocation">-9.26822091398707</Property>
-      <Property Name="ZLocation">16.7913816490565</Property>
+      <Property Name="XLocation">-8.4375</Property>
+      <Property Name="ZLocation">17.8125</Property>
       <Property Name="Area">Assembly Line</Property>
       <Property Name="Workcell">Power</Property>
       <Property Name="ObjectType">AssemblyLineServer</Property>
