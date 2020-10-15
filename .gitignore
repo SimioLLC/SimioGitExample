@@ -1,10 +1,10 @@
 # Ignore Simio backup files
-/*.backup
+*.backup
 
 # Ignore all log files (in Simio, these are simulation data files)
-/*.log
+*.log
 
 # Ignore all stats files (in Simio, these are simulation data files)
-/*.stats
+*.stats
 
 
