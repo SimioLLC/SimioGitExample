@@ -5818,11 +5818,11 @@
             <SymbolRef Id="61db6794-d045-4ba0-a159-4a56d46d605b" />
             <Decorations>
               <Decoration SurfacePath="0" SurfaceId="0">
-                <MaterialRef Id="5230de3f-c9d9-4f64-872d-1f1a300dba85" />
+                <MaterialRef Id="a0562c5d-acc2-438d-94fd-c6d4f82dc81f" />
               </Decoration>
             </Decorations>
             <FlowDecoration>
-              <MaterialRef Id="5230de3f-c9d9-4f64-872d-1f1a300dba85" />
+              <MaterialRef Id="a0562c5d-acc2-438d-94fd-c6d4f82dc81f" />
             </FlowDecoration>
           </SymbolInstance>
           <SymbolInstance Center="0 0 0" ExternallyVisible="True">
