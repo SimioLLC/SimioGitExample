@@ -1,10 +1,10 @@
 <Fragment>
   <ViewInfo ActiveModel="True" ActiveView="Facility">
     <Facility FollowDistanceRatio="1">
-      <Camera Orientation="Perspective" Location="-5.99511941402582 1.73469387755102 20.3750382424097" Direction="-0.665543413113463 -0.337792733081356 -0.665543413113458" Zoom="66.980831460917244" />
+      <Camera Orientation="Perspective" Location="7.6435860991365 16.1440783401894 19.6429222521729" Direction="-0.463831768630442 -0.754798105998098 -0.463831768630438" Zoom="66.980831460917244" />
       <ObjectDisplay LineArrows="False" SnapToGrid="True" Background="1e90ff" />
       <Libraries Width="122">
-        <Library Name="Standard Library" Size="536" Expanded="True" />
+        <Library Name="Standard Library" Size="515" Expanded="True" />
         <Library Name="Flow Library" Size="28" />
       </Libraries>
     </Facility>
