@@ -7,5 +7,14 @@
 # Ignore all stats files (in Simio, these are simulation data files)
 *.stats
 
+# Ignore trace files
+*trace.csv
+
 # Ignore all files in the ViewInfo folder
-ViewInfo/
+ViewInfos/
+
+# Ignore Gantt ViewStates
+ViewState/
+
+# Ignore DevExpress Layouts
+DevExpressLayout*.xml
