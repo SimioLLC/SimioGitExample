@@ -7,4 +7,6 @@
 # Ignore all stats files (in Simio, these are simulation data files)
 *.stats
 
+#ignore all files
+ViewInfo/
 
